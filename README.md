@@ -74,7 +74,7 @@ pip install -r requirements.txt
 1. Copia `.env.example` como `.env`:
 
    ```cmd
-   copy .env.example .env
+   copy .env
    ```
 
 2. Abre `.env` y coloca tu clave real:
