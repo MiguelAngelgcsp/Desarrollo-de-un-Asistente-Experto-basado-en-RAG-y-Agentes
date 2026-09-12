@@ -71,12 +71,7 @@ pip install -r requirements.txt
 
 ## Configurar la clave de Gemini (.env)
 
-1. Copia `.env.example` como `.env`:
-
-   ```cmd
-   copy .env
-   ```
-
+1. Crear `.env`:
 2. Abre `.env` y coloca tu clave real:
 
    ```env
