@@ -34,7 +34,7 @@ Delimitadores (XML o triple comillas)
         ↓
 System Prompt + Few-Shot Examples + Contexto + Pregunta
         ↓
-Gemini 2.5 Flash
+Gemini 3.6 Flash
         ↓
 Respuesta en JSON
 ```
@@ -56,7 +56,7 @@ contempla para cuando ese contenido se cubra en el curso.
 asistente-tutor-ae/
 ├── main.py
 ├── requirements.txt
-├── .env.example
+├── .env
 ├── .gitignore
 ├── README.md
 └── knowledge_base/
