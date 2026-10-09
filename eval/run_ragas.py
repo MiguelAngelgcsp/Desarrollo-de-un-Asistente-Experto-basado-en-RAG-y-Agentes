@@ -28,6 +28,48 @@ RES_DIR = Path(__file__).resolve().parent / "resultados"
 PREGUNTAS = Path(__file__).resolve().parent / "preguntas_eval.json"
 
 
+# Modelo predeterminado de cada proveedor del juez (se cambia con --judge-model).
+JUECES_POR_DEFECTO = {
+    "groq": "llama-3.3-70b-versatile",
+    "gemini": "gemini-3.5-flash-lite",   # requiere GOOGLE_API_KEY (.env) y: pip install langchain-google-genai
+    "ollama": "qwen2.5:7b-instruct",     # requiere Ollama instalado y: pip install langchain-ollama
+}
+
+
+def crear_juez(a):
+    """Devuelve el LLM (LangChain) que califica en Ragas, según --judge-provider.
+
+    Usar un proveedor distinto al del RAG (Groq/gpt-oss) además evita que el modelo se califique a sí mismo.
+    """
+    proveedor = a.judge_provider
+    modelo = a.judge_model or JUECES_POR_DEFECTO[proveedor]
+    a.judge_model = modelo  # queda registrado en el resumen
+
+    if proveedor == "groq":
+        from src.llm import get_llm
+
+        return get_llm(model=modelo, temperature=0.0)
+
+    if proveedor == "gemini":
+        clave = os.environ.get("GOOGLE_API_KEY")
+        if not clave:
+            raise RuntimeError("Falta GOOGLE_API_KEY en .env (créala gratis en https://aistudio.google.com/apikey).")
+        try:
+            from langchain_google_genai import ChatGoogleGenerativeAI
+        except ImportError as e:
+            raise RuntimeError("Falta el paquete: pip install langchain-google-genai") from e
+        return ChatGoogleGenerativeAI(model=modelo, temperature=0.0, google_api_key=clave)
+
+    if proveedor == "ollama":
+        try:
+            from langchain_ollama import ChatOllama
+        except ImportError as e:
+            raise RuntimeError("Falta el paquete: pip install langchain-ollama (y tener Ollama instalado)") from e
+        return ChatOllama(model=modelo, temperature=0.0, base_url=os.environ.get("OLLAMA_HOST", "http://localhost:11434"))
+
+    raise ValueError(f"Proveedor de juez no soportado: {proveedor}")
+
+
 def parse_args():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--tag", required=True, help="Nombre de la configuración (también nombra el índice)")
@@ -38,9 +80,11 @@ def parse_args():
     p.add_argument("--embedding-model")
     p.add_argument("--rebuild", action="store_true", help="Reconstruir el índice aunque exista")
     p.add_argument("--reusar-respuestas", action="store_true", help="No volver a llamar al RAG si ya hay respuestas guardadas")
-    p.add_argument("--judge-model", default=os.environ.get("RAGAS_JUDGE_MODEL", "llama-3.3-70b-versatile"),
-                   help="Modelo de Groq que actúa como juez en Ragas")
-    p.add_argument("--workers", type=int, default=2, help="Hilos de Ragas (bájalo si Groq responde 429)")
+    p.add_argument("--judge-provider", choices=sorted(JUECES_POR_DEFECTO), default="groq",
+                   help="Proveedor del juez: groq (por defecto), gemini (API de Google) u ollama (modelo local)")
+    p.add_argument("--judge-model", default=os.environ.get("RAGAS_JUDGE_MODEL"),
+                   help="Modelo del juez. Si se omite se usa el predeterminado del proveedor (ver JUECES_POR_DEFECTO)")
+    p.add_argument("--workers", type=int, default=2, help="Hilos de Ragas (bájalo a 1 si el proveedor responde 429)")
     p.add_argument("--pausa", type=float, default=2.0, help="Segundos entre preguntas en la Fase 1")
     p.add_argument("--limit", type=int, help="Evaluar solo las primeras N preguntas (para pruebas rápidas)")
     p.add_argument("--solo-fase1", action="store_true", help="Omitir Ragas")
@@ -133,7 +177,7 @@ def fase2_ragas(a, filas):
         for f in dentro
     ])
 
-    juez = LangchainLLMWrapper(get_llm(model=a.judge_model, temperature=0.0))
+    juez = LangchainLLMWrapper(crear_juez(a))
     emb = LangchainEmbeddingsWrapper(get_embeddings())
     answer_relevancy.strictness = 1  # Groq no admite n>1 generaciones por llamada
 
@@ -180,7 +224,7 @@ def main():
         "tag": a.tag,
         "config": {"chunk_size": config.CHUNK_SIZE, "chunk_overlap": config.CHUNK_OVERLAP, "top_k": config.TOP_K,
                    "min_relevance": config.MIN_RELEVANCE, "embedding_model": config.EMBEDDING_MODEL,
-                   "llm": config.GROQ_MODEL, "juez_ragas": a.judge_model},
+                   "llm": config.GROQ_MODEL, "juez_ragas": f"{a.judge_provider}:{a.judge_model}"},
         "basicas": metricas_basicas(filas),
     }
 
