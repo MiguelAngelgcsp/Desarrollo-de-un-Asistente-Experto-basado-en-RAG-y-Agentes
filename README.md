@@ -107,17 +107,41 @@ La primera ejecución descarga el modelo de embeddings (~470 MB).
 Conjunto: `eval/preguntas_eval.json` — **21 preguntas**: 16 dentro del corpus (con *ground truth* y página esperada)
 y 5 fuera del corpus (2 sin relación alguna y 3 "cercanas" al dominio).
 
-```bash
-pip install -r requirements-eval.txt
+### Instalación (Python 3.12, entorno aparte)
 
-python -m eval.calibrar_umbral                  # opcional: revisar MIN_RELEVANCE
-python -m eval.run_ragas --tag base             # línea base (configuración de src/config.py)
+```powershell
+py -3.12 -m venv env_ragas
+.\env_ragas\Scripts\Activate.ps1
+pip install -r requirements-eval.txt
+pip check
+```
+
+En `.env` se requieren `GROQ_API_KEY` (genera las respuestas del RAG) y `GOOGLE_API_KEY` (juez de Ragas con Gemini). Se usa Google como juez porque Groq limita los modelos `gpt-oss` a 200.000 tokens diarios y la evaluación completa agota ese cupo.
+
+### Ejecución
+
+```powershell
+python -m eval.calibrar_umbral                                                      # opcional: revisar MIN_RELEVANCE
+python -m eval.run_ragas --tag base --workers 1 --judge-provider gemini             # línea base
+python -m eval.run_ragas --tag base --reusar-respuestas --workers 1 --judge-provider gemini   # repetir solo Ragas
+python -m eval.run_ragas --tag <iteracion> --<parametro> <valor> --workers 1 --judge-provider gemini
+python -m eval.comparar base <iteracion>
 ```
 
 Métricas (16 preguntas dentro del corpus; juez = LLM de Groq): **faithfulness, answer_relevancy, context_precision,
 context_recall**. Además, sin costo de LLM: **hit-rate de recuperación**, **abstención correcta fuera del corpus**
 (control de alucinaciones) y **abstención incorrecta dentro del corpus**; ayudan a atribuir el problema a
 chunking, recuperación o generación.
+
+### Si algo falla
+
+| Error | Solución |
+|---|---|
+| `No module named 'langchain_community.chat_models.vertexai'` | Parchear `env_ragas\Lib\site-packages\ragas\llms\base.py` (línea ~12): envolver el import de `ChatVertexAI` en `try/except ImportError` y asignar `ChatVertexAI = None` si falla. Se pierde al reinstalar `ragas` |
+| `cannot import name 'ModelProfile'` | Paquetes `langchain-*` desalineados: `pip install -U langchain-core langchain-huggingface langchain-groq langchain-google-genai` y `pip check` |
+| `429 ... tokens per day` (Groq) | Cuota diaria agotada. Esperar el reinicio y usar `--reusar-respuestas --workers 1` |
+| `Falta GOOGLE_API_KEY` | Crearla en https://aistudio.google.com/apikey y agregarla al `.env` |
+| Valores `NaN` en `ragas_nan` | Límite del juez. Repetir con `--reusar-respuestas --workers 1` antes de reportar |
 
 ### Juez de Ragas (proveedor y modelo)
 
