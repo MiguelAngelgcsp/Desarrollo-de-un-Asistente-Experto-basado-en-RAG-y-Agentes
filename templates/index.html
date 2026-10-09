@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutor Académico Konrad Lorenz</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="app">
+  <header>
+    <div>
+      <h1>Tutor Académico Konrad Lorenz</h1>
+      <p>Pregunta sobre TOGAF 9.1 y el ADM: Fase Preliminar, Visión de Arquitectura, Arquitectura de Negocio y de Información</p>
+    </div>
+    <button id="reset" title="Borrar la conversación">Nueva conversación</button>
+  </header>
+
+  <main id="messages" aria-live="polite">
+    <div class="msg bot"><div class="bubble">
+      ¡Hola! Respondo solo con base en los documentos cargados y te muestro las fuentes.
+      Puedes hacer preguntas de seguimiento. Prueba con:
+      <div class="chips">
+        <button class="chip">¿Cuáles son los objetivos principales de la Fase A (Architecture Vision)?</button>
+        <button class="chip">¿Cuáles son las cuatro dimensiones que definen el alcance de una arquitectura?</button>
+        <button class="chip">¿Qué es la Fase Preliminar de TOGAF?</button>
+      </div>
+    </div></div>
+  </main>
+
+  <form id="form" autocomplete="off">
+    <input id="input" type="text" maxlength="1000" placeholder="Escribe tu pregunta…" required>
+    <button id="send" type="submit">Enviar</button>
+  </form>
+</div>
+
+<script>
+const messages = document.getElementById("messages");
+const form = document.getElementById("form");
+const input = document.getElementById("input");
+const sendBtn = document.getElementById("send");
+let history = []; // [{role, content}] — viaja en cada petición
+
+const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+function fmt(texto) {
+  const lineas = esc(texto).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").split("\n");
+  let html = "", lista = false;
+  for (const l of lineas) {
+    if (/^\s*[-•*]\s+/.test(l)) {
+      if (!lista) { html += "<ul>"; lista = true; }
+      html += "<li>" + l.replace(/^\s*[-•*]\s+/, "") + "</li>";
+    } else {
+      if (lista) { html += "</ul>"; lista = false; }
+      if (l.trim()) html += "<p>" + l + "</p>";
+    }
+  }
+  return html + (lista ? "</ul>" : "");
+}
+
+function fuentesHtml(fuentes) {
+  if (!fuentes || !fuentes.length) return "";
+  const items = fuentes.map(f => {
+    const meta = [f.pagina ? "Pág. " + f.pagina : null, f.seccion, "relevancia " + Math.round(f.relevancia * 100) + "%"]
+      .filter(Boolean).join(" · ");
+    return `<div class="src"><div class="src-h"><strong>${esc(f.documento)}</strong><span>${esc(meta)}</span></div>
+            <blockquote>${esc(f.fragmento)}</blockquote></div>`;
+  }).join("");
+  return `<details class="sources"><summary>Fuentes (${fuentes.length})</summary>${items}</details>`;
+}
+
+function addMsg(rol, html, extra = "") {
+  const d = document.createElement("div");
+  d.className = "msg " + rol;
+  d.innerHTML = `<div class="bubble">${html}${extra}</div>`;
+  messages.appendChild(d);
+  messages.scrollTop = messages.scrollHeight;
+  return d;
+}
+
+async function enviar(texto) {
+  addMsg("user", "<p>" + esc(texto) + "</p>");
+  const espera = addMsg("bot", '<p class="typing">Buscando en los documentos…</p>');
+  sendBtn.disabled = true; input.disabled = true;
+  try {
+    const r = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: texto, history })
+    });
+    const data = await r.json();
+    espera.remove();
+    if (!r.ok) { addMsg("bot error", "<p>" + esc(data.error || "Error del servidor") + "</p>"); return; }
+    addMsg("bot" + (data.no_info ? " noinfo" : ""), fmt(data.answer), fuentesHtml(data.sources));
+    history.push({ role: "user", content: texto }, { role: "assistant", content: data.answer });
+    history = history.slice(-8);
+  } catch (e) {
+    espera.remove();
+    addMsg("bot error", "<p>No se pudo conectar con el servidor.</p>");
+  } finally {
+    sendBtn.disabled = false; input.disabled = false; input.focus();
+  }
+}
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const t = input.value.trim();
+  if (!t) return;
+  input.value = "";
+  enviar(t);
+});
+messages.addEventListener("click", e => {
+  if (e.target.classList.contains("chip")) enviar(e.target.textContent);
+});
+document.getElementById("reset").addEventListener("click", () => {
+  history = [];
+  messages.querySelectorAll(".msg:not(:first-child)").forEach(n => n.remove());
+});
+</script>
+</body>
+</html>

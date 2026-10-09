@@ -1,0 +1,292 @@
+[
+  {
+    "id": "Q01",
+    "pregunta": "¿Cuáles son los dos objetivos principales de la Fase Preliminar según TOGAF?",
+    "ground_truth": "Los dos objetivos principales son: 1) Determinar la Capacidad de Arquitectura deseada por la organización (revisar el contexto organizacional, identificar el alcance de las unidades afectadas, marcos concurrentes y establecer la madurez objetivo). 2) Establecer la Capacidad de Arquitectura (definir el modelo organizacional, el proceso y recursos de gobernanza, seleccionar e implementar herramientas y definir los Principios de Arquitectura).",
+    "en_corpus": true,
+    "fuentes_esperadas": [
+      {
+        "documento": "TOGAF_V9.1-FasePreliminar.pdf",
+        "paginas": [
+          2
+        ]
+      }
+    ],
+    "categoria": "togaf"
+  },
+  {
+    "id": "Q02",
+    "pregunta": "¿Cuáles son los cuatro marcos de gestión (management frameworks) principales con los que TOGAF sugiere coordinarse en la Fase Preliminar?",
+    "ground_truth": "Los cuatro marcos de gestión son: Gestión de Capacidades del Negocio (Business Capability Management), Métodos de Gestión de Portafolio/Programas/Proyectos (Portfolio/Program/Project Management Methods), Métodos de Gestión de Operaciones (Operations Management Methods) y Métodos de Desarrollo de Soluciones (Solution Development Methods).",
+    "en_corpus": true,
+    "fuentes_esperadas": [
+      {
+        "documento": "TOGAF_V9.1-FasePreliminar.pdf",
+        "paginas": [
+          5,
+          6
+        ]
+      }
+    ],
+    "categoria": "togaf"
+  },
+  {
+    "id": "Q03",
+    "pregunta": "Según la sección de entradas (Inputs) de la Fase Preliminar, ¿cuáles son las fuentes principales externas a la arquitectura (Non-Architectural Inputs)?",
+    "ground_truth": "Las entradas no arquitectónicas de la Fase Preliminar incluyen: estrategias y planes de negocio de la junta directiva, estrategia de TI, principios, metas y controladores de negocio preexistentes, marcos de trabajo principales del negocio (ej. gestión de portafolio/proyectos), marcos legales y de gobernanza, capacidad de arquitectura preexistente y acuerdos de colaboración o contratos.",
+    "en_corpus": true,
+    "fuentes_esperadas": [
+      {
+        "documento": "TOGAF_V9.1-FasePreliminar.pdf",
+        "paginas": [
+          8
+        ]
+      }
+    ],
+    "categoria": "togaf"
+  },
+  {
+    "id": "Q04",
+    "pregunta": "¿Qué aspectos se deben considerar para adaptar (tailor) el marco de trabajo TOGAF en el paso 6.4.5 de la Fase Preliminar?",
+    "ground_truth": "Se debe considerar la adaptación de tres aspectos: 1) Terminología (crear un glosario acordado para la organización), 2) Procesos (alinear el ADM con la gestión de portafolio, ciclo de vida de proyectos, operaciones y compras), y 3) Contenido (personalizar la estructura de contenido según el Enterprise Continuum y requerimientos de la organización).",
+    "en_corpus": true,
+    "fuentes_esperadas": [
+      {
+        "documento": "TOGAF_V9.1-FasePreliminar.pdf",
+        "paginas": [
+          11
+        ]
+      }
+    ],
+    "categoria": "togaf"
+  },
+  {
+    "id": "Q05",
+    "pregunta": "¿Cuáles son los objetivos principales de la Fase A (Architecture Vision)?",
+    "ground_truth": "Los objetivos de la Fase A son: 1) Desarrollar una visión aspiracional de alto nivel sobre las capacidades y el valor de negocio a entregar como resultado de la arquitectura empresarial propuesta. 2) Obtener la aprobación para una Declaración de Trabajo de Arquitectura (Statement of Architecture Work) que define el programa de trabajo.",
+    "en_corpus": true,
+    "fuentes_esperadas": [
+      {
+        "documento": "TOGAF_V9.1-VisionArquitectura.pdf",
+        "paginas": [
+          2
+        ]
+      }
+    ],
+    "categoria": "togaf"
+  },
+  {
+    "id": "Q06",
+    "pregunta": "¿Cuáles son las entradas no arquitectónicas (Non-Architectural Inputs) requeridas en la Fase A?",
+    "ground_truth": "Las entradas no arquitectónicas requeridas para la Fase A son la Petición de Trabajo de Arquitectura (Request for Architecture Work) y los Principios, Metas y Controladores de Negocio (Business principles, business goals, and business drivers).",
+    "en_corpus": true,
+    "fuentes_esperadas": [
+      {
+        "documento": "TOGAF_V9.1-VisionArquitectura.pdf",
+        "paginas": [
+          4
+        ]
+      }
+    ],
+    "categoria": "togaf"
+  },
+  {
+    "id": "Q07",
+    "pregunta": "¿Qué es la Petición de Trabajo de Arquitectura (Request for Architecture Work) y qué función cumple en la Fase A?",
+    "ground_truth": "Es el documento no arquitectónico emitido por la organización patrocinadora que inicia formalmente el ciclo del ADM. Define los problemas, motivaciones de negocio y el compromiso inicial para llevar a cabo el proyecto de arquitectura.",
+    "en_corpus": true,
+    "fuentes_esperadas": [
+      {
+        "documento": "TOGAF_V9.1-VisionArquitectura.pdf",
+        "paginas": [
+          2,
+          4
+        ]
+      }
+    ],
+    "categoria": "togaf"
+  },
+  {
+    "id": "Q08",
+    "pregunta": "¿Qué documento formal se aprueba al finalizar la Fase A para autorizar el programa de trabajo de arquitectura?",
+    "ground_truth": "El documento formal que se aprueba es la Declaración de Trabajo de Arquitectura (Statement of Architecture Work), el cual define el alcance, programa de trabajo, recursos, roles, responsabilidades y cronograma para desarrollar y desplegar la arquitectura.",
+    "en_corpus": true,
+    "fuentes_esperadas": [
+      {
+        "documento": "TOGAF_V9.1-VisionArquitectura.pdf",
+        "paginas": [
+          2,
+          8,
+          9
+        ]
+      }
+    ],
+    "categoria": "togaf"
+  },
+  {
+    "id": "Q09",
+    "pregunta": "¿Cuál es el propósito principal de desarrollar la Arquitectura de Negocio en la Fase B?",
+    "ground_truth": "El propósito de la Fase B es desarrollar la Arquitectura de Negocio Objetivo que describe cómo necesita operar la empresa para alcanzar los objetivos de negocio y responder a los controladores estratégicos de la Visión de la Arquitectura, identificando componentes candidatos de la hoja de ruta basados en las brechas entre la arquitectura base y la objetivo.",
+    "en_corpus": true,
+    "fuentes_esperadas": [
+      {
+        "documento": "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        "paginas": [
+          2
+        ]
+      }
+    ],
+    "categoria": "togaf"
+  },
+  {
+    "id": "Q10",
+    "pregunta": "¿Qué técnicas o modelos de modelado de negocio se sugieren emplear en el enfoque de la Fase B?",
+    "ground_truth": "Entre las técnicas sugeridas en la Fase B se encuentran: Modelos de Actividad (Actitvity/Process Models como IDEF o BPMN), Modelos de Casos de Uso (Use-Case Models) y Modelos de Clases (Class Models/UML), además de modelos específicos como el Diagrama de Conectividad de Nodos y la Matriz de Intercambio de Información.",
+    "en_corpus": true,
+    "fuentes_esperadas": [
+      {
+        "documento": "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        "paginas": [
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "categoria": "togaf"
+  },
+  {
+    "id": "Q11",
+    "pregunta": "¿Cuáles son los subdominios que componen la Fase C (Information Systems Architectures)?",
+    "ground_truth": "La Fase C se divide en dos dominios de arquitectura: Arquitectura de Datos (Data Architecture) y Arquitectura de Aplicaciones (Applications Architecture).",
+    "en_corpus": true,
+    "fuentes_esperadas": [
+      {
+        "documento": "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        "paginas": [
+          1
+        ]
+      }
+    ],
+    "categoria": "togaf"
+  },
+  {
+    "id": "Q12",
+    "pregunta": "¿Cuáles son las tres dimensiones clave descritas para la gobernanza de datos en la Fase C (Arquitectura de Datos)?",
+    "ground_truth": "Las tres dimensiones de la gobernanza de datos son: 1) Estructura (Structure: estructura organizacional y cuerpos de estándares), 2) Sistema de Gestión (Management System: programas para gestionar entidades de datos en su ciclo de vida), y 3) Personas (People: roles y habilidades necesarias).",
+    "en_corpus": true,
+    "fuentes_esperadas": [
+      {
+        "documento": "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        "paginas": [
+          2
+        ]
+      }
+    ],
+    "categoria": "togaf"
+  },
+  {
+    "id": "Q13",
+    "pregunta": "¿Cuáles son los entregables o productos finales contenedores producidos al completar la Fase C?",
+    "ground_truth": "Los entregables contenedores finales son: 1) El Documento de Definición de Arquitectura (Architecture Definition Document) con las secciones de Datos y Aplicaciones; 2) La Especificación de Requerimientos de Arquitectura (Architecture Requirements Specification) que incluye el análisis de brechas e interoperabilidad; y 3) Los componentes de Sistemas de Información para la Hoja de Ruta de Arquitectura (Architecture Roadmap).",
+    "en_corpus": true,
+    "fuentes_esperadas": [
+      {
+        "documento": "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        "paginas": [
+          10
+        ]
+      }
+    ],
+    "categoria": "togaf"
+  },
+  {
+    "id": "Q14",
+    "pregunta": "¿Qué es el ADM en TOGAF y para qué sirve?",
+    "ground_truth": "El ADM (Architecture Development Method) es un método genérico e iterativo para desarrollar y gestionar el ciclo de vida de una arquitectura empresarial. Constituye el núcleo de TOGAF e integra assets de la organización y modelos de referencia para responder a las necesidades del negocio y de TI.",
+    "en_corpus": true,
+    "fuentes_esperadas": [
+      {
+        "documento": "TOGAF_9.1_Cap5_ADM.pdf",
+        "paginas": [
+          1,
+          3
+        ]
+      }
+    ],
+    "categoria": "togaf"
+  },
+  {
+    "id": "Q15",
+    "pregunta": "¿Cuáles son las cuatro dimensiones que se usan para definir y limitar el alcance de una arquitectura en TOGAF?",
+    "ground_truth": "Las cuatro dimensiones para definir el alcance son: Amplitud (Breadth: cobertura de la empresa), Profundidad (Depth: nivel de detalle), Periodo de Tiempo (Time Period: visión e iteraciones de transición) y Dominios de Arquitectura (Architecture Domains: negocio, datos, aplicación y tecnología).",
+    "en_corpus": true,
+    "fuentes_esperadas": [
+      {
+        "documento": "TOGAF_9.1_Cap5_ADM.pdf",
+        "paginas": [
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    ],
+    "categoria": "togaf"
+  },
+  {
+    "id": "Q16",
+    "pregunta": "¿Qué indican los números de versión 0.1 y 1.0 en la convención de numeración del ADM para los entregables de arquitectura?",
+    "ground_truth": "La versión 0.1 indica un borrador o esquema de alto nivel de la arquitectura (high-level outline); la versión 1.0 indica un documento de arquitectura detallado y revisado formalmente.",
+    "en_corpus": true,
+    "fuentes_esperadas": [
+      {
+        "documento": "TOGAF_9.1_Cap5_ADM.pdf",
+        "paginas": [
+          5
+        ]
+      }
+    ],
+    "categoria": "togaf"
+  },
+  {
+    "id": "Q17",
+    "pregunta": "¿Quién ganó el Mundial de fútbol de 2022?",
+    "ground_truth": "No encontré información sobre esto en la base de conocimientos.",
+    "en_corpus": false,
+    "fuentes_esperadas": [],
+    "categoria": "fuera_corpus"
+  },
+  {
+    "id": "Q18",
+    "pregunta": "¿Cómo se resuelve paso a paso una ecuación cuadrática con la fórmula general?",
+    "ground_truth": "No encontré información sobre esto en la base de conocimientos.",
+    "en_corpus": false,
+    "fuentes_esperadas": [],
+    "categoria": "fuera_corpus"
+  },
+  {
+    "id": "Q19",
+    "pregunta": "¿Cuáles son las actividades y entregables de la Fase G (Implementation Governance) del ADM?",
+    "ground_truth": "No encontré información sobre esto en la base de conocimientos.",
+    "en_corpus": false,
+    "fuentes_esperadas": [],
+    "categoria": "fuera_corpus_cercano"
+  },
+  {
+    "id": "Q20",
+    "pregunta": "¿Qué cambios introdujo TOGAF 10 frente a TOGAF 9.1?",
+    "ground_truth": "No encontré información sobre esto en la base de conocimientos.",
+    "en_corpus": false,
+    "fuentes_esperadas": [],
+    "categoria": "fuera_corpus_cercano"
+  },
+  {
+    "id": "Q21",
+    "pregunta": "¿Qué es Scrum y cuáles son sus roles principales?",
+    "ground_truth": "No encontré información sobre esto en la base de conocimientos.",
+    "en_corpus": false,
+    "fuentes_esperadas": [],
+    "categoria": "fuera_corpus_cercano"
+  }
+]

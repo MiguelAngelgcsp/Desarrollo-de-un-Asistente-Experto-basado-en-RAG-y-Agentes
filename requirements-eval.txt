@@ -1,0 +1,5 @@
+-r requirements.txt
+# --- Evaluación (Ragas) ---
+ragas>=0.2.10,<0.4
+pandas
+matplotlib

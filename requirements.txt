@@ -1,2 +1,22 @@
-google-genai>=1.0.0
-python-dotenv>=1.0.0
+# --- Runtime (app web + pipeline RAG) ---
+# PyTorch solo-CPU: evita descargar ~2 GB de librerías CUDA (clave para Streamlit Community Cloud)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+langchain-core
+langchain-community
+langchain-text-splitters
+langchain-chroma
+langchain-huggingface
+langchain-groq
+sentence-transformers
+chromadb
+pymupdf
+pypdf
+python-docx
+beautifulsoup4
+python-dotenv
+flask
+gunicorn
+streamlit
+# SQLite moderno para Chroma en Linux (Streamlit Cloud); se ignora en Windows/macOS
+pysqlite3-binary; sys_platform == "linux"
