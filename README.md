@@ -5,8 +5,10 @@ Asistente experto basado en **RAG** con memoria conversacional. Responde pregunt
 respuesta** (documento, página, sección y fragmento) y **se abstiene** cuando la información no está en la base de
 conocimientos.
 
-- **URL pública:** `PENDIENTE — pega aquí la URL de Streamlit Community Cloud (https://<nombre>.streamlit.app)`
-- **Repositorio:** `PENDIENTE — pega aquí la URL de GitHub`
+- **URL pública:** <https://tutor-ae.streamlit.app/>
+- **Repositorio:** <https://github.com/MiguelAngelgcsp/Desarrollo-de-un-Asistente-Experto-basado-en-RAG-y-Agentes>
+- **Integrantes:** Miguel Angel Correa Muñoz · Miguel Angel Gomez Cruz
+- **Curso:** Desarrollo de Aplicaciones con IA — Fundación Universitaria Konrad Lorenz, Bogotá D.C., 2026-2 (Avance 2)
 
 ---
 
@@ -40,7 +42,7 @@ Scrum…) para medir si el sistema se abstiene en lugar de inventar.
 | Vectorización | `src/embeddings.py` | `paraphrase-multilingual-MiniLM-L12-v2` (384 dim, normalizado) | Multilingüe (preguntas en español, TOGAF en inglés), liviano, local en CPU, sin API |
 | Índice | `src/vectorstore.py` | ChromaDB persistente (`chroma/<tag>`), distancia coseno | Persistencia y una carpeta por configuración experimental |
 | Recuperación | `src/pipeline.py` | Similitud coseno, **top_k = 5**, **umbral de relevancia 0.20** | k pequeño reduce ruido; el umbral corta antes del LLM si nada es relevante |
-| Expansión de vecinos | `src/pipeline.py` | Se agregan los fragmentos n−1 y n+1 de cada resultado | Las listas de TOGAF (objetivos, entradas, entregables) quedan repartidas en varios fragmentos |
+| Expansión de vecinos | `src/pipeline.py` | Se agregan los fragmentos n−1 y n+1 de cada resultado | Las listas de TOGAF (objetivos, entradas, entregables) quedan repartidas en varios fragmentos; los vecinos aportan el contexto contiguo (mitiga el problema, pero no garantiza listas completas: ver §8) |
 | Reformulación | `src/pipeline.py` | El LLM reescribe la pregunta de seguimiento como autocontenida | "¿Y qué entradas necesita esa fase?" no sirve como consulta vectorial; reformulada sí |
 | Generación | `src/prompts.py`, `src/llm.py` | Groq (`GROQ_MODEL`, por defecto `openai/gpt-oss-20b`; despliegue y evaluación final: `openai/gpt-oss-120b`), temperatura 0 | Respuestas deterministas y trazables |
 
@@ -117,6 +119,24 @@ context_recall**. Además, sin costo de LLM: **hit-rate de recuperación**, **ab
 (control de alucinaciones) y **abstención incorrecta dentro del corpus**; ayudan a atribuir el problema a
 chunking, recuperación o generación.
 
+### Juez de Ragas (proveedor y modelo)
+
+Por defecto el juez es un modelo de Groq (`llama-3.3-70b-versatile`). Se puede cambiar sin tocar el código:
+
+```bash
+python -m eval.run_ragas --tag base --judge-model llama-3.1-8b-instant             # otro modelo de Groq
+python -m eval.run_ragas --tag base --judge-provider gemini                       # Gemini (requiere GOOGLE_API_KEY en .env)
+python -m eval.run_ragas --tag base --judge-provider ollama --judge-model qwen2.5:7b-instruct   # modelo local con Ollama
+```
+
+Para Gemini: `pip install langchain-google-genai`; para Ollama: instalar Ollama y `pip install langchain-ollama`.
+El juez usado queda registrado en `eval/resultados/<tag>_resumen.json` (campo `juez_ragas`). **Usa el mismo juez en la
+línea base y en la iteración**, o la comparación no es válida.
+
+Si el proveedor devuelve 429 (límite de tokens, frecuente en Groq gratuito porque Ragas hace varias llamadas por
+pregunta), las métricas quedan vacías (NaN) en vez de detener la corrida: baja `--workers` a 1, prueba con `--limit 3`
+o reparte la evaluación en varios días.
+
 ### Iteración de mejora (cambia UN parámetro y compara)
 
 ```bash
@@ -136,14 +156,41 @@ Si Groq devuelve 429 (límite), usa `--workers 1` y `--reusar-respuestas`.
 
 ### Resultados
 
-> Completar con `eval/resultados/comparacion.md` después de correr la línea base y la iteración.
+**Línea base (`--tag base`).** Valores por defecto de `src/config.py`: chunk_size 600, overlap 100, top_k 5,
+umbral de relevancia 0.20, embeddings `paraphrase-multilingual-MiniLM-L12-v2`, LLM `openai/gpt-oss-120b` (Groq).
+El conjunto completo (`eval/preguntas_eval.json`) tiene 21 preguntas (16 dentro del corpus y 5 fuera); la línea base
+reportada en el informe de entrega se calculó sobre 16 preguntas (11 dentro del corpus y 5 fuera). Las cuatro métricas
+de Ragas se calculan sobre las preguntas que sí están en el corpus.
 
-| Métrica | Antes (`base`) | Después (`...`) | Δ |
+| Métrica | Línea base | Qué mide |
+|---|---|---|
+| Faithfulness | 0.689 | La respuesta se apoya en los fragmentos recuperados |
+| Answer relevancy | 0.563 | La respuesta contesta lo preguntado |
+| Context precision | 0.178 | Los fragmentos recuperados son útiles y están bien ordenados |
+| Context recall | 0.500 | Los fragmentos contienen la información de la referencia |
+
+**Interpretación.**
+- La métrica más baja es **context precision (0.178)**: según la guía de lectura de arriba, apunta a la etapa de
+  **recuperación** (ruido en el contexto). Una causa probable es la expansión de vecinos: con top_k = 5 y los fragmentos
+  n−1 y n+1 de cada resultado, la interfaz llega a mostrar unas 14–15 fuentes por respuesta, lo que diluye la precisión.
+- **Context recall (0.500)** indica que cerca de la mitad de la información de referencia no llega al contexto: se
+  atribuye al **chunking y la recuperación** (listas repartidas entre fragmentos y páginas; ver §8).
+- Faithfulness (0.689) y answer relevancy (0.563) son intermedias; pueden verse afectadas por el contexto
+  ruidoso o incompleto que recibe la **generación**.
+- Para mejorar precision: reducir el ruido (menos fragmentos o vecinos solo para los mejores resultados, subir
+  `MIN_RELEVANCE`). Para mejorar recall: dividir el texto sin cortar en el salto de página y completar las listas con
+  los fragmentos contiguos.
+
+**Iteración de mejora (antes/después).** *Pendiente de ejecutar.* Elegir un solo parámetro (por ejemplo `--top-k 3` o
+`--min-relevance`, dado que la métrica más baja es context precision), correr `python -m eval.run_ragas --tag <nombre> ...`
+con el mismo juez y luego `python -m eval.comparar base <nombre>`.
+
+| Métrica | Antes (`base`) | Después (`<nombre>`) | Δ |
 |---|---|---|---|
-| Faithfulness | | | |
-| Answer relevancy | | | |
-| Context precision | | | |
-| Context recall | | | |
+| Faithfulness | 0.689 | | |
+| Answer relevancy | 0.563 | | |
+| Context precision | 0.178 | | |
+| Context recall | 0.500 | | |
 
 ## 6. Despliegue en la nube (Streamlit Community Cloud)
 
@@ -156,7 +203,7 @@ Si Groq devuelve 429 (límite), usa `--workers 1` y `--reusar-respuestas`.
    GROQ_MODEL = "openai/gpt-oss-120b"
    ```
 5. **Deploy.** El primer arranque (5–10 min) instala dependencias, descarga el modelo y construye el índice; después
-   solo lo carga. La URL pública queda en `https://<nombre>.streamlit.app`.
+   solo lo carga. La URL pública de este proyecto es <https://tutor-ae.streamlit.app/>.
 6. Las apps sin visitas por 12 horas se duermen; se reactivan con un clic.
 
 Alternativa: el `Dockerfile` sirve para plataformas con Docker (Render, Railway, Fly.io…); requiere variable
@@ -174,7 +221,23 @@ Alternativa: el `Dockerfile` sirve para plataformas con Docker (Render, Railway,
 - Si la información no está en el corpus, se muestra un aviso amarillo y no se listan fuentes.
 - Barra lateral: ejemplos de preguntas y botón **Nueva conversación**.
 
+**Pruebas manuales en la app desplegada** (<https://tutor-ae.streamlit.app/>):
+
+| Prueba | Resultado |
+|---|---|
+| «¿Cuáles son los objetivos principales de la Fase A (Architecture Vision)?» | Correcta: dos objetivos de la sección 7.1 (Pág. 2), con cita de archivo, página y sección |
+| Seguimiento «¿Y qué entradas necesita esa fase?» | Entiende que «esa fase» es la Fase A, pero lista pasos de la sección 7.4 en lugar de las entradas de 7.3 (incompleta) |
+| Seguimiento «¿Y qué entregables produce?» | Cubre 5 de los ~9 elementos de la sección 7.5 e incluye un paso (definir el alcance) que no es un entregable |
+| Fuera del corpus: «¿Cuáles son las actividades y entregables de la Fase G (Implementation Governance) del ADM?» | Correcto: «No encontré información sobre esto en la base de conocimientos.», sin fuentes («Implementation Governance» no aparece en ningún PDF del corpus) |
+
 ## 8. Limitaciones conocidas
+
+- **Listas largas y preguntas de seguimiento cortas:** en las pruebas, «entradas» y «entregables» de la Fase A salieron
+  incompletos o mezclados con pasos de otra sección (ver §7). Causa probable: el texto se divide página por página
+  (un fragmento no cruza el salto de página) y la consulta reformulada recupera la sección equivocada. Mejoras
+  propuestas: dividir cada PDF como un texto continuo, completar las listas con los fragmentos contiguos y ajustar `top_k`.
+- **Evaluación y límites de la API:** Ragas hace varias llamadas al LLM juez por pregunta; con los límites gratuitos de
+  Groq las métricas pueden quedar vacías (ver «Juez de Ragas»).
 
 - Los puntajes de Ragas dependen del LLM juez y varían entre corridas; compara siempre con el mismo juez y modelo.
 - TOGAF está en inglés y se consulta en español: la similitud multilingüe es menor que la monolingüe.
