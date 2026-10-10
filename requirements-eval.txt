@@ -3,3 +3,5 @@
 ragas>=0.2.10,<0.4
 pandas
 matplotlib
+# --- Juez alternativo ---
+langchain-google-genai   # --judge-provider gemini  (necesita GOOGLE_API_KEY en .env)
