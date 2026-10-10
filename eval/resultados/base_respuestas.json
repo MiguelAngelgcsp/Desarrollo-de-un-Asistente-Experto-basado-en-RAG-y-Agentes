@@ -1,0 +1,1641 @@
+[
+  {
+    "id": "Q01",
+    "pregunta": "¿Cuáles son los dos objetivos principales de la Fase Preliminar según TOGAF?",
+    "ground_truth": "Los dos objetivos principales son: 1) Determinar la Capacidad de Arquitectura deseada por la organización (revisar el contexto organizacional, identificar el alcance de las unidades afectadas, marcos concurrentes y establecer la madurez objetivo). 2) Establecer la Capacidad de Arquitectura (definir el modelo organizacional, el proceso y recursos de gobernanza, seleccionar e implementar herramientas y definir los Principios de Arquitectura).",
+    "en_corpus": true,
+    "categoria": "togaf",
+    "respuesta": "Los dos objetivos principales de la Fase Preliminar son:\n- Determinar la capacidad de arquitectura (Architecture Capability) que la organización desea (Fuente: TOGAF_V9.1-FasePreliminar.pdf, Pág. 2, Sec. 6.1).\n- Establecer la capacidad de arquitectura (Architecture Capability) (Fuente: TOGAF_V9.1-FasePreliminar.pdf, Pág. 2, Sec. 6.1).",
+    "contextos": [
+      "Architecture Integration\nIntroduction\nCapability\nVision\n& Arch\nDefinition\nEnterprise-\nLevel\nInitiatives\nBusiness\nData\nApplication\nTechnology\nArchitecture\nDomains\nBreadth\nLevel\nCapability\nVision\n& Arch\nDefinition\nCapability\nVision\n& Arch\nDefinition\nSegment-\nLevel\nInitiatives\nSegment Vision\n& Architecture\nDefinition\nEnterprise Vision and Architecture Definition\nBusiness\nFigure 5-2 Integration of Architecture Artifacts\nAs organizations address common themes (such as Service Oriented Architecture (SOA), and",
+      "As organizations address common themes (such as Service Oriented Architecture (SOA), and\nintegrated infor mation infrastr ucture), and universal data models and standard data structures\nemerge, integration toward the high end of the spectrum will be facilitated. However, there will\nalways be the need for effective standards governance to reduce the need for manual co-\nordination and conﬂict resolution.\n5.7\nSummary\nThe TOGAF ADM deﬁnes a recommended sequence for the var ious phases and steps involved\nin developing an architecture, but it cannot recommend a scope — this has to be determined by",
+      "in developing an architecture, but it cannot recommend a scope — this has to be determined by\nthe organization itself, bear ing in mind that the recommended sequence of development in the\nADM process is an iterative one, with the depth and breadth of scope and deliverables\nincreasing with each iteration. Each iteration will add resources to the organization’s Architecture\nRepositor y.\nWhile a complete framework is useful (indeed, essential) to have in mind as the ultimate long-\nter m goal, in practice there is a key decision to be made as to the scope of a speciﬁc enterpr ise",
+      "Chapter 6\nPreliminar y Phase\nThis chapter describes the preparation and initiation activities required to meet the business directive for a\nnew enter prise architecture, including the deﬁnition of an Organization-Speciﬁc Architecture framework\nand the deﬁnition of principles.\nFigure 6-1 Preliminar y Phase",
+      "Objectives\nPreliminary Phase\n6.1\nObjectives\nThe objectives of the Preliminary Phase are:\n1. Determine the Architecture Capability desired by the organization:\nI Review the organizational context for conducting enterpr ise architecture\nI Identify and scope the elements of the enterpr ise organizations affected by the\nArchitecture Capability\nI Identify the established frameworks, methods, and processes that intersect with the\nArchitecture Capability\nI Establish Capability Maturity target\n2. Establish the Architecture Capability:",
+      "I Establish Capability Maturity target\n2. Establish the Architecture Capability:\nI Deﬁne and establish the Organizational Model for Enterpr ise Architecture\nI Deﬁne and establish the detailed process and resources for architecture\ngovernance\nI Select and implement tools that support the Architecture Capability\nI Deﬁne the Architecture Principles\n6.2\nApproach\nThis Preliminary Phase is about deﬁning ‘‘where, what, why, who, and how we do architecture’’ in\nthe enterpr ise concer ned. The main aspects are as follows:\nI Deﬁning the enterpr ise",
+      "body responsible for governance will also normally be responsible for approving the Architecture\nPr inciples, and for resolving architecture issues. The issues involved in governance are\nexplained in Par t VII, Chapter 50.",
+      "Preliminar y Phase\nApproach\n6.2.5\nManagement Frameworks\nThe TOGAF Architecture Development Method (ADM) is a generic method, intended to be used\nby enter prises in a wide var iety of industry types and geographies. It is also designed for use\nwith a wide var iety of other enterpr ise architecture frameworks, if required (although it can be\nused perfectly well in its own right, without adaptation).\nTOGAF has to co-exist with and enhance the operational capabilities of other management\nframeworks that are present within any organization either for mally or infor mally. In addition to",
+      "frameworks that are present within any organization either for mally or infor mally. In addition to\nthese frameworks, most organizations have a method for the development of solutions, most of\nwhich have an IT component. The signiﬁcance of systems is that it brings together the var ious\ndomains (also known as People, Processes, and Material/Technology) to deliver a business\ncapability.\nThe main frameworks suggested to be co-ordinated with TOGAF are:\nI Business Capability Management (Business Direction and Planning) that determines",
+      "I Solution Development Methods that for malize the way that business systems are\ndelivered in accordance with the structures developed in the IT architecture.\nAs illustrated in Figure 6-2, these frameworks are not discrete and there are signiﬁcant overlaps\nbetween them and the Business Capability Management. The latter includes the deliver y of\nperfor mance measured business value.\nThe overall signiﬁcance is that the enterpr ise architect applying TOGAF cannot narrowly focus\non the IT implementation, but must be aware of the impact that the architecture has on the entire\nenter prise.",
+      "Approach\nPreliminary Phase\nPortfolio, Program,\nand Project\nManagement\nMethods\nSolution\nDevelopment\nMethods\nOperations\nManagement\nMethods\nBusiness\nCapability\nManagement\nArchitecture\nDevelopment\nMethod\nFigure 6-2 Management Frameworks to Co-ordinate with TOGAF\nThe Preliminary Phase therefore involves doing any necessar y work to adapt the ADM to deﬁne\nan organization-speciﬁc framework, using either the TOGAF deliverables or the deliverables of\nanother framework. The issues involved in this are discussed in Section 5.3.\n6.2.6\nRelating the Management Frameworks",
+      "6.2.6\nRelating the Management Frameworks\nFigure 6-3 illustrates a more detailed set of dependencies between the var ious frameworks and\nbusiness planning activity that incorporates the enterpr ise’s strategic plan and direction. The\nenter prise architecture can be used to provide a structure for all of the corporate initiatives, the\nPortfolio Management Framework can be used to deliver the components of the architecture,\nand the Operations Management Framework suppor ts incor poration of these new components\nwithin the corporate infrastr ucture.",
+      "Updates at the annual planning level provide a ﬁner level of ongoing guidance. Capability-based\nPlanning is one of many popular techniques for business planning.\nEnter prise architecture structures the business planning into an integrated framework that\nregards the enterpr ise as a system or system of systems. This integrated approach will validate\nthe business plan and can provide valuable feedback to the corporate planners. In some\norganizations, the enterpr ise architects have been moved to or wor k very closely with the",
+      "organizations, the enterpr ise architects have been moved to or wor k very closely with the\nstrategic direction groups. TOGAF delivers a framework for enterpr ise architecture.\nPortfolio/project management is the deliver y framework that receives the structured, detailed\ndirection that enables them to plan and build what is required, knowing that each assigned\ndeliverable will be in context (i.e., the piece of the puzzle that they deliver will ﬁt into the\ncor porate puzzle that is the enterpr ise architecture). Often this framework is based upon the",
+      "cor porate puzzle that is the enterpr ise architecture). Often this framework is based upon the\nProject Management Institute or UK Ofﬁce of Government Commerce (PRINCE2) project\nmanagement methodologies. Project architectures and detailed out-of-context design are often\nbased upon systems design methodologies.\nOperations management receives the deliverables and then integrates and sustains them within\nthe corporate infrastr ucture. Often the IT service management services are based upon ISO\n20000 or BS15000 (ITIL).\n6.2.7\nPlanning for Enterprise Architecture/Business Change Maturity Evaluation"
+    ],
+    "recuperados": [
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        12
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        12
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        12
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        1
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        4
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        7
+      ]
+    ],
+    "sin_informacion": false,
+    "hit_recuperacion": true
+  },
+  {
+    "id": "Q02",
+    "pregunta": "¿Cuáles son los cuatro marcos de gestión (management frameworks) principales con los que TOGAF sugiere coordinarse en la Fase Preliminar?",
+    "ground_truth": "Los cuatro marcos de gestión son: Gestión de Capacidades del Negocio (Business Capability Management), Métodos de Gestión de Portafolio/Programas/Proyectos (Portfolio/Program/Project Management Methods), Métodos de Gestión de Operaciones (Operations Management Methods) y Métodos de Desarrollo de Soluciones (Solution Development Methods).",
+    "en_corpus": true,
+    "categoria": "togaf",
+    "respuesta": "Los cuatro marcos de gestión principales con los que TOGAF sugiere coordinarse en la Fase Preliminar son:\n- Business Capability Management (Gestión de Capacidades de Negocio) (Fuente: TOGAF_V9.1-FasePreliminar.pdf, Pág. 5, Sec. 6.2.5).\n- Portfolio/Project Management Methods (Métodos de Gestión de Portafolio/Proyectos) (Fuente: TOGAF_V9.1-FasePreliminar.pdf, Pág. 5, Sec. 6.2.5).\n- Operations Management Methods (Métodos de Gestión de Operaciones) (Fuente: TOGAF_V9.1-FasePreliminar.pdf, Pág. 5, Sec. 6.2.5).\n- Solution Development Methods (Métodos de Desarrollo de Soluciones) (Fuente: TOGAF_V9.1-FasePreliminar.pdf, Pág. 5, Sec. 6.2.5).",
+    "contextos": [
+      "done previously within the enterpr ise. The architect would seek to re-use as much as possible\nfrom the Architecture Repository that was relevant to the project at hand. (In addition to the\ncollection of architecture source material, the repository would also contain architecture\ndevelopment wor k-in-progress.)\nAt relevant places throughout the ADM, there are reminders to consider which, if any,\narchitecture assets from the Architecture Repository the architect should use. In some cases —\nfor example, in the development of a Technology Architecture — this may be the TOGAF",
+      "for example, in the development of a Technology Architecture — this may be the TOGAF\nFoundation Architecture (see Par t VI: TOGAF Reference Models). In other cases — for example,\nin the development of a Business Architecture — it may be a reference model for e-Commerce\ntaken from the industry at large.\nThe criter ia for including source materials in an organization’s Architecture Repository will\ntypically for m par t of the enterpr ise architecture governance process. These governance\nprocesses should consider available resources both within and outside the enterpr ise in order to",
+      "processes should consider available resources both within and outside the enterpr ise in order to\ndeter mine when general resources can be adapted for speciﬁc enterpr ise needs and also to",
+      "Architecture Integration\nIntroduction\nCapability\nVision\n& Arch\nDefinition\nEnterprise-\nLevel\nInitiatives\nBusiness\nData\nApplication\nTechnology\nArchitecture\nDomains\nBreadth\nLevel\nCapability\nVision\n& Arch\nDefinition\nCapability\nVision\n& Arch\nDefinition\nSegment-\nLevel\nInitiatives\nSegment Vision\n& Architecture\nDefinition\nEnterprise Vision and Architecture Definition\nBusiness\nFigure 5-2 Integration of Architecture Artifacts\nAs organizations address common themes (such as Service Oriented Architecture (SOA), and",
+      "As organizations address common themes (such as Service Oriented Architecture (SOA), and\nintegrated infor mation infrastr ucture), and universal data models and standard data structures\nemerge, integration toward the high end of the spectrum will be facilitated. However, there will\nalways be the need for effective standards governance to reduce the need for manual co-\nordination and conﬂict resolution.\n5.7\nSummary\nThe TOGAF ADM deﬁnes a recommended sequence for the var ious phases and steps involved\nin developing an architecture, but it cannot recommend a scope — this has to be determined by",
+      "in developing an architecture, but it cannot recommend a scope — this has to be determined by\nthe organization itself, bear ing in mind that the recommended sequence of development in the\nADM process is an iterative one, with the depth and breadth of scope and deliverables\nincreasing with each iteration. Each iteration will add resources to the organization’s Architecture\nRepositor y.\nWhile a complete framework is useful (indeed, essential) to have in mind as the ultimate long-\nter m goal, in practice there is a key decision to be made as to the scope of a speciﬁc enterpr ise",
+      "Preliminar y Phase\nApproach\n6.2.5\nManagement Frameworks\nThe TOGAF Architecture Development Method (ADM) is a generic method, intended to be used\nby enter prises in a wide var iety of industry types and geographies. It is also designed for use\nwith a wide var iety of other enterpr ise architecture frameworks, if required (although it can be\nused perfectly well in its own right, without adaptation).\nTOGAF has to co-exist with and enhance the operational capabilities of other management\nframeworks that are present within any organization either for mally or infor mally. In addition to",
+      "frameworks that are present within any organization either for mally or infor mally. In addition to\nthese frameworks, most organizations have a method for the development of solutions, most of\nwhich have an IT component. The signiﬁcance of systems is that it brings together the var ious\ndomains (also known as People, Processes, and Material/Technology) to deliver a business\ncapability.\nThe main frameworks suggested to be co-ordinated with TOGAF are:\nI Business Capability Management (Business Direction and Planning) that determines",
+      "I Business Capability Management (Business Direction and Planning) that determines\nwhat business capabilities are required to deliver business value including the deﬁnition of\nretur n on investment and the requisite control/perfor mance measures.\nI Portfolio/Project Management Methods that determine how a company manages its\nchange initiatives.\nI Operations Management Methods that describe how a company runs its day-to-day\noperations, including IT.\nI Solution Development Methods that for malize the way that business systems are",
+      "I Solution Development Methods that for malize the way that business systems are\ndelivered in accordance with the structures developed in the IT architecture.\nAs illustrated in Figure 6-2, these frameworks are not discrete and there are signiﬁcant overlaps\nbetween them and the Business Capability Management. The latter includes the deliver y of\nperfor mance measured business value.\nThe overall signiﬁcance is that the enterpr ise architect applying TOGAF cannot narrowly focus\non the IT implementation, but must be aware of the impact that the architecture has on the entire\nenter prise.",
+      "Approach\nPreliminary Phase\nPortfolio, Program,\nand Project\nManagement\nMethods\nSolution\nDevelopment\nMethods\nOperations\nManagement\nMethods\nBusiness\nCapability\nManagement\nArchitecture\nDevelopment\nMethod\nFigure 6-2 Management Frameworks to Co-ordinate with TOGAF\nThe Preliminary Phase therefore involves doing any necessar y work to adapt the ADM to deﬁne\nan organization-speciﬁc framework, using either the TOGAF deliverables or the deliverables of\nanother framework. The issues involved in this are discussed in Section 5.3.\n6.2.6\nRelating the Management Frameworks",
+      "6.2.6\nRelating the Management Frameworks\nFigure 6-3 illustrates a more detailed set of dependencies between the var ious frameworks and\nbusiness planning activity that incorporates the enterpr ise’s strategic plan and direction. The\nenter prise architecture can be used to provide a structure for all of the corporate initiatives, the\nPortfolio Management Framework can be used to deliver the components of the architecture,\nand the Operations Management Framework suppor ts incor poration of these new components\nwithin the corporate infrastr ucture.",
+      "within the corporate infrastr ucture.\nThe business planners are present throughout the process and are in a position to support and\nenforce the architecture by retaining approval for resources at the var ious stages of planning and\ndevelopment.\nThe solution development methodology is used within the Por tfolio Management Framework to\nplan, create, and deliver the architectural components speciﬁed in the portfolio and project\nchar ters. These deliverables include, but are not exclusively, IT; for example, a new building, a"
+    ],
+    "recuperados": [
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        1
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        1
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        1
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        12
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        12
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        12
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        6
+      ]
+    ],
+    "sin_informacion": false,
+    "hit_recuperacion": true
+  },
+  {
+    "id": "Q03",
+    "pregunta": "Según la sección de entradas (Inputs) de la Fase Preliminar, ¿cuáles son las fuentes principales externas a la arquitectura (Non-Architectural Inputs)?",
+    "ground_truth": "Las entradas no arquitectónicas de la Fase Preliminar incluyen: estrategias y planes de negocio de la junta directiva, estrategia de TI, principios, metas y controladores de negocio preexistentes, marcos de trabajo principales del negocio (ej. gestión de portafolio/proyectos), marcos legales y de gobernanza, capacidad de arquitectura preexistente y acuerdos de colaboración o contratos.",
+    "en_corpus": true,
+    "categoria": "togaf",
+    "respuesta": "No encontré información sobre esto en la base de conocimientos.",
+    "contextos": [
+      "to build a top-down, all-inclusive architecture description encompassing all four architecture\ndomains, even if the enterpr ise scope is chosen to be less than the full extent of the overall\nenter prise.\nTypically, the scope of an architecture is ﬁrst expressed in terms of breadth, depth, and time.\nOnce these dimensions are understood, a suitable combination of architecture domains can be\nselected that are appropriate to the problem being addressed. Techniques for using the ADM to\ndevelop a number of related architectures are discussed in Chapter 20.",
+      "develop a number of related architectures are discussed in Chapter 20.\nThe four dimensions of architecture scope are explored in detail below. In each case, par ticularly\nin largescale environments where architectures are necessarily developed in a federated\nmanner, there is a danger of architects optimizing within their own scope of activity, instead of at\nthe level of the overall enterpr ise. It is often necessary to sub-optimize in a par ticular area, in\norder to optimize at the enterpr ise level. The aim should always be to seek the highest level of",
+      "order to optimize at the enterpr ise level. The aim should always be to seek the highest level of\ncommonality and focus on scalable and re-usable modules in order to maximize re-use at the\nenter prise level.",
+      "deﬁnition, be a complete enterpr ise architecture. One of the risks is lack of consistency and\ntherefore ability to integrate. Integration either needs to come later — with its own costs and\nrisks — or the risks and trade-offs involved in not developing a complete and integrated\narchitecture need to be articulated by the architect, and communicated to and understood by the\nenter prise management.\n5.6\nArchitecture Integration\nArchitectures that are created to address a subset of issues within an enterpr ise require a",
+      "Architectures that are created to address a subset of issues within an enterpr ise require a\nconsistent frame of reference so that they can be considered as a group as well as point\ndeliverables. The dimensions that are used to deﬁne the scope boundary of a single architecture\n(e.g., level of detail, architecture domain, etc.) are typically the same dimensions that must be\naddressed when considering the integration of many architectures. Figure 5-2 illustrates how\ndifferent types of architecture need to co-exist.",
+      "different types of architecture need to co-exist.\nAt the present time, the state of the art is such that architecture integration can be accomplished\nonly at the lower end of the integratability spectrum. Key factors to consider are the granular ity\nand level of detail in each artifact, and the maturity of standards for the interchange of\narchitectural descriptions.",
+      "Within this step, the architect should identify requirements that should be met by the architecture\n(see Section 17.2.2).\n10.4.2 Develop Baseline Data Architecture Description\nDevelop a Baseline Description of the existing Data Architecture, to the extent necessary to\nsuppor t the Target Data Architecture. The scope and level of detail to be deﬁned will depend on\nthe extent to which existing data elements are likely to be carried over into the Target Data\nArchitecture, and on whether architectural descriptions exist, as described in Section 10.2. To",
+      "Architecture, and on whether architectural descriptions exist, as described in Section 10.2. To\nthe extent possible, identify the relevant Data Architecture building blocks, drawing on the\nArchitecture Repository (see Par t V, Chapter 41).\nWhere new architecture models need to be developed to satisfy stakeholder concerns, use the\nmodels identiﬁed within Step 1 as a guideline for creating new architecture content to describe\nthe Baseline Architecture.",
+      "Steps\nPhase C: Infor mation Systems Architectures — Data Architecture\n10.4.3 Develop Target Data Architecture Description\nDevelop a Target Description for the Data Architecture, to the extent necessary to suppor t the\nArchitecture Vision and Target Business Architecture. The scope and level of detail to be deﬁned\nwill depend on the relevance of the data elements to attaining the Target Architecture, and on\nwhether architectural descriptions exist. To the extent possible, identify the relevant Data\nArchitecture building blocks, drawing on the Architecture Repository (see Par t V, Chapter 41).",
+      "The ADM has its own method (a ‘‘method-within-a-method’’) for identifying and articulating the\nbusiness requirements implied in new business capability to address key business drivers, and\nthe implied architecture requirements. This process is known as ‘‘business scenarios’’, and is\ndescr ibed in Par t III, Chapter 26. The technique may be used iteratively, at different levels of\ndetail in the hierarchical decomposition of the Business Architecture.",
+      "Inputs\nPhase A: Architecture Vision\n7.3\nInputs\nThis section deﬁnes the inputs to Phase A.\n7.3.1\nReference Materials External to the Enterprise\nI Architecture reference materials (see Par t IV, Section 36.2.5)\n7.3.2\nNon-Architectural Inputs\nI Request for Architecture Wor k (see Par t IV, Section 36.2.17)\nI Business principles, business goals, and business drivers (see Par t IV, Section 36.2.9)\n7.3.3\nArchitectural Inputs\nI Organizational Model for Enterpr ise Architecture (see Par t IV, Section 36.2.16), including:\n— Scope of organizations impacted",
+      "— Scope of organizations impacted\n— Matur ity assessment, gaps, and resolution approach\n— Roles and responsibilities for architecture team(s)\n— Constraints on architecture wor k\n— Re-use requirements\n— Budget requirements\n— Requests for change\n— Gover nance and support strategy\nI Tailored Architecture Framework (see Par t IV, Section 36.2.21), including:\n— Tailored architecture method\n— Tailored architecture content (deliverables and artifacts)\n— Architecture principles (see Par t IV, Section 36.2.4), including business principles,\nwhen pre-existing\n— Conﬁgured and deployed tools",
+      "when pre-existing\n— Conﬁgured and deployed tools\nI Populated Architecture Repository (see Par t IV, Section 36.2.5) — existing architectural\ndocumentation (framework descr iption, architectural descriptions, baseline descriptions,\nABBs, etc.)",
+      "Phase A: Architecture Vision\nSteps\n7.4\nSteps\nThe level of detail addressed in Phase A will depend on the scope and goals of the Request for\nArchitecture Wor k, or the subset of scope and goals associated with this iteration of architecture\ndevelopment.\nThe order of the steps in Phase A (see below) as well as the time at which they are for mally\nstar ted and completed should be adapted to the situation at hand in accordance with the\nestablished architecture governance.\nThe steps in Phase A are as follows:\nI Establish the architecture project (see Section 7.4.1)"
+    ],
+    "recuperados": [
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        8
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        8
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        8
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        11
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        11
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        11
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        8
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        3
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        4
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        4
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        4
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        5
+      ]
+    ],
+    "sin_informacion": true,
+    "hit_recuperacion": false
+  },
+  {
+    "id": "Q04",
+    "pregunta": "¿Qué aspectos se deben considerar para adaptar (tailor) el marco de trabajo TOGAF en el paso 6.4.5 de la Fase Preliminar?",
+    "ground_truth": "Se debe considerar la adaptación de tres aspectos: 1) Terminología (crear un glosario acordado para la organización), 2) Procesos (alinear el ADM con la gestión de portafolio, ciclo de vida de proyectos, operaciones y compras), y 3) Contenido (personalizar la estructura de contenido según el Enterprise Continuum y requerimientos de la organización).",
+    "en_corpus": true,
+    "categoria": "togaf",
+    "respuesta": "Para adaptar (tailor) el marco de trabajo TOGAF en el paso 6.4.5 de la Fase Preliminar se deben considerar los siguientes aspectos:\n\n- Definir un **marco de arquitectura adaptado** a la organización, ajustando el método de arquitectura (Tailored architecture method) (Fuente: TOGAF_V9.1-FasePreliminar.pdf, Pág. 12, Sec. 6.5).  \n- Determinar el **contenido de arquitectura** que se empleará, es decir, los entregables y artefactos específicos (Tailored architecture content) (Fuente: TOGAF_V9.1-FasePreliminar.pdf, Pág. 12, Sec. 6.5).  \n- Establecer los **principios de arquitectura** que guiarán el trabajo (Architecture Principles) (Fuente: TOGAF_V9.1-FasePreliminar.pdf, Pág. 12, Sec. 6.5).  \n- Configurar e implementar las **herramientas de arquitectura** necesarias (Configured and deployed tools) (Fuente: TOGAF_V9.1-FasePreliminar.pdf, Pág. 12, Sec. 6.5).  \n- Alinear la adaptación con la **gobernanza y el soporte** definidos para la arquitectura (ver paso 6.4.5 en la lista de actividades de la fase preliminar) (Fuente: TOGAF_V9.1-FasePreliminar.pdf, Pág. 9, Sec. 6.4.1).",
+    "contextos": [
+      "Architecture Integration\nIntroduction\nCapability\nVision\n& Arch\nDefinition\nEnterprise-\nLevel\nInitiatives\nBusiness\nData\nApplication\nTechnology\nArchitecture\nDomains\nBreadth\nLevel\nCapability\nVision\n& Arch\nDefinition\nCapability\nVision\n& Arch\nDefinition\nSegment-\nLevel\nInitiatives\nSegment Vision\n& Architecture\nDefinition\nEnterprise Vision and Architecture Definition\nBusiness\nFigure 5-2 Integration of Architecture Artifacts\nAs organizations address common themes (such as Service Oriented Architecture (SOA), and",
+      "As organizations address common themes (such as Service Oriented Architecture (SOA), and\nintegrated infor mation infrastr ucture), and universal data models and standard data structures\nemerge, integration toward the high end of the spectrum will be facilitated. However, there will\nalways be the need for effective standards governance to reduce the need for manual co-\nordination and conﬂict resolution.\n5.7\nSummary\nThe TOGAF ADM deﬁnes a recommended sequence for the var ious phases and steps involved\nin developing an architecture, but it cannot recommend a scope — this has to be determined by",
+      "in developing an architecture, but it cannot recommend a scope — this has to be determined by\nthe organization itself, bear ing in mind that the recommended sequence of development in the\nADM process is an iterative one, with the depth and breadth of scope and deliverables\nincreasing with each iteration. Each iteration will add resources to the organization’s Architecture\nRepositor y.\nWhile a complete framework is useful (indeed, essential) to have in mind as the ultimate long-\nter m goal, in practice there is a key decision to be made as to the scope of a speciﬁc enterpr ise",
+      "I Business Capability Management (Business Direction and Planning) that determines\nwhat business capabilities are required to deliver business value including the deﬁnition of\nretur n on investment and the requisite control/perfor mance measures.\nI Portfolio/Project Management Methods that determine how a company manages its\nchange initiatives.\nI Operations Management Methods that describe how a company runs its day-to-day\noperations, including IT.\nI Solution Development Methods that for malize the way that business systems are",
+      "I Solution Development Methods that for malize the way that business systems are\ndelivered in accordance with the structures developed in the IT architecture.\nAs illustrated in Figure 6-2, these frameworks are not discrete and there are signiﬁcant overlaps\nbetween them and the Business Capability Management. The latter includes the deliver y of\nperfor mance measured business value.\nThe overall signiﬁcance is that the enterpr ise architect applying TOGAF cannot narrowly focus\non the IT implementation, but must be aware of the impact that the architecture has on the entire\nenter prise.",
+      "Approach\nPreliminary Phase\nPortfolio, Program,\nand Project\nManagement\nMethods\nSolution\nDevelopment\nMethods\nOperations\nManagement\nMethods\nBusiness\nCapability\nManagement\nArchitecture\nDevelopment\nMethod\nFigure 6-2 Management Frameworks to Co-ordinate with TOGAF\nThe Preliminary Phase therefore involves doing any necessar y work to adapt the ADM to deﬁne\nan organization-speciﬁc framework, using either the TOGAF deliverables or the deliverables of\nanother framework. The issues involved in this are discussed in Section 5.3.\n6.2.6\nRelating the Management Frameworks",
+      "6.2.6\nRelating the Management Frameworks\nFigure 6-3 illustrates a more detailed set of dependencies between the var ious frameworks and\nbusiness planning activity that incorporates the enterpr ise’s strategic plan and direction. The\nenter prise architecture can be used to provide a structure for all of the corporate initiatives, the\nPortfolio Management Framework can be used to deliver the components of the architecture,\nand the Operations Management Framework suppor ts incor poration of these new components\nwithin the corporate infrastr ucture.",
+      "Preliminar y Phase\nInputs\n— Architecture Principles\n— Architecture Repository\n6.4\nSteps\nThe TOGAF ADM is a generic method, intended to be used by a wide var iety of different\nenter prises, and in conjunction with a wide var iety of other architecture frameworks, if required.\nThe Preliminary Phase therefore involves doing any necessar y work to initiate and adapt the\nADM to deﬁne an organization-speciﬁc framework. The issues involved with adapting the ADM\nto a speciﬁc organizational context are discussed in detail in Section 5.3.",
+      "to a speciﬁc organizational context are discussed in detail in Section 5.3.\nThe level of detail addressed in the Preliminary Phase will depend on the scope and goals of the\noverall architecture effor t.\nThe order of the steps in the Preliminary Phase (see below) as well as the time at which they are\nformally started and completed should be adapted to the situation at hand in accordance with\nthe established architecture governance.\nThe steps within the Preliminary Phase are as follows:\nI Scope the enterpr ise organizations impacted (see Section 6.4.1)",
+      "I Scope the enterpr ise organizations impacted (see Section 6.4.1)\nI Conﬁr m governance and support frameworks (see Section 6.4.2)\nI Deﬁne and establish enterpr ise architecture team and organization (see Section 6.4.3)\nI Identify and establish architecture principles (see Section 6.4.4)\nI Tailor TOGAF and, if any, other selected Architecture Frameworks (see Section 6.4.5)\nI Implement architecture tools (see Section 6.4.6)\n6.4.1\nScope the Enterprise Organizations Impacted\nI Identify core enterpr ise (units) — those who are most affected and achieve most value\nfrom the wor k",
+      "applications, or may be based on a customized deployment of specialist architecture tools.\nDepending on the level of sophistication, the implementation of tools may range from a trivial\ntask to a more involved system implementation activity.\nIssues in tools standardization are discussed in Par t V, Chapter 42.",
+      "Outputs\nPreliminary Phase\n6.5\nOutputs\nThe outputs of the Preliminary Phase may include, but are not restricted to:\nI Organizational Model for Enterpr ise Architecture (see Par t IV, Section 36.2.16), including:\n— Scope of organizations impacted\n— Matur ity assessment, gaps, and resolution approach\n— Roles and responsibilities for architecture team(s)\n— Constraints on architecture wor k\n— Budget requirements\n— Gover nance and support strategy\nI Tailored Architecture Framework (see Par t IV, Section 36.2.21), including:\n— Tailored architecture method",
+      "— Tailored architecture method\n— Tailored architecture content (deliverables and artifacts)\n— Architecture Principles (see Par t IV, Section 36.2.4)\n— Conﬁgured and deployed tools\nI Initial Architecture Repository (see Par t IV, Section 36.2.5), populated with framework\ncontent\nI Restatement of, or reference to, business principles, business goals, and business drivers\n(see Par t IV, Section 36.2.9)\nI Request for Architecture Wor k (optional) (see Par t IV, Section 36.2.17)\nI Architecture Governance Framework (see (Par t VII, Section 50.2)\nThe outputs may include some or all of the following:"
+    ],
+    "recuperados": [
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        12
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        12
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        12
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        9
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        9
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        9
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        11
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        12
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        12
+      ]
+    ],
+    "sin_informacion": false,
+    "hit_recuperacion": true
+  },
+  {
+    "id": "Q05",
+    "pregunta": "¿Cuáles son los objetivos principales de la Fase A (Architecture Vision)?",
+    "ground_truth": "Los objetivos de la Fase A son: 1) Desarrollar una visión aspiracional de alto nivel sobre las capacidades y el valor de negocio a entregar como resultado de la arquitectura empresarial propuesta. 2) Obtener la aprobación para una Declaración de Trabajo de Arquitectura (Statement of Architecture Work) que define el programa de trabajo.",
+    "en_corpus": true,
+    "categoria": "togaf",
+    "respuesta": "Los objetivos principales de la Fase A (Architecture Vision) son:\n- Desarrollar una visión aspiracional de alto nivel de las capacidades y el valor de negocio que se entregará como resultado de la arquitectura empresarial propuesta (Fuente: TOGAF_V9.1-VisionArquitectura.pdf, Pág. 2, Sec. 7.1).\n- Obtener la aprobación de una Declaración de Trabajo de Arquitectura (Statement of Architecture Work) que defina un programa de trabajos para desarrollar y desplegar la arquitectura descrita en la visión de arquitectura (Fuente: TOGAF_V9.1-VisionArquitectura.pdf, Pág. 2, Sec. 7.1).",
+    "contextos": [
+      "Chapter 7\nPhase A: Architecture Vision\nThis chapter describes the initial phase of the Architecture Development Method (ADM). It includes\ninfor mation about deﬁning the scope, identifying the stakeholders, creating the Architecture Vision, and\nobtaining approvals.\nFigure 7-1 Phase A: Architecture Vision",
+      "Objectives\nPhase A: Architecture Vision\n7.1\nObjectives\nThe objectives of Phase A are to:\nI Develop a high-level aspirational vision of the capabilities and business value to be\ndelivered as a result of the proposed enterpr ise architecture\nI Obtain approval for a Statement of Architecture Wor k that deﬁnes a program of wor ks to\ndevelop and deploy the architecture outlined in the Architecture Vision\n7.2\nApproach\n7.2.1\nGeneral\nPhase A starts with receipt of a Request for Architecture Wor k from the sponsoring organization\nto the architecture organization.",
+      "to the architecture organization.\nThe issues involved in ensuring proper recognition and endorsement from corporate\nmanagement, and the support and commitment of line management, are discussed in Par t VII,\nSection 50.1.4.\nPhase A also deﬁnes what is in and what is outside the scope of the architecture effor t and the\nconstraints that must be dealt with. Scoping decisions need to be made on the basis of a\npractical assessment of resource and competence availability, and the value that can realistically",
+      "nor mally have been deﬁned in the Preliminary Phase (see Chapter 6). The activity in Phase A is\nconcer ned with ensuring that the existing principles deﬁnitions are current, and clarifying any\nareas of ambiguity. Otherwise, it entails deﬁning the Architecture Principles for the ﬁrst time, as\nexplained in Par t III, Chapter 23.",
+      "Phase A: Architecture Vision\nApproach\n7.2.2\nCreating the Architecture Vision\nThe Architecture Vision provides the sponsor with a key tool to sell the beneﬁts of the proposed\ncapability to stakeholders and decision-makers within the enterpr ise. Architecture Vision\ndescr ibes how the new capability will meet the business goals and strategic objectives and\naddress the stakeholder concerns when implemented.\nClar ifying and agreeing the purpose of the architecture effor t is one of the key par ts of this",
+      "Clar ifying and agreeing the purpose of the architecture effor t is one of the key par ts of this\nactivity, and the purpose needs to be clearly reﬂected in the vision that is created. Architecture\nprojects are often undertaken with a speciﬁc purpose in mind — a speciﬁc set of business\ndr ivers that represent the return on investment for the stakeholders in the architecture\ndevelopment. Clarifying that purpose, and demonstrating how it will be achieved by the proposed\narchitecture development, is the whole point of the Architecture Vision.",
+      "architecture development, is the whole point of the Architecture Vision.\nNor mally, key elements of the Architecture Vision — such as the enterpr ise mission, vision,\nstrategy, and goals — have been documented as part of some wider business strategy or\nenter prise planning activity that has its own lifecycle within the enterpr ise. In such cases, the\nactivity in Phase A is concerned with ver ifying and understanding the documented business\nstrategy and goals, and possibly bridging between the enterpr ise strategy and goals on the one",
+      "strategy and goals, and possibly bridging between the enterpr ise strategy and goals on the one\nhand, and the strategy and goals implicit within the current architecture reality.\nIn other cases, little or no Business Architecture wor k may have been done to date. In such\ncases, there will be a need for the architecture team to research, ver ify, and gain buy-in to the\nkey business objectives and processes that the architecture is to support. This may be done as a\nfree-standing exercise, either preceding architecture development, or as part of the ADM\ninitiation phase (Preliminary Phase).",
+      "Steps\nPhase A: Architecture Vision\nI To identify stakeholder concerns, issues, and cultural factors that will shape how the\narchitecture is presented and communicated\nThe major product resulting from this step is a stakeholder map for the engagement, showing\nwhich stakeholders are involved with the engagement, their level of involvement, and their key\nconcer ns (see Par t III, Section 24.3 and Section 24.4). The stakeholder map is used to support\nvarious outputs of the Architecture Vision phase, and to identify:",
+      "various outputs of the Architecture Vision phase, and to identify:\nI The concerns and viewpoints that are relevant to this project; this is captured in the\nArchitecture Vision (see Par t IV, Section 36.2.8)\nI The stakeholders that are involved with the project and as a result for m the starting point\nfor a Communications Plan (see Par t IV, Section 36.2.12)\nI The key roles and responsibilities within the project, which should be included within the\nStatement of Architecture Wor k (see Par t VII, Section 36.2.20)",
+      "Statement of Architecture Wor k (see Par t VII, Section 36.2.20)\nAnother key task will be to consider which architecture views and viewpoints need to be\ndeveloped to satisfy the var ious stakeholder requirements. As descr ibed in Par t III, Chapter 24,\nunderstanding at this stage which stakeholders and which views need to be developed is\nimpor tant in setting the scope of the engagement.\nDur ing the Architecture Vision phase, new requirements generated for future architecture wor k\nwithin the scope of the selected requirements need to be documented within the Architecture",
+      "architecture governance and wor k with them to deﬁne these essential items for the ﬁrst time and\nsecure their endorsement by cor porate management.",
+      "Steps\nPhase A: Architecture Vision\n7.4.8\nDevelop Architecture Vision\nBased on the stakeholder concerns, business capability requirements, scope, constraints, and\npr inciples, create a high-level view of the Baseline and Target Architectures. The Architecture\nVision typically covers the breadth of scope identiﬁed for the project, at a high level. Infor mal\ntechniques are often employed. A common practice is to draw a simple solution concept diagram\nthat illustrates concisely the major components of the solution and how the solution will result in\nbeneﬁt for the enterpr ise.",
+      "beneﬁt for the enterpr ise.\nBusiness scenarios are an appropriate and useful technique to discover and document business\nrequirements, and to articulate an Architecture Vision that responds to those requirements.\nBusiness scenarios may also be used at more detailed levels of the architecture wor k (e.g., in\nPhase B) and are described in Par t III, Chapter 26.\nThis step generates the ﬁrst, ver y high-level deﬁnitions of the baseline and target environments,\nfrom a business, infor mation systems, and technology perspective, as descr ibed in Section 7.5."
+    ],
+    "recuperados": [
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        1
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        3
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        3
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        3
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        3
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        8
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        8
+      ]
+    ],
+    "sin_informacion": false,
+    "hit_recuperacion": true
+  },
+  {
+    "id": "Q06",
+    "pregunta": "¿Cuáles son las entradas no arquitectónicas (Non-Architectural Inputs) requeridas en la Fase A?",
+    "ground_truth": "Las entradas no arquitectónicas requeridas para la Fase A son la Petición de Trabajo de Arquitectura (Request for Architecture Work) y los Principios, Metas y Controladores de Negocio (Business principles, business goals, and business drivers).",
+    "en_corpus": true,
+    "categoria": "togaf",
+    "respuesta": "- Estrategias y planes de la junta directiva, estrategia de negocio, estrategia de TI, principios de negocio, metas de negocio y factores impulsores del negocio, cuando existan previamente (Fuente: TOGAF_V9.1-FasePreliminar.pdf, Pág. 8, Sec. 6.3.2).  \n- Principales marcos de trabajo operativos en la empresa, por ejemplo, gestión de cartera o gestión de proyectos (Fuente: TOGAF_V9.1-FasePreliminar.pdf, Pág. 8, Sec. 6.3.2).  \n- Marcos de gobernanza y legales, incluida la estrategia de gobernanza de arquitectura, cuando existan previamente (Fuente: TOGAF_V9.1-FasePreliminar.pdf, Pág. 8, Sec. 6.3.2).  \n- Capacidad de arquitectura (Architecture capability) (Fuente: TOGAF_V9.1-FasePreliminar.pdf, Pág. 8, Sec. 6.3.2).  \n- Acuerdos de asociación y contratos (Partnership and contract agreements) (Fuente: TOGAF_V9.1-FasePreliminar.pdf, Pág. 8, Sec. 6.3.2).",
+    "contextos": [
+      "requests, and compliance assessments investigations.\nI Audit Information: This will record all completed governance process actions and will be\nused to support:\n— Key decisions and responsible personnel for any architecture project that has been\nsanctioned by the governance process\n— A reference for future architectural and supporting process developments, guidance,\nand precedence\nThe governance artifacts and process are themselves part of the contents of the Architecture\nRepositor y.",
+      "5.5\nScoping the Architecture\nThere are many reasons to constrain (or restrict) the scope of the architectural activity to be\nunder taken, most of which relate to limits in:\nI The organizational authority of the team producing the architecture\nI The objectives and stakeholder concerns to be addressed within the architecture\nI The availability of people, ﬁnance, and other resources\nThe scope chosen for the architecture activity should ideally allow the wor k of all architects\nwithin the enterpr ise to be effectively governed and integrated. This requires a set of aligned",
+      "within the enterpr ise to be effectively governed and integrated. This requires a set of aligned\n‘‘architecture partitions’’ that ensure architects are not wor king on duplicate or conﬂicting\nactivities. It also requires the deﬁnition of re-use and compliance relationships between\narchitecture partitions.\nThe division of the enterpr ise and its architecture-related activity is discussed in more detail in\nChapter 40.\nFour dimensions are typically used in order to deﬁne and limit the scope of an architecture:",
+      "Four dimensions are typically used in order to deﬁne and limit the scope of an architecture:\nI Breadth: What is the full extent of the enterpr ise, and what part of that extent will this\narchitecting effor t deal with?\n— Many enter prises are ver y large, effectively comprising a federation of organizational\nunits that could validly be considered enterpr ises in their own right.\n— The modern enter prise increasingly extends beyond its traditional boundaries, to\nembrace a fuzzy combination of traditional business enterpr ise combined with\nsuppliers, customers, and partners.",
+      "to build a top-down, all-inclusive architecture description encompassing all four architecture\ndomains, even if the enterpr ise scope is chosen to be less than the full extent of the overall\nenter prise.\nTypically, the scope of an architecture is ﬁrst expressed in terms of breadth, depth, and time.\nOnce these dimensions are understood, a suitable combination of architecture domains can be\nselected that are appropriate to the problem being addressed. Techniques for using the ADM to\ndevelop a number of related architectures are discussed in Chapter 20.",
+      "develop a number of related architectures are discussed in Chapter 20.\nThe four dimensions of architecture scope are explored in detail below. In each case, par ticularly\nin largescale environments where architectures are necessarily developed in a federated\nmanner, there is a danger of architects optimizing within their own scope of activity, instead of at\nthe level of the overall enterpr ise. It is often necessary to sub-optimize in a par ticular area, in\norder to optimize at the enterpr ise level. The aim should always be to seek the highest level of",
+      "order to optimize at the enterpr ise level. The aim should always be to seek the highest level of\ncommonality and focus on scalable and re-usable modules in order to maximize re-use at the\nenter prise level.",
+      "I TOGAF\nI Other architecture framework(s), if required\n6.3.2\nNon-Architectural Inputs\nI Board strategies and board business plans, business strategy, IT strategy, business\npr inciples, business goals, and business drivers, when pre-existing\nI Major frameworks operating in the business; e.g., portfolio/project management\nI Governance and legal frameworks, including architecture governance strategy, when pre-\nexisting\nI Architecture capability\nI Partnership and contract agreements\n6.3.3\nArchitectural Inputs",
+      "existing\nI Architecture capability\nI Partnership and contract agreements\n6.3.3\nArchitectural Inputs\nPre-existing models for operating an enterpr ise Architecture Capability can be used as a\nbaseline for the Preliminary Phase. Inputs would include:\nI Organizational Model for Enterpr ise Architecture (see Par t IV, Section 36.2.16), including:\n— Scope of organizations impacted\n— Matur ity assessment, gaps, and resolution approach\n— Roles and responsibilities for architecture team(s)\n— Budget requirements\n— Gover nance and support strategy\nI Existing Architecture Framework, if any, including:",
+      "— Gover nance and support strategy\nI Existing Architecture Framework, if any, including:\n— Architecture method\n— Architecture content\n— Conﬁgured and deployed tools",
+      "to the architecture organization.\nThe issues involved in ensuring proper recognition and endorsement from corporate\nmanagement, and the support and commitment of line management, are discussed in Par t VII,\nSection 50.1.4.\nPhase A also deﬁnes what is in and what is outside the scope of the architecture effor t and the\nconstraints that must be dealt with. Scoping decisions need to be made on the basis of a\npractical assessment of resource and competence availability, and the value that can realistically",
+      "practical assessment of resource and competence availability, and the value that can realistically\nbe expected to accrue to the enterpr ise from the chosen scope of architecture wor k. The issues\ninvolved in this are discussed in Section 5.5. Scoping issues addressed in the Architecture\nVision phase will be restricted to the speciﬁc objectives for this ADM cycle and will be\nconstrained within the overall scope deﬁnition for architecture activity as established within the\nPreliminar y Phase and embodied within the architecture framework.",
+      "Preliminar y Phase and embodied within the architecture framework.\nIn situations where the architecture framework in place is not appropriate to achieve the desired\nArchitecture Vision, revisit the Preliminary Phase and extend the overall architecture framework\nfor the enterpr ise.\nThe constraints will normally be infor med by the business principles and Architecture Principles,\ndeveloped as part of the Preliminary Phase (see Chapter 6).\nNor mally, the business principles, business goals, and strategic drivers of the organization are"
+    ],
+    "recuperados": [
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        7
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        8
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        8
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        8
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        8
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        8
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        8
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        8
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        8
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        8
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        2
+      ]
+    ],
+    "sin_informacion": false,
+    "hit_recuperacion": false
+  },
+  {
+    "id": "Q07",
+    "pregunta": "¿Qué es la Petición de Trabajo de Arquitectura (Request for Architecture Work) y qué función cumple en la Fase A?",
+    "ground_truth": "Es el documento no arquitectónico emitido por la organización patrocinadora que inicia formalmente el ciclo del ADM. Define los problemas, motivaciones de negocio y el compromiso inicial para llevar a cabo el proyecto de arquitectura.",
+    "en_corpus": true,
+    "categoria": "togaf",
+    "respuesta": "La Petición de Trabajo de Arquitectura (Request for Architecture Work) es un documento de entrada no arquitectónico que sirve como solicitud formal para iniciar el trabajo de arquitectura; en la Fase A (Architecture Vision) se utiliza como uno de los inputs que alimentan la fase (Fuente: TOGAF_V9.1-VisionArquitectura.pdf, Pág. 4, Sec. 7.3.2).",
+    "contextos": [
+      "strategy and plans, and/or to bridge between high-level business drivers, business strategy, and\ngoals on the one hand, and the speciﬁc business requirements that are relevant to this\narchitecture development effor t. The business strategy typically deﬁnes what to achieve — the\ngoals and drivers, and the metrics for success — but not how to get there. That is role of the\nBusiness Architecture.\nIn other cases, little or no Business Architecture wor k may have been done to date. In such\ncases, there will be a need for the architecture team to research, ver ify, and gain buy-in to the",
+      "cases, there will be a need for the architecture team to research, ver ify, and gain buy-in to the\nkey business objectives and processes that the architecture is to support. This may be done as a\nfree-standing exercise, either preceding architecture development, or as part of Phase A.\nIn both of these cases, the business scenario technique (see Par t III, Chapter 26) of the TOGAF\nADM, or any other method that illuminates the key business requirements and indicates the\nimplied technical requirements for IT architecture, may be used.",
+      "implied technical requirements for IT architecture, may be used.\nA key objective is to re-use existing material as much as possible. In architecturally more mature\nenvironments, there will be existing Architecture Deﬁnitions, which (hopefully) will have been",
+      "Inputs\nPhase A: Architecture Vision\n7.3\nInputs\nThis section deﬁnes the inputs to Phase A.\n7.3.1\nReference Materials External to the Enterprise\nI Architecture reference materials (see Par t IV, Section 36.2.5)\n7.3.2\nNon-Architectural Inputs\nI Request for Architecture Wor k (see Par t IV, Section 36.2.17)\nI Business principles, business goals, and business drivers (see Par t IV, Section 36.2.9)\n7.3.3\nArchitectural Inputs\nI Organizational Model for Enterpr ise Architecture (see Par t IV, Section 36.2.16), including:\n— Scope of organizations impacted",
+      "— Scope of organizations impacted\n— Matur ity assessment, gaps, and resolution approach\n— Roles and responsibilities for architecture team(s)\n— Constraints on architecture wor k\n— Re-use requirements\n— Budget requirements\n— Requests for change\n— Gover nance and support strategy\nI Tailored Architecture Framework (see Par t IV, Section 36.2.21), including:\n— Tailored architecture method\n— Tailored architecture content (deliverables and artifacts)\n— Architecture principles (see Par t IV, Section 36.2.4), including business principles,\nwhen pre-existing\n— Conﬁgured and deployed tools",
+      "when pre-existing\n— Conﬁgured and deployed tools\nI Populated Architecture Repository (see Par t IV, Section 36.2.5) — existing architectural\ndocumentation (framework descr iption, architectural descriptions, baseline descriptions,\nABBs, etc.)",
+      "7.4.2\nIdentify Stakeholders, Concerns, and Business Requirements\nIdentify the key stakeholders and their concerns/objectives, and deﬁne the key business\nrequirements to be addressed in the architecture engagement. Stakeholder engagement at this\nstage is intended to accomplish three objectives:\nI To identify candidate vision components and requirements to be tested as the Architecture\nVision is developed\nI To identify candidate scope boundaries for the engagement to limit the extent of\narchitectural investigation required",
+      "Steps\nPhase A: Architecture Vision\nI To identify stakeholder concerns, issues, and cultural factors that will shape how the\narchitecture is presented and communicated\nThe major product resulting from this step is a stakeholder map for the engagement, showing\nwhich stakeholders are involved with the engagement, their level of involvement, and their key\nconcer ns (see Par t III, Section 24.3 and Section 24.4). The stakeholder map is used to support\nvarious outputs of the Architecture Vision phase, and to identify:",
+      "various outputs of the Architecture Vision phase, and to identify:\nI The concerns and viewpoints that are relevant to this project; this is captured in the\nArchitecture Vision (see Par t IV, Section 36.2.8)\nI The stakeholders that are involved with the project and as a result for m the starting point\nfor a Communications Plan (see Par t IV, Section 36.2.12)\nI The key roles and responsibilities within the project, which should be included within the\nStatement of Architecture Wor k (see Par t VII, Section 36.2.20)",
+      "Statement of Architecture Wor k (see Par t VII, Section 36.2.20)\nAnother key task will be to consider which architecture views and viewpoints need to be\ndeveloped to satisfy the var ious stakeholder requirements. As descr ibed in Par t III, Chapter 24,\nunderstanding at this stage which stakeholders and which views need to be developed is\nimpor tant in setting the scope of the engagement.\nDur ing the Architecture Vision phase, new requirements generated for future architecture wor k\nwithin the scope of the selected requirements need to be documented within the Architecture",
+      "within the scope of the selected requirements need to be documented within the Architecture\nRequirements Speciﬁcation, and new requirements which are beyond the scope of the selected\nrequirements must be input to the Requirements Repository for management through the\nRequirements Management process.\n7.4.3\nConﬁrm and Elaborate Business Goals, Business Drivers, and Constraints\nIdentify the business goals and strategic drivers of the organization.\nIf these have already been deﬁned elsewhere within the enterpr ise, ensure that the existing"
+    ],
+    "recuperados": [
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        4
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        4
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        4
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        6
+      ]
+    ],
+    "sin_informacion": false,
+    "hit_recuperacion": true
+  },
+  {
+    "id": "Q08",
+    "pregunta": "¿Qué documento formal se aprueba al finalizar la Fase A para autorizar el programa de trabajo de arquitectura?",
+    "ground_truth": "El documento formal que se aprueba es la Declaración de Trabajo de Arquitectura (Statement of Architecture Work), el cual define el alcance, programa de trabajo, recursos, roles, responsabilidades y cronograma para desarrollar y desplegar la arquitectura.",
+    "en_corpus": true,
+    "categoria": "togaf",
+    "respuesta": "No encontré información sobre esto en la base de conocimientos.",
+    "contextos": [
+      "New data building blocks being introduced as part of this effor t will need to be deﬁned in detail\ndur ing Phase C. Existing data building blocks to be carried over and supported in the target\nenvironment may already have been adequately deﬁned in previous architectural wor k; but, if\nnot, they too will need to be deﬁned in Phase C.\nThe order of the steps in this phase (see below) as well as the time at which they are for mally\nstar ted and completed should be adapted to the situation at hand in accordance with the",
+      "star ted and completed should be adapted to the situation at hand in accordance with the\nestablished architecture governance. In par ticular, deter mine whether in this situation it is\nappropr iate to conduct Baseline Description or Target Architecture development ﬁrst, as\ndescr ibed in Par t III, Chapter 19.\nAll activities that have been initiated in these steps must be closed during the Finalize the Data\nArchitecture step (see Section 10.4.8). The documentation generated from these steps must be\nformally published in the Create Architecture Deﬁnition Document step (see Section 10.4.9.",
+      "formally published in the Create Architecture Deﬁnition Document step (see Section 10.4.9.\nThe steps in Phase C (Data Architecture) are as follows:\nI Select reference models, viewpoints, and tools (see Section 10.4.1)\nI Develop Baseline Data Architecture Description (see Section 10.4.2)\nI Develop Target Data Architecture Description (see Section 10.4.3)\nI Perfor m gap analysis (see Section 10.4.4)\nI Deﬁne candidate roadmap components (see Section 10.4.5)\nI Resolve impacts across the Architecture Landscape (see Section 10.4.6)\nI Conduct for mal stakeholder review (see Section 10.4.7)",
+      "dur ing Phase B. Existing business processes to be carried over and supported in the target\nenvironment may already have been adequately deﬁned in previous architectural wor k; but, if\nnot, they too will need to be deﬁned in Phase B.\nThe order of the steps in Phase B (see below) as well as the time at which they are for mally\nstar ted and completed should be adapted to the situation at hand, in accordance with the\nestablished architecture governance. In par ticular, deter mine whether in this situation it is",
+      "established architecture governance. In par ticular, deter mine whether in this situation it is\nappropr iate to conduct Baseline or Target Architecture development ﬁrst, as described in Par t III,\nChapter 19.\nAll activities that have been initiated in these steps must be closed during the Finalize the\nBusiness Architecture step (see Section 8.4.8). The documentation generated from these steps\nmust be for mally published in the Create Architecture Deﬁnition Document step (see Section\n8.4.9).\nThe steps in Phase B are as follows:",
+      "8.4.9).\nThe steps in Phase B are as follows:\nI Select reference models, viewpoints, and tools (see Section 8.4.1)\nI Develop Baseline Business Architecture Description (see Section 8.4.2)",
+      "from the wor k\nI Identify soft enterpr ise (units) — those who will see change to their capability and wor k\nwith core units but are otherwise not directly affected\nI Identify extended enterpr ise (units) — those units outside the scoped enterpr ise who will\nbe affected in their own enterpr ise architecture\nI Identify communities involved (enterpr ises) — those stakeholders who will be affected and\nwho are in groups of communities\nI Identify governance involved, including legal frameworks and geographies (enterpr ises)",
+      "Steps\nPreliminary Phase\n6.4.2\nConﬁrm Governance and Support Frameworks\nThe architecture framework will for m the keystone to the ﬂavor (centralized or federated, light or\nheavy, etc.) of architecture governance organization and guidelines that need to be developed.\nPart of the major output of this phase is a framework for architecture governance. We need to\nunderstand how architectural material (standards, guidelines, models, compliance reports, etc.)\nis brought under governance; i.e., what type of governance repository character istics are going",
+      "is brought under governance; i.e., what type of governance repository character istics are going\nto be required, what relationships and status recording are necessary to ascer tain which\ngovernance process (dispensation, compliance, take-on, retirement, etc.) has ownership of an\narchitectural artifact.\nIt is likely that the existing governance and support models of an organization will need to\nchange to support the newly adopted architecture framework.\nTo manage the organizational change required to adopt the new architectural framework, the",
+      "— Scope of organizations impacted\n— Matur ity assessment, gaps, and resolution approach\n— Roles and responsibilities for architecture team(s)\n— Constraints on architecture wor k\n— Re-use requirements\n— Budget requirements\n— Requests for change\n— Gover nance and support strategy\nI Tailored Architecture Framework (see Par t IV, Section 36.2.21), including:\n— Tailored architecture method\n— Tailored architecture content (deliverables and artifacts)\n— Architecture principles (see Par t IV, Section 36.2.4), including business principles,\nwhen pre-existing\n— Conﬁgured and deployed tools",
+      "when pre-existing\n— Conﬁgured and deployed tools\nI Populated Architecture Repository (see Par t IV, Section 36.2.5) — existing architectural\ndocumentation (framework descr iption, architectural descriptions, baseline descriptions,\nABBs, etc.)",
+      "Phase A: Architecture Vision\nSteps\n7.4\nSteps\nThe level of detail addressed in Phase A will depend on the scope and goals of the Request for\nArchitecture Wor k, or the subset of scope and goals associated with this iteration of architecture\ndevelopment.\nThe order of the steps in Phase A (see below) as well as the time at which they are for mally\nstar ted and completed should be adapted to the situation at hand in accordance with the\nestablished architecture governance.\nThe steps in Phase A are as follows:\nI Establish the architecture project (see Section 7.4.1)",
+      "I The speciﬁc architecture domains to be covered (business, data, application, technology)\nI The extent of the time period aimed at, plus the number and extent of any inter mediate\ntime period\nI The architectural assets to be leveraged, or considered for use, from the organization’s\nEnter prise Continuum:\n— Assets created in previous iterations of the ADM cycle within the enterpr ise\n— Assets available elsewhere in the industry (other frameworks, systems models,\nvertical industry models, etc.)\n7.4.7\nConﬁrm and Elaborate Architecture Principles, including Business Principles",
+      "7.4.7\nConﬁrm and Elaborate Architecture Principles, including Business Principles\nReview the principles under which the architecture is to be developed. Architecture principles are\nnor mally based on the principles developed as part of the Preliminary Phase. They are\nexplained, and an example set given, in Par t III, Chapter 23. Ensure that the existing deﬁnitions\nare current, and clarify any areas of ambiguity. Otherwise, go back to the body responsible for\narchitecture governance and wor k with them to deﬁne these essential items for the ﬁrst time and",
+      "architecture governance and wor k with them to deﬁne these essential items for the ﬁrst time and\nsecure their endorsement by cor porate management."
+    ],
+    "recuperados": [
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        4
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        4
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        4
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        9
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        10
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        10
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        4
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        4
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        7
+      ]
+    ],
+    "sin_informacion": true,
+    "hit_recuperacion": false
+  },
+  {
+    "id": "Q09",
+    "pregunta": "¿Cuál es el propósito principal de desarrollar la Arquitectura de Negocio en la Fase B?",
+    "ground_truth": "El propósito de la Fase B es desarrollar la Arquitectura de Negocio Objetivo que describe cómo necesita operar la empresa para alcanzar los objetivos de negocio y responder a los controladores estratégicos de la Visión de la Arquitectura, identificando componentes candidatos de la hoja de ruta basados en las brechas entre la arquitectura base y la objetivo.",
+    "en_corpus": true,
+    "categoria": "togaf",
+    "respuesta": "Desarrollar la Arquitectura de Negocio objetivo (Target Business Architecture) que describa cómo debe operar la empresa para alcanzar sus metas de negocio y responder a los impulsores estratégicos definidos en la Visión de Arquitectura, atendiendo la solicitud de trabajo de arquitectura y las preocupaciones de los interesados (Fuente: TOGAF_V9.1-ArquitecturaNegocio.pdf, Pág. 2, Sec. 8.1).",
+    "contextos": [
+      "Chapter 8\nPhase B: Business Architecture\nThis chapter describes the development of a Business Architecture to support an agreed Architecture\nVision.\nFigure 8-1 Phase B: Business Architecture",
+      "Objectives\nPhase B: Business Architecture\n8.1\nObjectives\nThe objectives of Phase B are to:\nI Develop the Target Business Architecture that describes how the enterpr ise needs to\noperate to achieve the business goals, and respond to the strategic drivers set out in the\nArchitecture Vision, in a way that addresses the Request for Architecture Wor k and\nstakeholder concerns\nI Identify candidate Architecture Roadmap components based upon gaps between the\nBaseline and Target Business Architectures\n8.2\nApproach",
+      "Baseline and Target Business Architectures\n8.2\nApproach\nIn summary, the Business Architecture describes the product and/or service strategy, and the\norganizational, functional, process, infor mation, and geographic aspects of the business\nenvironment.\n8.2.1\nGeneral\nA knowledge of the Business Architecture is a prerequisite for architecture wor k in any other\ndomain (Data, Application, Technology), and is therefore the ﬁrst architecture activity that needs\nto be undertaken, if not catered for already in other organizational processes (enterpr ise",
+      "to be undertaken, if not catered for already in other organizational processes (enterpr ise\nplanning, strategic business planning, business process re-engineering, etc.).\nIn practical terms, the Business Architecture is also often necessary as a means of\ndemonstrating the business value of subsequent architecture wor k to key stakeholders, and the\nretur n on investment to those stakeholders from supporting and participating in the subsequent\nwork.\nThe scope of the wor k in Phase B will depend to a large extent on the enterpr ise environment. In",
+      "The scope of the wor k in Phase B will depend to a large extent on the enterpr ise environment. In\nsome cases, key elements of the Business Architecture may be done in other activities; for\nexample, the enterpr ise mission, vision, strategy, and goals may be documented as part of some\nwider business strategy or enterpr ise planning activity that has its own lifecycle within the\nenter prise.\nIn such cases, there may be a need to ver ify and update the currently documented business\nstrategy and plans, and/or to bridge between high-level business drivers, business strategy, and",
+      "implied technical requirements for IT architecture, may be used.\nA key objective is to re-use existing material as much as possible. In architecturally more mature\nenvironments, there will be existing Architecture Deﬁnitions, which (hopefully) will have been",
+      "Phase B: Business Architecture\nApproach\nmaintained since the last architecture development cycle. Where architecture descriptions exist,\nthese can be used as a starting point, and ver iﬁed and updated if necessary; see Par t V, Section\n39.4.1.\nGather and analyze only that infor mation that allows infor med decisions to be made relevant to\nthe scope of this architecture effor t. If this effor t is focused on the deﬁnition of (possibly new)\nbusiness processes, then Phase B will necessarily involve a lot of detailed wor k. If the focus is",
+      "business processes, then Phase B will necessarily involve a lot of detailed wor k. If the focus is\nmore on the Target Architectures in other domains (data/infor mation, application systems,\ninfrastr ucture) to support an essentially existing Business Architecture, then it is important to\nbuild a complete picture in Phase B without going into unnecessary detail.\n8.2.2\nDeveloping the Baseline Description\nIf an enterpr ise has existing architecture descriptions, they should be used as the basis for the\nBaseline Description. This input may have been used already in Phase A in developing an",
+      "In many cases, the Architecture Deﬁnition will not be intended to give detailed or comprehensive\nrequirements for a solution (as these can be better addressed through general requirements\nmanagement discipline). The expected scope of requirements content should be established",
+      "Phase B: Business Architecture\nSteps\ndur ing the Architecture Vision phase and documented in the approved Statement of Architecture\nWork.\nAny requirement or change in requirement that is outside of the scope deﬁned in the Statement\nof Architecture Wor k must be submitted to the Requirements Repository for management\nthrough the governed Requirements Management process.\n8.4.2\nDevelop Baseline Business Architecture Description\nDevelop a Baseline Description of the existing Business Architecture, to the extent necessary to\nsuppor t the Target Business Architecture.",
+      "suppor t the Target Business Architecture.\nThe scope and level of detail to be deﬁned will\ndepend on the extent to which existing business elements are likely to be carried over into the\nTarget Business Architecture, and on whether architecture descriptions exist, as described in\nSection 8.2. To the extent possible, identify the relevant Business Architecture building blocks,\ndrawing on the Architecture Repository (see Par t V, Chapter 41).\nWhere new architecture models need to be developed to satisfy stakeholder concerns, use the"
+    ],
+    "recuperados": [
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        1
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        3
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        3
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        10
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        11
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        11
+      ]
+    ],
+    "sin_informacion": false,
+    "hit_recuperacion": true
+  },
+  {
+    "id": "Q10",
+    "pregunta": "¿Qué técnicas o modelos de modelado de negocio se sugieren emplear en el enfoque de la Fase B?",
+    "ground_truth": "Entre las técnicas sugeridas en la Fase B se encuentran: Modelos de Actividad (Actitvity/Process Models como IDEF o BPMN), Modelos de Casos de Uso (Use-Case Models) y Modelos de Clases (Class Models/UML), además de modelos específicos como el Diagrama de Conectividad de Nodos y la Matriz de Intercambio de Información.",
+    "en_corpus": true,
+    "categoria": "togaf",
+    "respuesta": "- Modelos de actividad anotados con reglas de negocio (business rules) (Fuente: TOGAF_V9.1-ArquitecturaNegocio.pdf, Pág. 3, Sec. 8.2.3).  \n- Técnica de modelado IDEF (Integrated Computer Aided Manufacturing (ICAM) DEFinition) (Fuente: TOGAF_V9.1-ArquitecturaNegocio.pdf, Pág. 4, Sec. 8.2.3).  \n- Notación BPMN (Business Process Modeling Notation) (Fuente: TOGAF_V9.1-ArquitecturaNegocio.pdf, Pág. 4, Sec. 8.2.3).  \n- Modelos de casos de uso (Use‑Case Models) (Fuente: TOGAF_V9.1-ArquitecturaNegocio.pdf, Pág. 4, Sec. 8.2.3).  \n- Modelos de clases (Class Models) (Fuente: TOGAF_V9.1-ArquitecturaNegocio.pdf, Pág. 4, Sec. 8.2.3).",
+    "contextos": [
+      "Baseline and Target Business Architectures\n8.2\nApproach\nIn summary, the Business Architecture describes the product and/or service strategy, and the\norganizational, functional, process, infor mation, and geographic aspects of the business\nenvironment.\n8.2.1\nGeneral\nA knowledge of the Business Architecture is a prerequisite for architecture wor k in any other\ndomain (Data, Application, Technology), and is therefore the ﬁrst architecture activity that needs\nto be undertaken, if not catered for already in other organizational processes (enterpr ise",
+      "to be undertaken, if not catered for already in other organizational processes (enterpr ise\nplanning, strategic business planning, business process re-engineering, etc.).\nIn practical terms, the Business Architecture is also often necessary as a means of\ndemonstrating the business value of subsequent architecture wor k to key stakeholders, and the\nretur n on investment to those stakeholders from supporting and participating in the subsequent\nwork.\nThe scope of the wor k in Phase B will depend to a large extent on the enterpr ise environment. In",
+      "The scope of the wor k in Phase B will depend to a large extent on the enterpr ise environment. In\nsome cases, key elements of the Business Architecture may be done in other activities; for\nexample, the enterpr ise mission, vision, strategy, and goals may be documented as part of some\nwider business strategy or enterpr ise planning activity that has its own lifecycle within the\nenter prise.\nIn such cases, there may be a need to ver ify and update the currently documented business\nstrategy and plans, and/or to bridge between high-level business drivers, business strategy, and",
+      "strategy and plans, and/or to bridge between high-level business drivers, business strategy, and\ngoals on the one hand, and the speciﬁc business requirements that are relevant to this\narchitecture development effor t. The business strategy typically deﬁnes what to achieve — the\ngoals and drivers, and the metrics for success — but not how to get there. That is role of the\nBusiness Architecture.\nIn other cases, little or no Business Architecture wor k may have been done to date. In such\ncases, there will be a need for the architecture team to research, ver ify, and gain buy-in to the",
+      "Phase B: Business Architecture\nApproach\nmaintained since the last architecture development cycle. Where architecture descriptions exist,\nthese can be used as a starting point, and ver iﬁed and updated if necessary; see Par t V, Section\n39.4.1.\nGather and analyze only that infor mation that allows infor med decisions to be made relevant to\nthe scope of this architecture effor t. If this effor t is focused on the deﬁnition of (possibly new)\nbusiness processes, then Phase B will necessarily involve a lot of detailed wor k. If the focus is",
+      "business processes, then Phase B will necessarily involve a lot of detailed wor k. If the focus is\nmore on the Target Architectures in other domains (data/infor mation, application systems,\ninfrastr ucture) to support an essentially existing Business Architecture, then it is important to\nbuild a complete picture in Phase B without going into unnecessary detail.\n8.2.2\nDeveloping the Baseline Description\nIf an enterpr ise has existing architecture descriptions, they should be used as the basis for the\nBaseline Description. This input may have been used already in Phase A in developing an",
+      "Baseline Description. This input may have been used already in Phase A in developing an\nArchitecture Vision, and may even be sufﬁcient in itself for the Baseline Description.\nWhere no such descriptions exist, infor mation will have to be gathered in whatever for mat comes\nto hand.\nThe normal approach to Target Architecture development is top-down. In the Baseline\nDescr iption, however, the analysis of the current state often has to be done bottom-up,\npar ticularly where little or no architecture assets exist. In such a case, the architect simply has to",
+      "those activities. Activity models can be annotated with explicit statements of business\nrules, which represent relationships among the ICOMs. For example, a business rule can",
+      "Approach\nPhase B: Business Architecture\nspecify who can do what under speciﬁed conditions, the combination of inputs and controls\nneeded, and the resulting outputs. One technique for creating activity models is the IDEF\n(Integrated Computer Aided Manufactur ing (ICAM) DEFinition) modeling technique.\nThe Object Management Group (OMG) has developed the Business Process Modeling\nNotation (BPMN), a standard for business process modeling that includes a language with\nwhich to specify business processes, their tasks/steps, and the documents produced.",
+      "which to specify business processes, their tasks/steps, and the documents produced.\nI Use-Case Models can describe either business processes or systems functions,\ndepending on the focus of the modeling effor t. A use-case model describes the business\nprocesses of an enterpr ise in terms of use-cases and actors corresponding to business\nprocesses and organizational participants (people, organizations, etc.). The use-case\nmodel is described in use-case diagrams and use-case speciﬁcations.\nI Class Models are similar to logical data models. A class model describes static\ninfor mation",
+      "established architecture governance. In par ticular, deter mine whether in this situation it is\nappropr iate to conduct Baseline or Target Architecture development ﬁrst, as described in Par t III,\nChapter 19.\nAll activities that have been initiated in these steps must be closed during the Finalize the\nBusiness Architecture step (see Section 8.4.8). The documentation generated from these steps\nmust be for mally published in the Create Architecture Deﬁnition Document step (see Section\n8.4.9).\nThe steps in Phase B are as follows:",
+      "8.4.9).\nThe steps in Phase B are as follows:\nI Select reference models, viewpoints, and tools (see Section 8.4.1)\nI Develop Baseline Business Architecture Description (see Section 8.4.2)",
+      "Steps\nPhase B: Business Architecture\nI Develop Target Business Architecture Description (see Section 8.4.3)\nI Perfor m gap analysis (see Section 8.4.4)\nI Deﬁne candidate roadmap components (see Section 8.4.5)\nI Resolve impacts across the Architecture Landscape (see Section 8.4.6)\nI Conduct for mal stakeholder review (see Section 8.4.7)\nI Finalize the Business Architecture (see Section 8.4.8)\nI Create Architecture Deﬁnition Document (see Section 8.4.9)\n8.4.1\nSelect Reference Models, Viewpoints, and Tools"
+    ],
+    "recuperados": [
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        3
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        3
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        3
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        3
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        4
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        4
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        8
+      ]
+    ],
+    "sin_informacion": false,
+    "hit_recuperacion": true
+  },
+  {
+    "id": "Q11",
+    "pregunta": "¿Cuáles son los subdominios que componen la Fase C (Information Systems Architectures)?",
+    "ground_truth": "La Fase C se divide en dos dominios de arquitectura: Arquitectura de Datos (Data Architecture) y Arquitectura de Aplicaciones (Applications Architecture).",
+    "en_corpus": true,
+    "categoria": "togaf",
+    "respuesta": "No encontré información sobre esto en la base de conocimientos.",
+    "contextos": [
+      "Chapter 10\nPhase C: Information Systems Architectures — Data\nArchitecture\nThis chapter describes the Data Architecture part of Phase C.\n10.1\nObjectives\nThe objectives of the Data Architecture part of Phase C are to:\nI Develop the Target Data Architecture that enables the Business Architecture and the\nArchitecture Vision, while addressing the Request for Architecture Wor k and stakeholder\nconcer ns\nI Identify candidate Architecture Roadmap components based upon gaps between the\nBaseline and Target Data Architectures\n10.2\nApproach\n10.2.1 Key Considerations for Data Architecture",
+      "10.2\nApproach\n10.2.1 Key Considerations for Data Architecture\n10.2.1.1 Data Management\nWhen an enterpr ise has chosen to undertake largescale architectural transfor mation, it is\nimpor tant\nto understand and address data management issues.\nA\nstr uctured\nand\ncomprehensive approach to data management enables the effective use of data to capitalize on\nits competitive advantages.\nConsiderations include:\nI A clear deﬁnition of which application components in the landscape will serve as the\nsystem of record or reference for enterpr ise master data",
+      "10.2.2 Architecture Repository\nAs part of this phase, the architecture team will need to consider what relevant Data Architecture\nresources are available in the organization’s Architecture Repository (see Par t V, Chapter 41), in\npar ticular, gener ic data models relevant to the organization’s industr y ‘‘vertical’’ sector. For\nexample:\nI ARTS has deﬁned a data model for the Retail industry.\nI Energistics has deﬁned a data model for the Petrotechnical industry.",
+      "Phase C: Infor mation Systems Architectures — Data Architecture\nInputs\n10.3\nInputs\nThis section deﬁnes the inputs to Phase C (Data Architecture).\n10.3.1 Reference Materials External to the Enterprise\nI Architecture reference materials (see Par t IV, Section 36.2.5)\n10.3.2 Non-Architectural Inputs\nI Request for Architecture Wor k (see Par t IV, Section 36.2.17)\nI Capability Assessment (see Par t IV, Section 36.2.10)\nI Communications Plan (see Par t IV, Section 36.2.12)\n10.3.3 Architectural Inputs\nI Organizational Model for Enterpr ise Architecture (see Par t IV, Section 36.2.16), including:",
+      "I Organizational Model for Enterpr ise Architecture (see Par t IV, Section 36.2.16), including:\n— Scope of organizations impacted\n— Matur ity assessment, gaps, and resolution approach\n— Roles and responsibilities for architecture team(s)\n— Constraints on architecture wor k\n— Budget requirements\n— Gover nance and support strategy\nI Tailored Architecture Framework (see Par t IV, Section 36.2.21, on page 449), including:\n— Tailored architecture method\n— Tailored architecture content (deliverables and artifacts)\n— Conﬁgured and deployed tools",
+      "I Conduct for mal stakeholder review (see Section 10.4.7)\nI Finalize the Data Architecture (see Section 10.4.8)",
+      "Phase C: Infor mation Systems Architectures — Data Architecture\nSteps\nI Create Architecture Deﬁnition Document (see Section 10.4.9)\n10.4.1 Select Reference Models, Viewpoints, and Tools\nReview and validate (or generate, if necessar y) the set of data principles. These will normally\nform par t of an overarching set of architecture principles. Guidelines for developing and applying\npr inciples, and a sample set of data principles, are given in Par t III, Chapter 23.\nSelect relevant Data Architecture resources (reference models, patter ns, etc.) on the basis of the",
+      "Select relevant Data Architecture resources (reference models, patter ns, etc.) on the basis of the\nbusiness drivers, stakeholders, concer ns, and Business Architecture.\nSelect relevant Data Architecture viewpoints (for example, stakeholders of the data — regulatory\nbodies, users, generators, subjects, auditors, etc.; var ious time dimensions — real-time,\nrepor ting per iod, ev ent-dr iven, etc.; locations; business processes); i.e., those that will enable\nthe architect to demonstrate how the stakeholder concerns are being addressed in the Data\nArchitecture.",
+      "Architecture, and on whether architectural descriptions exist, as described in Section 10.2. To\nthe extent possible, identify the relevant Data Architecture building blocks, drawing on the\nArchitecture Repository (see Par t V, Chapter 41).\nWhere new architecture models need to be developed to satisfy stakeholder concerns, use the\nmodels identiﬁed within Step 1 as a guideline for creating new architecture content to describe\nthe Baseline Architecture.",
+      "Steps\nPhase C: Infor mation Systems Architectures — Data Architecture\n10.4.3 Develop Target Data Architecture Description\nDevelop a Target Description for the Data Architecture, to the extent necessary to suppor t the\nArchitecture Vision and Target Business Architecture. The scope and level of detail to be deﬁned\nwill depend on the relevance of the data elements to attaining the Target Architecture, and on\nwhether architectural descriptions exist. To the extent possible, identify the relevant Data\nArchitecture building blocks, drawing on the Architecture Repository (see Par t V, Chapter 41).",
+      "Architecture building blocks, drawing on the Architecture Repository (see Par t V, Chapter 41).\nWhere new architecture models need to be developed to satisfy stakeholder concerns, use the\nmodels identiﬁed within Step 1 as a guideline for creating new architecture content to describe\nthe Target Architecture.\n10.4.4 Perform Gap Analysis\nVerify the architecture models for internal consistency and accuracy:\nI Perfor m trade-off analysis to resolve conﬂicts (if any) among the different views\nI Validate that the models support the principles, objectives, and constraints",
+      "Phase C: Infor mation Systems Architectures — Data Architecture\nOutputs\n— Application/Data matrix\nI Diagrams:\n— Conceptual Data diagram\n— Logical Data diagram\n— Data Dissemination diagram\n— Data Security diagram\n— Data Migration diagram\n— Data Lifecycle diagram",
+      "Phase C: Infor mation Systems Architectures — Data Architecture"
+    ],
+    "recuperados": [
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        1
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        1
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        3
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        3
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        4
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        8
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        8
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        11
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        12
+      ]
+    ],
+    "sin_informacion": true,
+    "hit_recuperacion": true
+  },
+  {
+    "id": "Q12",
+    "pregunta": "¿Cuáles son las tres dimensiones clave descritas para la gobernanza de datos en la Fase C (Arquitectura de Datos)?",
+    "ground_truth": "Las tres dimensiones de la gobernanza de datos son: 1) Estructura (Structure: estructura organizacional y cuerpos de estándares), 2) Sistema de Gestión (Management System: programas para gestionar entidades de datos en su ciclo de vida), y 3) Personas (People: roles y habilidades necesarias).",
+    "en_corpus": true,
+    "categoria": "togaf",
+    "respuesta": "- **Structure** (estructura organizacional y cuerpos de estándares para gestionar los aspectos de entidades de datos) (Fuente: TOGAF_V9.1-ArquitecturaInformacion.pdf, Pág. 2, Sec. 10.2.1.3).  \n- **Management System** (sistema de gestión y programas relacionados con datos para gobernar el ciclo de vida de las entidades) (Fuente: TOGAF_V9.1-ArquitecturaInformacion.pdf, Pág. 2, Sec. 10.2.1.3).  \n- **People** (habilidades y roles necesarios en la organización para la transformación y gobernanza de datos) (Fuente: TOGAF_V9.1-ArquitecturaInformacion.pdf, Pág. 2, Sec. 10.2.1.3).",
+    "contextos": [
+      "Chapter 10\nPhase C: Information Systems Architectures — Data\nArchitecture\nThis chapter describes the Data Architecture part of Phase C.\n10.1\nObjectives\nThe objectives of the Data Architecture part of Phase C are to:\nI Develop the Target Data Architecture that enables the Business Architecture and the\nArchitecture Vision, while addressing the Request for Architecture Wor k and stakeholder\nconcer ns\nI Identify candidate Architecture Roadmap components based upon gaps between the\nBaseline and Target Data Architectures\n10.2\nApproach\n10.2.1 Key Considerations for Data Architecture",
+      "10.2\nApproach\n10.2.1 Key Considerations for Data Architecture\n10.2.1.1 Data Management\nWhen an enterpr ise has chosen to undertake largescale architectural transfor mation, it is\nimpor tant\nto understand and address data management issues.\nA\nstr uctured\nand\ncomprehensive approach to data management enables the effective use of data to capitalize on\nits competitive advantages.\nConsiderations include:\nI A clear deﬁnition of which application components in the landscape will serve as the\nsystem of record or reference for enterpr ise master data",
+      "system of record or reference for enterpr ise master data\nI Will there be an enterpr ise-wide standard that all application components, including\nsoftware packages, need to adopt (in the main packages can be prescriptive about the\ndata models and may not be ﬂexible)?\nI Clear ly understand how data entities are utilized by business functions, processes, and\nser vices\nI Clear ly\nunderstand how\nand where enterpr ise\ndata entities are created, stored,\ntranspor ted, and reported",
+      "When an existing application is replaced, there will be a critical need to migrate data (master,\ntransactional, and reference) to the new application. The Data Architecture should identify data\nmigration requirements and also provide indicators as to the level of transfor mation, weeding,\nand cleansing that will be required to present data in a for mat that meets the requirements and\nconstraints of the target application. The objective being that the target application has quality\ndata when it is populated. Another key consideration is to ensure that an enterpr ise-wide",
+      "data when it is populated. Another key consideration is to ensure that an enterpr ise-wide\ncommon data deﬁnition is established to support the transfor mation.\n10.2.1.3 Data Governance\nData governance considerations ensure that the enterpr ise has the necessary dimensions in\nplace to enable the transfor mation, as follows:\nI Structure: This dimension pertains to whether the enterpr ise has the necessary\norganizational structure and the standards bodies to manage data entity aspects of the\ntransfor mation.\nI Management System: Here enterpr ises should have the necessary management system",
+      "transfor mation.\nI Management System: Here enterpr ises should have the necessary management system\nand data-related programs to manage the governance aspects of data entities throughout\nits lifecycle.\nI People: This dimension addresses what data-related skills and roles the enterpr ise\nrequires for the transfor mation. If the enterpr ise lacks such resources and skills, the\nenter prise should consider either acquiring those critical skills or training existing internal\nresources to meet the requirements through a well-deﬁned learning program.\n10.2.2 Architecture Repository",
+      "(viewpoints) according to the requirements of the stakeholders.\nOnce the data entities have been reﬁned, a diagram of the relationships between entities and\ntheir attributes can be produced.\nIt is important to note at this stage that infor mation may be a mixture of enterpr ise-level data\n(from system service providers and package vendor infor mation) and local-level data held in",
+      "Phase C: Infor mation Systems Architectures — Data Architecture\nSteps\npersonal databases and spreadsheets.\nThe level of detail modeled needs to be carefully assessed. Some physical system data models\nwill exist down to a ver y detailed level; others will only have core entities modeled. Not all data\nmodels will have been kept up-to-date as applications were modiﬁed and extended over time. It\nis important to achieve a balance in the level of detail provided (e.g., reproducing existing\ndetailed system physical data schemas or presenting high-level process maps and data",
+      "detailed system physical data schemas or presenting high-level process maps and data\nrequirements, highlight the two extreme views).\nThe following diagrams should be considered for development within a Data Architecture:\nI Conceptual Data diagram\nI Logical Data diagram\nI Data Dissemination diagram\nI Data Lifecycle diagram\nI Data Security diagram\nI Data Migration diagram\n10.4.1.5 Identify Types of Requirement to be Collected\nOnce the Data Architecture catalogs, matr ices, and diagrams have been developed, architecture",
+      "Architecture, and on whether architectural descriptions exist, as described in Section 10.2. To\nthe extent possible, identify the relevant Data Architecture building blocks, drawing on the\nArchitecture Repository (see Par t V, Chapter 41).\nWhere new architecture models need to be developed to satisfy stakeholder concerns, use the\nmodels identiﬁed within Step 1 as a guideline for creating new architecture content to describe\nthe Baseline Architecture.",
+      "Steps\nPhase C: Infor mation Systems Architectures — Data Architecture\n10.4.3 Develop Target Data Architecture Description\nDevelop a Target Description for the Data Architecture, to the extent necessary to suppor t the\nArchitecture Vision and Target Business Architecture. The scope and level of detail to be deﬁned\nwill depend on the relevance of the data elements to attaining the Target Architecture, and on\nwhether architectural descriptions exist. To the extent possible, identify the relevant Data\nArchitecture building blocks, drawing on the Architecture Repository (see Par t V, Chapter 41).",
+      "Architecture building blocks, drawing on the Architecture Repository (see Par t V, Chapter 41).\nWhere new architecture models need to be developed to satisfy stakeholder concerns, use the\nmodels identiﬁed within Step 1 as a guideline for creating new architecture content to describe\nthe Target Architecture.\n10.4.4 Perform Gap Analysis\nVerify the architecture models for internal consistency and accuracy:\nI Perfor m trade-off analysis to resolve conﬂicts (if any) among the different views\nI Validate that the models support the principles, objectives, and constraints"
+    ],
+    "recuperados": [
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        1
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        1
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        1
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        8
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        8
+      ]
+    ],
+    "sin_informacion": false,
+    "hit_recuperacion": true
+  },
+  {
+    "id": "Q13",
+    "pregunta": "¿Cuáles son los entregables o productos finales contenedores producidos al completar la Fase C?",
+    "ground_truth": "Los entregables de la Fase C (Arquitectura de Datos) son: 1) Versiones refinadas de los entregables de la Fase A, como la Declaración de Trabajo de Arquitectura (Statement of Architecture Work) actualizada si es necesario y los principios de datos validados o nuevos. 2) Un borrador del Documento de Definición de Arquitectura (Architecture Definition Document) que incluye la Arquitectura de Datos Base (Baseline, versión 1.0, si aplica) y la Arquitectura de Datos Objetivo (Target, versión 1.0), con modelo de datos de negocio, modelo lógico de datos, modelos de procesos de gestión de datos y matriz Data Entity/Business Function, además de vistas según los puntos de vista seleccionados. 3) Un borrador de la Especificación de Requerimientos de Arquitectura (Architecture Requirements Specification) con resultados del análisis de brechas, requisitos de interoperabilidad de datos, requisitos técnicos relevantes, restricciones sobre la Arquitectura de Tecnología y requisitos de negocio y de aplicación actualizados, si corresponde. 4) Los componentes de Arquitectura de Datos de la Hoja de Ruta de Arquitectura (Architecture Roadmap).",
+    "en_corpus": true,
+    "categoria": "togaf",
+    "respuesta": "No encontré información sobre esto en la base de conocimientos.",
+    "contextos": [
+      "10.2.2 Architecture Repository\nAs part of this phase, the architecture team will need to consider what relevant Data Architecture\nresources are available in the organization’s Architecture Repository (see Par t V, Chapter 41), in\npar ticular, gener ic data models relevant to the organization’s industr y ‘‘vertical’’ sector. For\nexample:\nI ARTS has deﬁned a data model for the Retail industry.\nI Energistics has deﬁned a data model for the Petrotechnical industry.",
+      "Phase C: Infor mation Systems Architectures — Data Architecture\nInputs\n10.3\nInputs\nThis section deﬁnes the inputs to Phase C (Data Architecture).\n10.3.1 Reference Materials External to the Enterprise\nI Architecture reference materials (see Par t IV, Section 36.2.5)\n10.3.2 Non-Architectural Inputs\nI Request for Architecture Wor k (see Par t IV, Section 36.2.17)\nI Capability Assessment (see Par t IV, Section 36.2.10)\nI Communications Plan (see Par t IV, Section 36.2.12)\n10.3.3 Architectural Inputs\nI Organizational Model for Enterpr ise Architecture (see Par t IV, Section 36.2.16), including:",
+      "I Organizational Model for Enterpr ise Architecture (see Par t IV, Section 36.2.16), including:\n— Scope of organizations impacted\n— Matur ity assessment, gaps, and resolution approach\n— Roles and responsibilities for architecture team(s)\n— Constraints on architecture wor k\n— Budget requirements\n— Gover nance and support strategy\nI Tailored Architecture Framework (see Par t IV, Section 36.2.21, on page 449), including:\n— Tailored architecture method\n— Tailored architecture content (deliverables and artifacts)\n— Conﬁgured and deployed tools",
+      "only if necessary.\n8.4.8\nFinalize the Business Architecture\nI Select standards for each of the building blocks, re-using as much as possible from the\nreference models selected from the Architecture Repository\nI Fully document each building block\nI Conduct ﬁnal cross-check of overall architecture against business goals; document\nrationale for building block decisions in the architecture document\nI Document ﬁnal requirements traceability report\nI Document ﬁnal mapping of the architecture within the Architecture Repository; from the",
+      "I Document ﬁnal mapping of the architecture within the Architecture Repository; from the\nselected building blocks, identify those that might be re-used (wor king practices, roles,\nbusiness relationships, job descriptions, etc.), and publish via the Architecture Repository\nI Finalize all the wor k products, such as gap analysis results",
+      "Phase B: Business Architecture\nSteps\n8.4.9\nCreate Architecture Deﬁnition Document\nI Document rationale for building block decisions in the Architecture Deﬁnition Document\nI Prepare the business sections of the Architecture Deﬁnition Document, comprising some\nor all of:\n— A business footpr int (a high-level descr iption of the people and locations involved with\nkey business functions)\n— A detailed description of business functions and their infor mation needs\n— A management footpr int (showing span of control and accountability)",
+      "— Tailored architecture method\n— Tailored architecture content (deliverables and artifacts)\n— Architecture Principles (see Par t IV, Section 36.2.4)\n— Conﬁgured and deployed tools\nI Initial Architecture Repository (see Par t IV, Section 36.2.5), populated with framework\ncontent\nI Restatement of, or reference to, business principles, business goals, and business drivers\n(see Par t IV, Section 36.2.9)\nI Request for Architecture Wor k (optional) (see Par t IV, Section 36.2.17)\nI Architecture Governance Framework (see (Par t VII, Section 50.2)\nThe outputs may include some or all of the following:",
+      "The outputs may include some or all of the following:\nI Catalogs:\n— Principles catalog",
+      "to the baseline and target capability level of the enterpr ise.\nGaps identiﬁed in the Architecture Capability require iteration between Architecture Vision and\nPreliminar y Phase to ensure that the Architecture Capability is suitable to address the scope of\nthe architecture project (see Par t III, Chapter 19).\nGaps, or limitations, identiﬁed in the enterpr ise’s capability to execute on change will infor m the\narchitect on the description of the Target Architecture and on the Implementation and Migration\nPlan (see Par t IV, Section 36.2.14) created in Phase E and Phase F.",
+      "Plan (see Par t IV, Section 36.2.14) created in Phase E and Phase F.\nThis step seeks to understand the capabilities and desires of the enterpr ise at an appropriate",
+      "Phase A: Architecture Vision\nSteps\nlevel of abstraction (see Chapter 20). Consideration of the gap between the baseline and target\ncapability of the enterpr ise is critical. Showing the baseline and target capabilities within the\ncontext of the overall enterpr ise can be supported by creating Value Chain diagrams that show\nthe linkage of related capabilities.\nThe results of the assessment are documented in a Capability Assessment (see Par t IV, Section\n36.2.10).\n7.4.5\nAssess Readiness for Business Transformation",
+      "actions.\nI Residual Level of Risk: Risk categorization after implementation of mitigating actions (if\nany).\nRisk mitigation activities should be considered for inclusion within the Statement of Architecture\nWork.",
+      "Phase A: Architecture Vision\nSteps\n7.4.11 Develop Statement of Architecture Work; Secure Approval\nAssess the wor k products that are required to be produced (and by when) against the set of\nbusiness perfor mance requirements. This will involve ensur ing that:\nI Perfor mance metr ics are built into the wor k products.\nI Speciﬁc perfor mance-related work products are available.\nThen, activities will include:\nI Identify new wor k products that will need to be changed\nI Provide direction on which existing wor k products, including building blocks, will need to be",
+      "I Provide direction on which existing wor k products, including building blocks, will need to be\nchanged and ensure that all activities and dependencies on these are co-ordinated\nI Identify the impact of change on other wor k products and dependence on their activities\nI Based on the purpose, focus, scope, and constraints, deter mine which architecture\ndomains should be developed, to what level of detail, and which architecture views should\nbe built\nI Assess the resource requirements and availability to perfor m the wor k in the timescale"
+    ],
+    "recuperados": [
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        2
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        3
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        3
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        12
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        12
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        13
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        12
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        12
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        8
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        9
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        9
+      ]
+    ],
+    "sin_informacion": true,
+    "hit_recuperacion": false
+  },
+  {
+    "id": "Q14",
+    "pregunta": "¿Qué es el ADM en TOGAF y para qué sirve?",
+    "ground_truth": "El ADM (Architecture Development Method) es un método genérico e iterativo para desarrollar y gestionar el ciclo de vida de una arquitectura empresarial. Constituye el núcleo de TOGAF e integra assets de la organización y modelos de referencia para responder a las necesidades del negocio y de TI.",
+    "en_corpus": true,
+    "categoria": "togaf",
+    "respuesta": "El ADM (Architecture Development Method) es el método de desarrollo de arquitectura de TOGAF, que describe cómo desarrollar y gestionar el ciclo de vida de una arquitectura empresarial y constituye el núcleo de TOGAF (Fuente: TOGAF_9.1_Cap5_ADM.pdf, Pág. 1, Sec. 5.1). Es un método genérico pensado para ser usado por cualquier empresa y puede combinarse con otros marcos de arquitectura, sirviendo para definir, planificar y ejecutar el desarrollo de la arquitectura empresarial (Fuente: TOGAF_V9.1-FasePreliminar.pdf, Pág. 5, Sec. 6.2.5).",
+    "contextos": [
+      "Chapter 5\nIntroduction\nThis chapter describes the Architecture Development Method (ADM) cycle, adapting the ADM,\narchitecture scope, and architecture integration.\n5.1\nADM Over view\nThe TOGAF ADM is the result of continuous contributions from a large number of architecture\npractitioners. It descr ibes a method for developing and managing the lifecycle of an enterpr ise\narchitecture, and for ms the core of TOGAF. It integrates elements of TOGAF described in this\ndocument as well as other available architectural assets, to meet the business and IT needs of\nan organization.\n5.1.1",
+      "an organization.\n5.1.1\nThe ADM, Enterprise Continuum, and Architecture Repository\nThe Enterpr ise Continuum provides a framework and context to support the leverage of relevant\narchitecture assets in executing the ADM. These assets may include architecture descriptions,\nmodels, and patterns taken from a var iety of sources, as explained in Par t V: Enter prise\nContinuum & Tools.\nThe Enterpr ise Continuum categorizes architectural source material — both the contents of the\norganization’s own enterpr ise repositor ies and the set of relevant, available reference models",
+      "Architecture Integration\nIntroduction\nCapability\nVision\n& Arch\nDefinition\nEnterprise-\nLevel\nInitiatives\nBusiness\nData\nApplication\nTechnology\nArchitecture\nDomains\nBreadth\nLevel\nCapability\nVision\n& Arch\nDefinition\nCapability\nVision\n& Arch\nDefinition\nSegment-\nLevel\nInitiatives\nSegment Vision\n& Architecture\nDefinition\nEnterprise Vision and Architecture Definition\nBusiness\nFigure 5-2 Integration of Architecture Artifacts\nAs organizations address common themes (such as Service Oriented Architecture (SOA), and",
+      "As organizations address common themes (such as Service Oriented Architecture (SOA), and\nintegrated infor mation infrastr ucture), and universal data models and standard data structures\nemerge, integration toward the high end of the spectrum will be facilitated. However, there will\nalways be the need for effective standards governance to reduce the need for manual co-\nordination and conﬂict resolution.\n5.7\nSummary\nThe TOGAF ADM deﬁnes a recommended sequence for the var ious phases and steps involved\nin developing an architecture, but it cannot recommend a scope — this has to be determined by",
+      "in developing an architecture, but it cannot recommend a scope — this has to be determined by\nthe organization itself, bear ing in mind that the recommended sequence of development in the\nADM process is an iterative one, with the depth and breadth of scope and deliverables\nincreasing with each iteration. Each iteration will add resources to the organization’s Architecture\nRepositor y.\nWhile a complete framework is useful (indeed, essential) to have in mind as the ultimate long-\nter m goal, in practice there is a key decision to be made as to the scope of a speciﬁc enterpr ise",
+      "body responsible for governance will also normally be responsible for approving the Architecture\nPr inciples, and for resolving architecture issues. The issues involved in governance are\nexplained in Par t VII, Chapter 50.",
+      "Preliminar y Phase\nApproach\n6.2.5\nManagement Frameworks\nThe TOGAF Architecture Development Method (ADM) is a generic method, intended to be used\nby enter prises in a wide var iety of industry types and geographies. It is also designed for use\nwith a wide var iety of other enterpr ise architecture frameworks, if required (although it can be\nused perfectly well in its own right, without adaptation).\nTOGAF has to co-exist with and enhance the operational capabilities of other management\nframeworks that are present within any organization either for mally or infor mally. In addition to",
+      "frameworks that are present within any organization either for mally or infor mally. In addition to\nthese frameworks, most organizations have a method for the development of solutions, most of\nwhich have an IT component. The signiﬁcance of systems is that it brings together the var ious\ndomains (also known as People, Processes, and Material/Technology) to deliver a business\ncapability.\nThe main frameworks suggested to be co-ordinated with TOGAF are:\nI Business Capability Management (Business Direction and Planning) that determines",
+      "I Solution Development Methods that for malize the way that business systems are\ndelivered in accordance with the structures developed in the IT architecture.\nAs illustrated in Figure 6-2, these frameworks are not discrete and there are signiﬁcant overlaps\nbetween them and the Business Capability Management. The latter includes the deliver y of\nperfor mance measured business value.\nThe overall signiﬁcance is that the enterpr ise architect applying TOGAF cannot narrowly focus\non the IT implementation, but must be aware of the impact that the architecture has on the entire\nenter prise.",
+      "Approach\nPreliminary Phase\nPortfolio, Program,\nand Project\nManagement\nMethods\nSolution\nDevelopment\nMethods\nOperations\nManagement\nMethods\nBusiness\nCapability\nManagement\nArchitecture\nDevelopment\nMethod\nFigure 6-2 Management Frameworks to Co-ordinate with TOGAF\nThe Preliminary Phase therefore involves doing any necessar y work to adapt the ADM to deﬁne\nan organization-speciﬁc framework, using either the TOGAF deliverables or the deliverables of\nanother framework. The issues involved in this are discussed in Section 5.3.\n6.2.6\nRelating the Management Frameworks",
+      "6.2.6\nRelating the Management Frameworks\nFigure 6-3 illustrates a more detailed set of dependencies between the var ious frameworks and\nbusiness planning activity that incorporates the enterpr ise’s strategic plan and direction. The\nenter prise architecture can be used to provide a structure for all of the corporate initiatives, the\nPortfolio Management Framework can be used to deliver the components of the architecture,\nand the Operations Management Framework suppor ts incor poration of these new components\nwithin the corporate infrastr ucture.",
+      "— Gover nance and support strategy\nI Existing Architecture Framework, if any, including:\n— Architecture method\n— Architecture content\n— Conﬁgured and deployed tools",
+      "Preliminar y Phase\nInputs\n— Architecture Principles\n— Architecture Repository\n6.4\nSteps\nThe TOGAF ADM is a generic method, intended to be used by a wide var iety of different\nenter prises, and in conjunction with a wide var iety of other architecture frameworks, if required.\nThe Preliminary Phase therefore involves doing any necessar y work to initiate and adapt the\nADM to deﬁne an organization-speciﬁc framework. The issues involved with adapting the ADM\nto a speciﬁc organizational context are discussed in detail in Section 5.3.",
+      "to a speciﬁc organizational context are discussed in detail in Section 5.3.\nThe level of detail addressed in the Preliminary Phase will depend on the scope and goals of the\noverall architecture effor t.\nThe order of the steps in the Preliminary Phase (see below) as well as the time at which they are\nformally started and completed should be adapted to the situation at hand in accordance with\nthe established architecture governance.\nThe steps within the Preliminary Phase are as follows:\nI Scope the enterpr ise organizations impacted (see Section 6.4.1)"
+    ],
+    "recuperados": [
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        1
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        1
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        12
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        12
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        12
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        4
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        8
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        9
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        9
+      ]
+    ],
+    "sin_informacion": false,
+    "hit_recuperacion": true
+  },
+  {
+    "id": "Q15",
+    "pregunta": "¿Cuáles son las cuatro dimensiones que se usan para definir y limitar el alcance de una arquitectura en TOGAF?",
+    "ground_truth": "Las cuatro dimensiones para definir el alcance son: Amplitud (Breadth: cobertura de la empresa), Profundidad (Depth: nivel de detalle), Periodo de Tiempo (Time Period: visión e iteraciones de transición) y Dominios de Arquitectura (Architecture Domains: negocio, datos, aplicación y tecnología).",
+    "en_corpus": true,
+    "categoria": "togaf",
+    "respuesta": "No encontré información sobre esto en la base de conocimientos.",
+    "contextos": [
+      "within the enterpr ise to be effectively governed and integrated. This requires a set of aligned\n‘‘architecture partitions’’ that ensure architects are not wor king on duplicate or conﬂicting\nactivities. It also requires the deﬁnition of re-use and compliance relationships between\narchitecture partitions.\nThe division of the enterpr ise and its architecture-related activity is discussed in more detail in\nChapter 40.\nFour dimensions are typically used in order to deﬁne and limit the scope of an architecture:",
+      "Four dimensions are typically used in order to deﬁne and limit the scope of an architecture:\nI Breadth: What is the full extent of the enterpr ise, and what part of that extent will this\narchitecting effor t deal with?\n— Many enter prises are ver y large, effectively comprising a federation of organizational\nunits that could validly be considered enterpr ises in their own right.\n— The modern enter prise increasingly extends beyond its traditional boundaries, to\nembrace a fuzzy combination of traditional business enterpr ise combined with\nsuppliers, customers, and partners.",
+      "suppliers, customers, and partners.\nI Depth: To what level of detail should the architecting effor t go? How much architecture is\n‘‘enough’’? What is the appropriate demarcation between the architecture effor t and other,\nrelated activities (system design, system engineering, system development)?\nI Time Period: What is the time period that needs to be articulated for the Architecture\nVision, and does it make sense (in terms of practicality and resources) for the same period\nto be covered in the detailed architecture description? If not, how many Transition",
+      "to build a top-down, all-inclusive architecture description encompassing all four architecture\ndomains, even if the enterpr ise scope is chosen to be less than the full extent of the overall\nenter prise.\nTypically, the scope of an architecture is ﬁrst expressed in terms of breadth, depth, and time.\nOnce these dimensions are understood, a suitable combination of architecture domains can be\nselected that are appropriate to the problem being addressed. Techniques for using the ADM to\ndevelop a number of related architectures are discussed in Chapter 20.",
+      "develop a number of related architectures are discussed in Chapter 20.\nThe four dimensions of architecture scope are explored in detail below. In each case, par ticularly\nin largescale environments where architectures are necessarily developed in a federated\nmanner, there is a danger of architects optimizing within their own scope of activity, instead of at\nthe level of the overall enterpr ise. It is often necessary to sub-optimize in a par ticular area, in\norder to optimize at the enterpr ise level. The aim should always be to seek the highest level of",
+      "order to optimize at the enterpr ise level. The aim should always be to seek the highest level of\ncommonality and focus on scalable and re-usable modules in order to maximize re-use at the\nenter prise level.",
+      "deﬁnition, be a complete enterpr ise architecture. One of the risks is lack of consistency and\ntherefore ability to integrate. Integration either needs to come later — with its own costs and\nrisks — or the risks and trade-offs involved in not developing a complete and integrated\narchitecture need to be articulated by the architect, and communicated to and understood by the\nenter prise management.\n5.6\nArchitecture Integration\nArchitectures that are created to address a subset of issues within an enterpr ise require a",
+      "Architectures that are created to address a subset of issues within an enterpr ise require a\nconsistent frame of reference so that they can be considered as a group as well as point\ndeliverables. The dimensions that are used to deﬁne the scope boundary of a single architecture\n(e.g., level of detail, architecture domain, etc.) are typically the same dimensions that must be\naddressed when considering the integration of many architectures. Figure 5-2 illustrates how\ndifferent types of architecture need to co-exist.",
+      "different types of architecture need to co-exist.\nAt the present time, the state of the art is such that architecture integration can be accomplished\nonly at the lower end of the integratability spectrum. Key factors to consider are the granular ity\nand level of detail in each artifact, and the maturity of standards for the interchange of\narchitectural descriptions.",
+      "Architecture Integration\nIntroduction\nCapability\nVision\n& Arch\nDefinition\nEnterprise-\nLevel\nInitiatives\nBusiness\nData\nApplication\nTechnology\nArchitecture\nDomains\nBreadth\nLevel\nCapability\nVision\n& Arch\nDefinition\nCapability\nVision\n& Arch\nDefinition\nSegment-\nLevel\nInitiatives\nSegment Vision\n& Architecture\nDefinition\nEnterprise Vision and Architecture Definition\nBusiness\nFigure 5-2 Integration of Architecture Artifacts\nAs organizations address common themes (such as Service Oriented Architecture (SOA), and",
+      "As organizations address common themes (such as Service Oriented Architecture (SOA), and\nintegrated infor mation infrastr ucture), and universal data models and standard data structures\nemerge, integration toward the high end of the spectrum will be facilitated. However, there will\nalways be the need for effective standards governance to reduce the need for manual co-\nordination and conﬂict resolution.\n5.7\nSummary\nThe TOGAF ADM deﬁnes a recommended sequence for the var ious phases and steps involved\nin developing an architecture, but it cannot recommend a scope — this has to be determined by",
+      "in developing an architecture, but it cannot recommend a scope — this has to be determined by\nthe organization itself, bear ing in mind that the recommended sequence of development in the\nADM process is an iterative one, with the depth and breadth of scope and deliverables\nincreasing with each iteration. Each iteration will add resources to the organization’s Architecture\nRepositor y.\nWhile a complete framework is useful (indeed, essential) to have in mind as the ultimate long-\nter m goal, in practice there is a key decision to be made as to the scope of a speciﬁc enterpr ise",
+      "Part IV, Section 36.2.10). These results are then used to shape the scope of the architecture, to\nidentify activities required within the architecture project, and to identify risk areas to be\naddressed.\n7.4.6\nDeﬁne Scope\nDeﬁne what is inside and what is outside the scope of the Baseline Architecture and Target\nArchitecture effor ts, understanding that the baseline and target need not be described at the\nsame level of detail. In many cases, the Baseline is described at a higher level of abstraction, so",
+      "same level of detail. In many cases, the Baseline is described at a higher level of abstraction, so\nmore time is available to specify the Target in sufﬁcient detail. The issues involved in this are\ndiscussed in Section 5.5. In par ticular, deﬁne:\nI The breadth of coverage of the enterpr ise\nI The level of detail required\nI The partitioning character istics of the architecture (see Par t V, Chapter 40 for more details)\nI The speciﬁc architecture domains to be covered (business, data, application, technology)",
+      "I The speciﬁc architecture domains to be covered (business, data, application, technology)\nI The extent of the time period aimed at, plus the number and extent of any inter mediate\ntime period\nI The architectural assets to be leveraged, or considered for use, from the organization’s\nEnter prise Continuum:\n— Assets created in previous iterations of the ADM cycle within the enterpr ise\n— Assets available elsewhere in the industry (other frameworks, systems models,\nvertical industry models, etc.)\n7.4.7\nConﬁrm and Elaborate Architecture Principles, including Business Principles"
+    ],
+    "recuperados": [
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        8
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        8
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        8
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        8
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        8
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        8
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        11
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        11
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        11
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        12
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        12
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        12
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        7
+      ]
+    ],
+    "sin_informacion": true,
+    "hit_recuperacion": true
+  },
+  {
+    "id": "Q16",
+    "pregunta": "¿Qué indican los números de versión 0.1 y 1.0 en la convención de numeración del ADM para los entregables de arquitectura?",
+    "ground_truth": "La versión 0.1 indica un borrador o esquema de alto nivel de la arquitectura (high-level outline); la versión 1.0 indica un documento de arquitectura detallado y revisado formalmente.",
+    "en_corpus": true,
+    "categoria": "togaf",
+    "respuesta": "Los números de versión 0.1 y 1.0 indican el nivel de detalle y el estado de revisión del entregable de arquitectura (Fuente: TOGAF_9.1_Cap5_ADM.pdf, Pág. 5, Sec. 0.1).\n\n- **0.1**: indica que solo existe un esquema de alto nivel (outline) de la arquitectura (visión) (Fuente: TOGAF_9.1_Cap5_ADM.pdf, Pág. 5, Sec. 0.1).  \n- **1.0**: indica que el entregable es una definición de arquitectura formalmente revisada y detallada (Fuente: TOGAF_9.1_Cap5_ADM.pdf, Pág. 5, Sec. 0.1).",
+    "contextos": [
+      "The phases of the cycle are described in detail in the following chapters within Par t II.\nNote that output is generated throughout the process, and that the output in an early phase may\nbe modiﬁed in a later phase. The versioning of output is managed through version numbers. In\nall cases, the ADM number ing scheme is provided as an example. It should be adapted by the\narchitect to meet the requirements of the organization and to wor k with the architecture tools and\nrepositor ies employed by the organization.",
+      "repositor ies employed by the organization.\nIn particular, a version number ing convention is used within the ADM to illustrate the evolution of\nBaseline and Target Architecture Deﬁnitions. Table 5-1 descr ibes how this convention is used.\nPhase\nDeliverable\nContent\nVersion\nDescription\nA: Architecture Vision\n0.1\nArchitecture\nVision\nBusiness\nArchitecture\nVersion 0.1 indicates\nthat a high-level outline\nof the architecture is in\nplace.\n0.1\nData\nArchitecture\nVersion 0.1 indicates\nthat a high-level outline\nof the architecture is in\nplace.\n0.1\nApplication\nArchitecture\nVersion 0.1 indicates",
+      "of the architecture is in\nplace.\n0.1\nApplication\nArchitecture\nVersion 0.1 indicates\nthat a high-level outline\nof the architecture is in\nplace.\n0.1\nTechnology\nArchitecture\nVersion 0.1 indicates\nthat a high-level outline\nof the architecture is in\nplace.\nB: Business Architecture\n1.0\nArchitecture\nDeﬁnition\nDocument\nBusiness\nArchitecture\nVersion 1.0 indicates a\nformally reviewed,\ndetailed architecture.\n1.0\nC: Infor mation Systems\nArchitecture\nArchitecture\nDeﬁnition\nDocument\nData\nArchitecture\nVersion 1.0 indicates a\nformally reviewed,\ndetailed architecture.\n1.0\nApplication\nArchitecture",
+      "Version 1.0 indicates a\nformally reviewed,\ndetailed architecture.\n1.0\nApplication\nArchitecture\nVersion 1.0 indicates a\nformally reviewed,\ndetailed architecture.\nD: Technology Architecture\n1.0\nArchitecture\nDeﬁnition\nDocument\nTechnology\nArchitecture\nVersion 1.0 indicates a\nformally reviewed,\ndetailed architecture.\nTable 5-1 ADM Version Numbering Convention",
+      "5.3\nAdapting the ADM\nThe ADM is a generic method for architecture development, which is designed to deal with most\nsystem and organizational requirements. How ever, it will often be necessary to modify or extend\nthe ADM to suit speciﬁc needs. One of the tasks before applying the ADM is to review its\ncomponents for applicability, and then tailor them as appropriate to the circumstances of the\nindividual enterpr ise. This activity may well produce an ‘‘enter prise-speciﬁc’’ ADM.\nOne reason for wanting to adapt the ADM, which it is important to stress, is that the order of the",
+      "— Organization-speciﬁc reference models\n— Organization standards\nI Draft Architecture Deﬁnition Document (see Par t IV, Section 36.2.3), including:\n— Baseline Business Architecture, Version 1.0 (detailed), if appropriate",
+      "Inputs\nPhase C: Infor mation Systems Architectures — Data Architecture\n— Target Business Architecture, Version 1.0 (detailed)\n— Baseline Data Architecture, Version 0.1, if available\n— Target Data Architecture, Version 0.1, if available\n— Baseline Application Architecture, Version 1.0 (detailed) or Version 0.1 (Vision)\n— Target Application Architecture, Version 1.0 (detailed) or Version 0.1 (Vision)\n— Baseline Technology Architecture, Version 0.1 (Vision)\n— Target Technology Architecture, Version 0.1 (Vision)",
+      "— Target Technology Architecture, Version 0.1 (Vision)\nI Draft Architecture Requirements Speciﬁcation (see Par t IV, Section 36.2.6), including:\n— Gap analysis results (from Business Architecture)\n— Relevant technical requirements that will apply to this phase\nI Business Architecture components of an Architecture Roadmap (see Par t IV, Section\n36.2.7)\n10.4\nSteps\nThe level of detail addressed in Phase C will depend on the scope and goals of the overall\narchitecture effor t.\nNew data building blocks being introduced as part of this effor t will need to be deﬁned in detail",
+      "Phase B: Business Architecture\nInputs\n— Organization-speciﬁc reference models\n— Organization standards\nI Architecture Vision (see Par t IV, Section 36.2.8), including:\n— Problem description\n— Objective of the Statement of Architecture Wor k\n— Summar y views\n— Business Scenario (optional)\n— Reﬁned key high-level stakeholder requirements\nI Draft Architecture Deﬁnition Document, including (when in scope):\n— Baseline Business Architecture, Version 0.1\n— Baseline Technology Architecture, Version 0.1\n— Baseline Data Architecture, Version 0.1\n— Baseline Application Architecture, Version 0.1",
+      "— Baseline Data Architecture, Version 0.1\n— Baseline Application Architecture, Version 0.1\n— Target Business Architecture, Version 0.1\n— Target Technology Architecture, Version 0.1\n— Target Data Architecture, Version 0.1\n— Target Application Architecture, Version 0.1\n8.4\nSteps\nThe level of detail addressed in Phase B will depend on the scope and goals of the overall\narchitecture effor t.\nNew business processes being introduced as part of this effor t will need to be deﬁned in detail\ndur ing Phase B. Existing business processes to be carried over and supported in the target",
+      "dur ing Phase B. Existing business processes to be carried over and supported in the target\nenvironment may already have been adequately deﬁned in previous architectural wor k; but, if\nnot, they too will need to be deﬁned in Phase B.\nThe order of the steps in Phase B (see below) as well as the time at which they are for mally\nstar ted and completed should be adapted to the situation at hand, in accordance with the\nestablished architecture governance. In par ticular, deter mine whether in this situation it is"
+    ],
+    "recuperados": [
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        5
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        5
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        5
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        5
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        3
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        4
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        4
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        7
+      ]
+    ],
+    "sin_informacion": false,
+    "hit_recuperacion": true
+  },
+  {
+    "id": "Q17",
+    "pregunta": "¿Quién ganó el Mundial de fútbol de 2022?",
+    "ground_truth": "No encontré información sobre esto en la base de conocimientos.",
+    "en_corpus": false,
+    "categoria": "fuera_corpus",
+    "respuesta": "No encontré información sobre esto en la base de conocimientos.",
+    "contextos": [
+      "The individual guidelines and techniques are described separately in Par t III: ADM Guidelines &\nTechniques so that they can be referenced from the relevant points in the ADM as necessary,\nrather than having the detailed text clutter the description of the ADM itself.",
+      "5.2",
+      "5.2.1\nKey Points\nThe following are the key points about the ADM:\nI The ADM is iterative, over the whole process, between phases, and within phases (see\nPart III, Chapter 19). For each iteration of the ADM, a fresh decision must be taken as to:\n— The breadth of coverage of the enterpr ise to be deﬁned\n— The level of detail to be deﬁned\n— The extent of the time period aimed at, including the number and extent of any\ninter mediate time periods\n— The architectural assets to be leveraged, including:\n— Assets created in previous iterations of the ADM cycle within the enterpr ise"
+    ],
+    "recuperados": [
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        2
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        3
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        3
+      ]
+    ],
+    "sin_informacion": true,
+    "hit_recuperacion": null
+  },
+  {
+    "id": "Q18",
+    "pregunta": "¿Cómo se resuelve paso a paso una ecuación cuadrática con la fórmula general?",
+    "ground_truth": "No encontré información sobre esto en la base de conocimientos.",
+    "en_corpus": false,
+    "categoria": "fuera_corpus",
+    "respuesta": "No encontré información sobre esto en la base de conocimientos.",
+    "contextos": [
+      "I As a generic method, the ADM is intended to be used by enter prises in a wide var iety of\ndifferent geographies and applied in different ver tical sectors/industr y types. As such, it\nmay be, but does not necessarily have to be, tailored to speciﬁc needs. For example, it may\nbe used in conjunction with the set of deliverables of another framework, where these have\nbeen deemed to be more appropriate for a speciﬁc organization. (For example, many US\nfederal agencies have dev eloped individual frameworks that deﬁne the deliverables speciﬁc\nto their particular departmental needs.)",
+      "to their particular departmental needs.)\nThese issues are considered in detail in Section 5.3.\n5.2.2\nBasic Structure\nThe basic structure of the ADM is shown in Figure 5-1.\nThroughout the ADM cycle, there needs to be frequent validation of results against the original\nexpectations, both those for the whole ADM cycle, and those for the particular phase of the\nprocess.",
+      "Figure 5-1 Architecture Development Cycle\nThe phases of the ADM cycle are further divided into steps; for example, the steps within the\narchitecture development phases (B, C, D) are as follows:\nI Select reference models, viewpoints, and tools\nI Develop Baseline Architecture Description\nI Develop Target Architecture Description\nI Perfor m gap analysis\nI Deﬁne candidate roadmap components\nI Resolve impacts across the Architecture Landscape\nI Conduct for mal stakeholder review",
+      "I Finalize the Architecture\nI Create Architecture Deﬁnition Document\nThe Requirements Management phase is a continuous phase which ensures that any changes\nto requirements are handled through appropriate governance processes and reﬂected in all\nother phases.\nAn enterpr ise may choose to record all new requirements, including those which are in scope of\nthe current Statement of Architecture Wor k through a single Requirements Repository.\nThe phases of the cycle are described in detail in the following chapters within Par t II.",
+      "The phases of the cycle are described in detail in the following chapters within Par t II.\nNote that output is generated throughout the process, and that the output in an early phase may\nbe modiﬁed in a later phase. The versioning of output is managed through version numbers. In\nall cases, the ADM number ing scheme is provided as an example. It should be adapted by the\narchitect to meet the requirements of the organization and to wor k with the architecture tools and\nrepositor ies employed by the organization.",
+      "repositor ies employed by the organization.\nIn particular, a version number ing convention is used within the ADM to illustrate the evolution of\nBaseline and Target Architecture Deﬁnitions. Table 5-1 descr ibes how this convention is used.\nPhase\nDeliverable\nContent\nVersion\nDescription\nA: Architecture Vision\n0.1\nArchitecture\nVision\nBusiness\nArchitecture\nVersion 0.1 indicates\nthat a high-level outline\nof the architecture is in\nplace.\n0.1\nData\nArchitecture\nVersion 0.1 indicates\nthat a high-level outline\nof the architecture is in\nplace.\n0.1\nApplication\nArchitecture\nVersion 0.1 indicates",
+      "Phase B: Business Architecture\nSteps\n8.4.1.2\nIdentify Required Service Granular ity Level, Boundaries, and Contracts\nThe TOGAF content framework differentiates between the functions of a business and the\nser vices of a business. Business services are speciﬁc functions that have explicit, deﬁned\nboundar ies that are explicitly governed. In order to allow the architect ﬂexibility to deﬁne\nbusiness services at a level of granular ity that is appropriate for and manageable by the\nbusiness, the functions are split as follows: micro-level functions will have explicit, deﬁned",
+      "business, the functions are split as follows: micro-level functions will have explicit, deﬁned\nboundar ies, but may not be explicitly governed. Likewise, macro business functions may be\nexplicitly governed, but may not have explicit, deﬁned boundaries.\nThe Business Architecture phase therefore needs to identify which components of the\narchitecture are functions and which are services. Ser vices are distinguished from functions\nthrough the explicit deﬁnition of a service contract. When Baseline Architectures are being",
+      "through the explicit deﬁnition of a service contract. When Baseline Architectures are being\ndeveloped, it may be the case that explicit contracts do not exist and it would therefore be at the\ndiscretion of the architect to determine whether there is merit in developing such contracts\nbefore examining any Target Architectures.\nA ser vice contract covers the business/functional interface and also the technology/data\ninterface. Business Architecture will deﬁne the service contract at the business/functional level,\nwhich will be expanded on in the Application and Technology Architecture phases.",
+      "— Gover nance and support strategy\nI Existing Architecture Framework, if any, including:\n— Architecture method\n— Architecture content\n— Conﬁgured and deployed tools",
+      "Preliminar y Phase\nInputs\n— Architecture Principles\n— Architecture Repository\n6.4\nSteps\nThe TOGAF ADM is a generic method, intended to be used by a wide var iety of different\nenter prises, and in conjunction with a wide var iety of other architecture frameworks, if required.\nThe Preliminary Phase therefore involves doing any necessar y work to initiate and adapt the\nADM to deﬁne an organization-speciﬁc framework. The issues involved with adapting the ADM\nto a speciﬁc organizational context are discussed in detail in Section 5.3.",
+      "to a speciﬁc organizational context are discussed in detail in Section 5.3.\nThe level of detail addressed in the Preliminary Phase will depend on the scope and goals of the\noverall architecture effor t.\nThe order of the steps in the Preliminary Phase (see below) as well as the time at which they are\nformally started and completed should be adapted to the situation at hand in accordance with\nthe established architecture governance.\nThe steps within the Preliminary Phase are as follows:\nI Scope the enterpr ise organizations impacted (see Section 6.4.1)",
+      "to the baseline and target capability level of the enterpr ise.\nGaps identiﬁed in the Architecture Capability require iteration between Architecture Vision and\nPreliminar y Phase to ensure that the Architecture Capability is suitable to address the scope of\nthe architecture project (see Par t III, Chapter 19).\nGaps, or limitations, identiﬁed in the enterpr ise’s capability to execute on change will infor m the\narchitect on the description of the Target Architecture and on the Implementation and Migration\nPlan (see Par t IV, Section 36.2.14) created in Phase E and Phase F.",
+      "Plan (see Par t IV, Section 36.2.14) created in Phase E and Phase F.\nThis step seeks to understand the capabilities and desires of the enterpr ise at an appropriate",
+      "Phase A: Architecture Vision\nSteps\nlevel of abstraction (see Chapter 20). Consideration of the gap between the baseline and target\ncapability of the enterpr ise is critical. Showing the baseline and target capabilities within the\ncontext of the overall enterpr ise can be supported by creating Value Chain diagrams that show\nthe linkage of related capabilities.\nThe results of the assessment are documented in a Capability Assessment (see Par t IV, Section\n36.2.10).\n7.4.5\nAssess Readiness for Business Transformation"
+    ],
+    "recuperados": [
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        3
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        3
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        4
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        5
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        5
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        9
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        9
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        9
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        8
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        9
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        9
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-VisionArquitectura.pdf",
+        7
+      ]
+    ],
+    "sin_informacion": true,
+    "hit_recuperacion": null
+  },
+  {
+    "id": "Q19",
+    "pregunta": "¿Cuáles son las actividades y entregables de la Fase G (Implementation Governance) del ADM?",
+    "ground_truth": "No encontré información sobre esto en la base de conocimientos.",
+    "en_corpus": false,
+    "categoria": "fuera_corpus_cercano",
+    "respuesta": "No encontré información sobre esto en la base de conocimientos.",
+    "contextos": [
+      "Chapter 5\nIntroduction\nThis chapter describes the Architecture Development Method (ADM) cycle, adapting the ADM,\narchitecture scope, and architecture integration.\n5.1\nADM Over view\nThe TOGAF ADM is the result of continuous contributions from a large number of architecture\npractitioners. It descr ibes a method for developing and managing the lifecycle of an enterpr ise\narchitecture, and for ms the core of TOGAF. It integrates elements of TOGAF described in this\ndocument as well as other available architectural assets, to meet the business and IT needs of\nan organization.\n5.1.1",
+      "an organization.\n5.1.1\nThe ADM, Enterprise Continuum, and Architecture Repository\nThe Enterpr ise Continuum provides a framework and context to support the leverage of relevant\narchitecture assets in executing the ADM. These assets may include architecture descriptions,\nmodels, and patterns taken from a var iety of sources, as explained in Par t V: Enter prise\nContinuum & Tools.\nThe Enterpr ise Continuum categorizes architectural source material — both the contents of the\norganization’s own enterpr ise repositor ies and the set of relevant, available reference models",
+      "— Assets created in previous iterations of the ADM cycle within the enterpr ise\n— Assets available elsewhere in the industry (other frameworks, systems models,\nvertical industry models, etc.)\nI These decisions should be based on a practical assessment of resource and competence\navailability, and the value that can realistically be expected to accrue to the enterpr ise from\nthe chosen scope of the architecture wor k.\nI As a generic method, the ADM is intended to be used by enter prises in a wide var iety of",
+      "I As a generic method, the ADM is intended to be used by enter prises in a wide var iety of\ndifferent geographies and applied in different ver tical sectors/industr y types. As such, it\nmay be, but does not necessarily have to be, tailored to speciﬁc needs. For example, it may\nbe used in conjunction with the set of deliverables of another framework, where these have\nbeen deemed to be more appropriate for a speciﬁc organization. (For example, many US\nfederal agencies have dev eloped individual frameworks that deﬁne the deliverables speciﬁc\nto their particular departmental needs.)",
+      "to their particular departmental needs.)\nThese issues are considered in detail in Section 5.3.\n5.2.2\nBasic Structure\nThe basic structure of the ADM is shown in Figure 5-1.\nThroughout the ADM cycle, there needs to be frequent validation of results against the original\nexpectations, both those for the whole ADM cycle, and those for the particular phase of the\nprocess.",
+      "enter prise framework (as explained in Par t I, Section 2.10). For example, an enter prise may\nwish to use TOGAF and its generic ADM in conjunction with the well-known Zachman\nFr amework, or another enterpr ise architecture framework that has a deﬁned set of deliverables\nspeciﬁc to a particular ver tical sector : Government, Defense, e-Business, Telecommunications,\netc. The ADM has been speciﬁcally designed with this potential integration in mind.\nOther possible reasons for wanting to adapt the ADM include:",
+      "Other possible reasons for wanting to adapt the ADM include:\nI The ADM is one of the many cor porate processes that make up the corporate governance\nmodel. It is complementary to, and supportive of, other standard program management\nprocesses, such as those for authorization, risk management, business planning and\nbudgeting, development planning, systems development, and procurement.\nI The ADM is being mandated for use by a prime or lead contractor in an outsourcing\nsituation, and needs to be tailored to achieve a suitable compromise between the",
+      "situation, and needs to be tailored to achieve a suitable compromise between the\ncontractor’s existing practices and the contracting enterpr ise’s requirements.\nI The enterpr ise is a small-to-medium enterpr ise, and wishes to use a ‘‘cut-down’’ method\nmore attuned to the reduced level of resources and system complexity typical of such an\nenvironment.\nI The enterpr ise is ver y large and complex, comprising many separate but interlinked\n‘‘enter prises’’ within an overall collaborative business framework, and the architecture",
+      "in other enterpr ises.\nI In a vendor or production environment, a generic architecture for a family of related\nproducts is often referred to as a ‘‘Product Line Architecture’’, and the analogous process\nto that outlined above is ter med ‘‘(Architecture-based) Product Line Engineering’’. The\nADM is targeted primar ily at architects in IT user enterpr ises, but a vendor organization\nwhose products are IT-based might well wish to adapt it as a generic method for a Product\nLine Architecture development.\n5.4\nArchitecture Governance",
+      "Line Architecture development.\n5.4\nArchitecture Governance\nThe ADM, whether adapted by the organization or used as documented here, is a key process to\nbe managed in the same manner as other architecture artifacts classiﬁed through the Enterpr ise\nContinuum and held in the Architecture Repository. The Architecture Board should be satisﬁed\nthat the method is being applied correctly across all phases of an architecture development\niteration. Compliance with the ADM is fundamental to the governance of the architecture, to",
+      "iteration. Compliance with the ADM is fundamental to the governance of the architecture, to\nensure that all considerations are made and all required deliverables are produced.\nThe management of all architectural artifacts, gover nance, and related processes should be\nsuppor ted by a controlled environment. Typically this would be based on one or more\nrepositor ies suppor ting versioned object and process control and status.\nThe major infor mation areas managed by a gover nance repositor y should contain the following\ntypes of infor mation:",
+      "types of infor mation:\nI Reference Data (collateral from the organization’s own repositories/Enter prise Continuum,\nincluding exter nal data; e.g., COBIT, ITIL): Used for guidance and instruction during project\nimplementation. This includes the details of infor mation outlined above . The reference data\nincludes a description of the governance procedures themselves.\nI Process Status: All infor mation regarding the state of any gover nance processes will be\nmanaged; examples of this include outstanding compliance requests, dispensation\nrequests, and compliance assessments investigations."
+    ],
+    "recuperados": [
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        1
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        1
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        3
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        3
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        3
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        6
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        6
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        6
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        7
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        7
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        7
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        7
+      ]
+    ],
+    "sin_informacion": true,
+    "hit_recuperacion": null
+  },
+  {
+    "id": "Q20",
+    "pregunta": "¿Qué cambios introdujo TOGAF 10 frente a TOGAF 9.1?",
+    "ground_truth": "No encontré información sobre esto en la base de conocimientos.",
+    "en_corpus": false,
+    "categoria": "fuera_corpus_cercano",
+    "respuesta": "No encontré información sobre esto en la base de conocimientos.",
+    "contextos": [
+      "the Foundation Architecture. This could be a set of re-usable common models, policy and\ngovernance deﬁnitions, or even as speciﬁc as overr iding technology selections (e.g., if mandated\nby law). Population of the Foundation Architecture follows similar principles as for an enterpr ise\narchitecture, with the difference that requirements for a whole enterpr ise are restricted to the\noverall concerns and thus less complete than for a speciﬁc enterpr ise.\nIt is important to recognize that existing models from these var ious sources, when integrated,",
+      "It is important to recognize that existing models from these var ious sources, when integrated,\nmay not necessarily result in a coherent enterpr ise architecture. ‘‘Integratability’’ of architecture\ndescr iptions is considered in Section 5.6.\n5.1.3\nADM and Supporting Guidelines and Techniques\nPart III: ADM Guidelines & Techniques is a set of resources — guidelines, templates, checklists,\nand other detailed materials — that support application of the TOGAF ADM.\nThe individual guidelines and techniques are described separately in Par t III: ADM Guidelines &",
+      "The individual guidelines and techniques are described separately in Par t III: ADM Guidelines &\nTechniques so that they can be referenced from the relevant points in the ADM as necessary,\nrather than having the detailed text clutter the description of the ADM itself.",
+      "Architecture Integration\nIntroduction\nCapability\nVision\n& Arch\nDefinition\nEnterprise-\nLevel\nInitiatives\nBusiness\nData\nApplication\nTechnology\nArchitecture\nDomains\nBreadth\nLevel\nCapability\nVision\n& Arch\nDefinition\nCapability\nVision\n& Arch\nDefinition\nSegment-\nLevel\nInitiatives\nSegment Vision\n& Architecture\nDefinition\nEnterprise Vision and Architecture Definition\nBusiness\nFigure 5-2 Integration of Architecture Artifacts\nAs organizations address common themes (such as Service Oriented Architecture (SOA), and",
+      "As organizations address common themes (such as Service Oriented Architecture (SOA), and\nintegrated infor mation infrastr ucture), and universal data models and standard data structures\nemerge, integration toward the high end of the spectrum will be facilitated. However, there will\nalways be the need for effective standards governance to reduce the need for manual co-\nordination and conﬂict resolution.\n5.7\nSummary\nThe TOGAF ADM deﬁnes a recommended sequence for the var ious phases and steps involved\nin developing an architecture, but it cannot recommend a scope — this has to be determined by",
+      "in developing an architecture, but it cannot recommend a scope — this has to be determined by\nthe organization itself, bear ing in mind that the recommended sequence of development in the\nADM process is an iterative one, with the depth and breadth of scope and deliverables\nincreasing with each iteration. Each iteration will add resources to the organization’s Architecture\nRepositor y.\nWhile a complete framework is useful (indeed, essential) to have in mind as the ultimate long-\nter m goal, in practice there is a key decision to be made as to the scope of a speciﬁc enterpr ise",
+      "body responsible for governance will also normally be responsible for approving the Architecture\nPr inciples, and for resolving architecture issues. The issues involved in governance are\nexplained in Par t VII, Chapter 50.",
+      "Preliminar y Phase\nApproach\n6.2.5\nManagement Frameworks\nThe TOGAF Architecture Development Method (ADM) is a generic method, intended to be used\nby enter prises in a wide var iety of industry types and geographies. It is also designed for use\nwith a wide var iety of other enterpr ise architecture frameworks, if required (although it can be\nused perfectly well in its own right, without adaptation).\nTOGAF has to co-exist with and enhance the operational capabilities of other management\nframeworks that are present within any organization either for mally or infor mally. In addition to",
+      "frameworks that are present within any organization either for mally or infor mally. In addition to\nthese frameworks, most organizations have a method for the development of solutions, most of\nwhich have an IT component. The signiﬁcance of systems is that it brings together the var ious\ndomains (also known as People, Processes, and Material/Technology) to deliver a business\ncapability.\nThe main frameworks suggested to be co-ordinated with TOGAF are:\nI Business Capability Management (Business Direction and Planning) that determines",
+      "I Solution Development Methods that for malize the way that business systems are\ndelivered in accordance with the structures developed in the IT architecture.\nAs illustrated in Figure 6-2, these frameworks are not discrete and there are signiﬁcant overlaps\nbetween them and the Business Capability Management. The latter includes the deliver y of\nperfor mance measured business value.\nThe overall signiﬁcance is that the enterpr ise architect applying TOGAF cannot narrowly focus\non the IT implementation, but must be aware of the impact that the architecture has on the entire\nenter prise.",
+      "Approach\nPreliminary Phase\nPortfolio, Program,\nand Project\nManagement\nMethods\nSolution\nDevelopment\nMethods\nOperations\nManagement\nMethods\nBusiness\nCapability\nManagement\nArchitecture\nDevelopment\nMethod\nFigure 6-2 Management Frameworks to Co-ordinate with TOGAF\nThe Preliminary Phase therefore involves doing any necessar y work to adapt the ADM to deﬁne\nan organization-speciﬁc framework, using either the TOGAF deliverables or the deliverables of\nanother framework. The issues involved in this are discussed in Section 5.3.\n6.2.6\nRelating the Management Frameworks",
+      "6.2.6\nRelating the Management Frameworks\nFigure 6-3 illustrates a more detailed set of dependencies between the var ious frameworks and\nbusiness planning activity that incorporates the enterpr ise’s strategic plan and direction. The\nenter prise architecture can be used to provide a structure for all of the corporate initiatives, the\nPortfolio Management Framework can be used to deliver the components of the architecture,\nand the Operations Management Framework suppor ts incor poration of these new components\nwithin the corporate infrastr ucture.",
+      "— Gover nance and support strategy\nI Existing Architecture Framework, if any, including:\n— Architecture method\n— Architecture content\n— Conﬁgured and deployed tools",
+      "Preliminar y Phase\nInputs\n— Architecture Principles\n— Architecture Repository\n6.4\nSteps\nThe TOGAF ADM is a generic method, intended to be used by a wide var iety of different\nenter prises, and in conjunction with a wide var iety of other architecture frameworks, if required.\nThe Preliminary Phase therefore involves doing any necessar y work to initiate and adapt the\nADM to deﬁne an organization-speciﬁc framework. The issues involved with adapting the ADM\nto a speciﬁc organizational context are discussed in detail in Section 5.3.",
+      "to a speciﬁc organizational context are discussed in detail in Section 5.3.\nThe level of detail addressed in the Preliminary Phase will depend on the scope and goals of the\noverall architecture effor t.\nThe order of the steps in the Preliminary Phase (see below) as well as the time at which they are\nformally started and completed should be adapted to the situation at hand in accordance with\nthe established architecture governance.\nThe steps within the Preliminary Phase are as follows:\nI Scope the enterpr ise organizations impacted (see Section 6.4.1)"
+    ],
+    "recuperados": [
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        2
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        2
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        2
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        12
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        12
+      ],
+      [
+        "TOGAF_9.1_Cap5_ADM.pdf",
+        12
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        4
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        8
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        9
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        9
+      ]
+    ],
+    "sin_informacion": true,
+    "hit_recuperacion": null
+  },
+  {
+    "id": "Q21",
+    "pregunta": "¿Qué es Scrum y cuáles son sus roles principales?",
+    "ground_truth": "No encontré información sobre esto en la base de conocimientos.",
+    "en_corpus": false,
+    "categoria": "fuera_corpus_cercano",
+    "respuesta": "No encontré información sobre esto en la base de conocimientos.",
+    "contextos": [
+      "analysis.\nThe rationalized data inventor y can be used to update and reﬁne the architectural diagrams of\nhow data relates to other aspects of the architecture.\nOnce these updates have been made, it may be appropr iate to drop into a short iteration of\nApplication Architecture to resolve the changes identiﬁed.\nThe following matrices should be considered for development within a Data Architecture:\nI Data Entity/Business Function (showing which data supports which functions and which\nbusiness function owns which data)",
+      "business function owns which data)\nI Business Service/Infor mation (developed during the Business Architecture phase)\nI Application/Data (developed across the Application Architecture and Data Architecture\nphases)\nThe structure of matrices is based on the attributes of metamodel entities, as deﬁned in Par t IV,\nChapter 34.\n10.4.1.4 Identify Required Diagrams\nDiagrams present the Data Architecture infor mation from a set of different perspectives\n(viewpoints) according to the requirements of the stakeholders.",
+      "(viewpoints) according to the requirements of the stakeholders.\nOnce the data entities have been reﬁned, a diagram of the relationships between entities and\ntheir attributes can be produced.\nIt is important to note at this stage that infor mation may be a mixture of enterpr ise-level data\n(from system service providers and package vendor infor mation) and local-level data held in",
+      "Phase C: Infor mation Systems Architectures — Data Architecture\nSteps\npersonal databases and spreadsheets.\nThe level of detail modeled needs to be carefully assessed. Some physical system data models\nwill exist down to a ver y detailed level; others will only have core entities modeled. Not all data\nmodels will have been kept up-to-date as applications were modiﬁed and extended over time. It\nis important to achieve a balance in the level of detail provided (e.g., reproducing existing\ndetailed system physical data schemas or presenting high-level process maps and data",
+      "necessar y, and in what manner.\nAlthough originally developed for use in the Defense sector, these models are ﬁnding increasing\nuse in other sectors of government, and may also be considered for use in non-government\nenvironments.\n8.2.4\nArchitecture Repository\nAs part of Phase B, the architecture team will need to consider what relevant Business\nArchitecture resources are available from the Architecture Repository (see Par t V, Chapter 41),\nin particular :\nI Gener ic business models relevant to the organization’s industr y sector.\nThese are",
+      "I Gener ic business models relevant to the organization’s industr y sector.\nThese are\n‘‘Industr y Architectures’’, in terms of the Enterpr ise Continuum. They are held in the\nReference Librar y of the Architecture Repository (see Par t V, Section 41.3). For example:\n— The Object Management Group (OMG) — www.omg.org — has a number of ver tical\nDomain Task Forces developing business models relevant to speciﬁc ver tical\ndomains such as Healthcare, Transpor tation, Finance, etc.\n— The TeleManagement For um (TMF) — www.tmfor um.org — has developed detailed",
+      "— The TeleManagement For um (TMF) — www.tmfor um.org — has developed detailed\nbusiness models relevant to the Telecommunications industry.\n— Gover nment depar tments and agencies in different countries have reference models\nand frameworks\nmandated for use,\nintended to promote cross-departmental\nintegration and interoperability. An example is the Federal Enterpr ise Architecture\nBusiness Reference Model, which is a function-driven framework for describing the\nbusiness operations of the Federal Government independent of the agencies that\nperfor m them.",
+      "Steps\nPhase B: Business Architecture\n8.4.1.4\nIdentify Required Matrices\nMatr ices show the core relationships between related model entities.\nMatr ices form the raw mater ial for dev elopment of views and also act as a key resource for\nimpact assessment, carried out as a part of gap analysis.\nThe following matrices should be considered for development within a Business Architecture:\nI Business interaction matrix (showing dependency and communication between\norganizations and actors)\nI Actor/role matrix (showing the roles undertaken by each actor)",
+      "organizations and actors)\nI Actor/role matrix (showing the roles undertaken by each actor)\nThe structure of matrices is based on the attributes of metamodel entities, as deﬁned in Par t IV,\nChapter 34.\n8.4.1.5\nIdentify Required Diagrams\nDiagrams present the Business Architecture infor mation from a set of different perspectives\n(viewpoints) according to the requirements of the stakeholders.\nThe following Diagrams should be considered for development within a Business Architecture:\nI Business Footpr int diagram\nI Business Service/Infor mation diagram\nI Functional Decomposition diagram",
+      "I Business Service/Infor mation diagram\nI Functional Decomposition diagram\nI Goal/Objective/Ser vice diagram\nI Use-case diagram\nI Organization Decomposition diagram\nI Process Flow diagram\nI Events diagram\nThe structure of diagrams is based on the attributes of metamodel entities, as deﬁned in Par t IV,\nChapter 34.\n8.4.1.6\nIdentify Types of Requirement to be Collected\nOnce the Business Architecture catalogs, matr ices, and diagrams have been developed,\narchitecture modeling is completed by for malizing the business-focused requirements for\nimplementing the Target Architecture.",
+      "Updates at the annual planning level provide a ﬁner level of ongoing guidance. Capability-based\nPlanning is one of many popular techniques for business planning.\nEnter prise architecture structures the business planning into an integrated framework that\nregards the enterpr ise as a system or system of systems. This integrated approach will validate\nthe business plan and can provide valuable feedback to the corporate planners. In some\norganizations, the enterpr ise architects have been moved to or wor k very closely with the",
+      "organizations, the enterpr ise architects have been moved to or wor k very closely with the\nstrategic direction groups. TOGAF delivers a framework for enterpr ise architecture.\nPortfolio/project management is the deliver y framework that receives the structured, detailed\ndirection that enables them to plan and build what is required, knowing that each assigned\ndeliverable will be in context (i.e., the piece of the puzzle that they deliver will ﬁt into the\ncor porate puzzle that is the enterpr ise architecture). Often this framework is based upon the",
+      "cor porate puzzle that is the enterpr ise architecture). Often this framework is based upon the\nProject Management Institute or UK Ofﬁce of Government Commerce (PRINCE2) project\nmanagement methodologies. Project architectures and detailed out-of-context design are often\nbased upon systems design methodologies.\nOperations management receives the deliverables and then integrates and sustains them within\nthe corporate infrastr ucture. Often the IT service management services are based upon ISO\n20000 or BS15000 (ITIL).\n6.2.7\nPlanning for Enterprise Architecture/Business Change Maturity Evaluation"
+    ],
+    "recuperados": [
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        6
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaInformacion.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        5
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        10
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        10
+      ],
+      [
+        "TOGAF_V9.1-ArquitecturaNegocio.pdf",
+        10
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        7
+      ],
+      [
+        "TOGAF_V9.1-FasePreliminar.pdf",
+        7
+      ]
+    ],
+    "sin_informacion": true,
+    "hit_recuperacion": null
+  }
+]

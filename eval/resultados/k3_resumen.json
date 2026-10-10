@@ -1,0 +1,22 @@
+{
+  "tag": "k3",
+  "nota": "Iteración solo de recuperación: respuestas reutilizadas del baseline; faithfulness y answer_relevancy NO re-medidas (cuota diaria de Groq).",
+  "config": {
+    "chunk_size": 600,
+    "chunk_overlap": 100,
+    "top_k": 3,
+    "min_relevance": 0.2,
+    "embedding_model": "paraphrase-multilingual-MiniLM-L12-v2",
+    "juez_ragas": "gemini:None"
+  },
+  "hit_rate_recuperacion": 0.562,
+  "contextos_promedio": 8.3,
+  "ragas": {
+    "context_precision": 0.107,
+    "context_recall": 0.281
+  },
+  "ragas_nan": {
+    "context_precision": 0,
+    "context_recall": 0
+  }
+}

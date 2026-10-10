@@ -1,0 +1,32 @@
+{
+  "tag": "base",
+  "config": {
+    "chunk_size": 600,
+    "chunk_overlap": 100,
+    "top_k": 5,
+    "min_relevance": 0.2,
+    "embedding_model": "paraphrase-multilingual-MiniLM-L12-v2",
+    "llm": "openai/gpt-oss-20b",
+    "juez_ragas": "gemini:None"
+  },
+  "basicas": {
+    "n_preguntas": 21,
+    "n_dentro_corpus": 16,
+    "n_fuera_corpus": 5,
+    "hit_rate_recuperacion": 0.75,
+    "abstencion_correcta_fuera_corpus": 1.0,
+    "abstencion_incorrecta_dentro_corpus": 0.312
+  },
+  "ragas": {
+    "faithfulness": 0.689,
+    "answer_relevancy": 0.563,
+    "context_precision": 0.178,
+    "context_recall": 0.5
+  },
+  "ragas_nan": {
+    "faithfulness": 0,
+    "answer_relevancy": 0,
+    "context_precision": 0,
+    "context_recall": 0
+  }
+}
