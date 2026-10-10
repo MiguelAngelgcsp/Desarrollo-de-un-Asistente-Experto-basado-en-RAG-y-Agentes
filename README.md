@@ -79,6 +79,7 @@ chat_bot_AE/
 │   ├── run_ragas.py          # evaluación (Ragas + hit-rate + abstención)
 │   ├── calibrar_umbral.py    # ayuda para elegir MIN_RELEVANCE
 │   ├── comparar.py           # tabla + gráfico antes/después
+│   ├── run_ctx_iter.py       # evaluación sin tokens de context precision y reacall
 │   └── resultados/           # salidas de cada evaluación
 ├── docs/                     # diagrama, generar_diagrama.py, texto del informe
 └── templates/ static/        # interfaz Flask
@@ -164,7 +165,9 @@ o reparte la evaluación en varios días.
 ### Iteración de mejora (cambia UN parámetro y compara)
 
 ```bash
-python -m eval.run_ragas --tag k10 --top-k 10                                 # ejemplo: top_k 5 → 10
+python -m eval.run_ragas --tag k3 --top-k 3                                 # ejemplo: top_k 5 → 3 este comando es cuando se usa el modelo de groq por defecto y se quiere validar el retriver
+
+python -m eval.run_ctx_iter --tag k3 --top-k 3 --workers 1 #Este solo evalua el context presision y el recall
 python -m eval.run_ragas --tag chunk450 --chunk-size 450 --chunk-overlap 80   # ejemplo: chunking
 python -m eval.comparar base k10                                              # tabla + gráfico en eval/resultados/
 ```
@@ -209,12 +212,12 @@ de Ragas se calculan sobre las preguntas que sí están en el corpus.
 `--min-relevance`, dado que la métrica más baja es context precision), correr `python -m eval.run_ragas --tag <nombre> ...`
 con el mismo juez y luego `python -m eval.comparar base <nombre>`.
 
-| Métrica | Antes (`base`) | Después (`<nombre>`) | Δ |
+| Métrica | Antes (`base`) | Después (`iteración`) | Δ |
 |---|---|---|---|
-| Faithfulness | 0.689 | | |
-| Answer relevancy | 0.563 | | |
-| Context precision | 0.178 | | |
-| Context recall | 0.500 | | |
+| Faithfulness | 0.689 | no re-media|-|
+| Answer relevancy | 0.563 | no re-media|-|
+| Context precision | 0.178 |0.107 |-0.071|
+| Context recall | 0.500 |0.281 |-0.219|
 
 ## 6. Despliegue en la nube (Streamlit Community Cloud)
 
