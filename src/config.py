@@ -69,3 +69,21 @@ LLM_TEMPERATURE = _float("LLM_TEMPERATURE", 0.0)
 
 # --- Conversación ---
 MAX_HISTORY_MESSAGES = _int("MAX_HISTORY_MESSAGES", 8)   # últimos mensajes (usuario+asistente)
+
+#------ Agente con herramientas (tools)--------
+# Los límites viven AQUÍ (en código) y no en el prompt: el LLM no puede cambiarlos.
+
+# --- Tool buscar_en_base ---
+TOOL_TOP_K = _int("TOOL_TOP_K", 4)                           # fragmentos "semilla" por similitud
+TOOL_MAX_FRAGMENTOS = _int("TOOL_MAX_FRAGMENTOS", 10)        # tope DURO de fragmentos devueltos por llamada
+TOOL_MAX_CHARS_FRAGMENTO = _int("TOOL_MAX_CHARS_FRAGMENTO", 700)  # tope DURO de caracteres por fragmento
+TOOL_MAX_CHARS_CONSULTA = _int("TOOL_MAX_CHARS_CONSULTA", 300)    # tope de la consulta que escribe el LLM
+
+# --- Bucle del agente ---
+AGENT_MAX_ITERACIONES = _int("AGENT_MAX_ITERACIONES", 5)     # máx. llamadas al LLM por pregunta
+AGENT_MAX_TOOLS_POR_ITERACION = _int("AGENT_MAX_TOOLS_POR_ITERACION", 3)  # tool calls paralelas aceptadas
+
+# --- Registro de uso de tools (una línea JSON por pregunta) ---
+LOG_DIR = BASE_DIR / os.environ.get("LOG_DIR", "logs")
+AGENT_LOG_FILE = LOG_DIR / "uso_tools.jsonl"
+ 
