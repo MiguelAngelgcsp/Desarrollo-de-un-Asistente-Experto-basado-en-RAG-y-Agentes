@@ -214,24 +214,6 @@ python -m eval.run_agente --costo --limit 8                                    #
 de la misma cuenta no ayuda). La evaluación completa lo agota. El script guarda las respuestas tras cada pregunta; si se
 corta con `RateLimitError`, espera a que se libere la cuota y repite el mismo comando con `--reusar-respuestas`.
 
-
-### 8. Desplegar en Streamlit Community Cloud
-
-1. En <https://share.streamlit.io> → **Create app** → *Deploy a public app from GitHub*.
-2. **Repository:** `MiguelAngelgcsp/Desarrollo-de-un-Asistente-Experto-basado-en-RAG-y-Agentes` ·
-   **Branch:** `feature/desarrollo-agente-tools` · **Main file path:** `streamlit_app.py` · **App URL:** `tutor-ae-avance3`.
-3. **Advanced settings → Secrets**, en formato TOML (una variable por línea, valor entre comillas rectas `"`, sin marcas de
-   bloque de código ni comillas tipográficas; ver `.streamlit/secrets.toml.example`):
-   ```toml
-   GROQ_API_KEY = "gsk_..."
-   GROQ_MODEL = "openai/gpt-oss-120b"
-   TAVILY_API_KEY = "tvly-..."
-   ```
-4. **Deploy.** El primer arranque tarda varios minutos: instala dependencias, descarga el modelo de embeddings y construye
-   el índice. Cada `push` a la rama redespliega la app. Las claves nunca van en el repositorio.
-
-En Docker/Render/Hugging Face se definen `GROQ_API_KEY` y `TAVILY_API_KEY` como variables de entorno.
-
 ### Problemas frecuentes y su solución
 
 | Síntoma | Causa | Solución |
