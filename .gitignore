@@ -1,5 +1,14 @@
-.env
+﻿.env
 /chroma/base
 /env
 __pycache__/
 *.pyc
+# Claves y secretos: nunca en el repositorio
+.streamlit/secrets.toml
+
+# Entornos y cach├®
+.venv/
+env_ragas/
+# ├ìndices vectoriales (se reconstruyen con: python -m scripts.build_index) y registro de uso de tools
+chroma/
+logs/

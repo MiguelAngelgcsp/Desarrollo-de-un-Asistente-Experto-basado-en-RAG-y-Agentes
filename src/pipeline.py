@@ -9,6 +9,7 @@ consulta + historial
 """
 
 import os
+import time
 
 from langchain_core.messages import HumanMessage, SystemMessage
 
@@ -18,7 +19,16 @@ from src.prompts import CONDENSE_PROMPT, NO_INFO, SYSTEM_PROMPT, construir_mensa
 MAX_CHARS_FRAGMENTO_UI = 600
 
 
-def reformular_pregunta(pregunta: str, historial, llm) -> str:
+def _sumar_uso(uso: dict | None, msg) -> None:
+    """Acumula llamadas y tokens del LLM (Avance 3: para comparar el costo con el agente)."""
+    if uso is None:
+        return
+    meta = getattr(msg, "usage_metadata", None) or {}
+    uso["llamadas_llm"] += 1
+    uso["tokens"] += int(meta.get("total_tokens") or (meta.get("input_tokens", 0) + meta.get("output_tokens", 0)) or 0)
+
+
+def reformular_pregunta(pregunta: str, historial, llm, uso: dict | None = None) -> str:
     """Convierte una pregunta de seguimiento en una pregunta autocontenida para la búsqueda."""
     if not historial:
         return pregunta
@@ -29,7 +39,9 @@ def reformular_pregunta(pregunta: str, historial, llm) -> str:
         ),
     ]
     try:
-        reescrita = llm.invoke(mensajes).content.strip().strip('"')
+        msg = llm.invoke(mensajes)
+        _sumar_uso(uso, msg)
+        reescrita = msg.content.strip().strip('"')
     except Exception:
         return pregunta  # si falla la reformulación, se busca con la pregunta original
     return reescrita or pregunta
@@ -84,9 +96,11 @@ def rag_pipeline(
     min_relevance: float = MIN_RELEVANCE,
     verbose: bool = True,
 ) -> dict:
+    t_ini = time.perf_counter()
+    uso = {"llamadas_llm": 0, "tokens": 0}
     historial = (historial or [])[-MAX_HISTORY_MESSAGES:]
 
-    consulta = reformular_pregunta(pregunta, historial, llm)
+    consulta = reformular_pregunta(pregunta, historial, llm, uso)
     recuperados = recuperar(consulta, vector_store, k=k, min_relevance=min_relevance)
     recuperados = expandir_vecinos(recuperados, vector_store)
     docs = [d for d, _ in recuperados]
@@ -105,13 +119,17 @@ def rag_pipeline(
             "fuentes": [],
             "fragmentos": [],
             "contextos": [],
+            "llamadas_llm": uso["llamadas_llm"], "tokens": uso["tokens"],
+            "segundos": round(time.perf_counter() - t_ini, 3),
         }
 
     mensajes = [
         SystemMessage(content=SYSTEM_PROMPT),
         HumanMessage(content=construir_mensaje_usuario(pregunta, docs, historial)),
     ]
-    respuesta = llm.invoke(mensajes).content.strip()
+    msg = llm.invoke(mensajes)
+    _sumar_uso(uso, msg)
+    respuesta = msg.content.strip()
     sin_info = respuesta.startswith(NO_INFO[:30])
 
     return {
@@ -123,4 +141,6 @@ def rag_pipeline(
         "fuentes": [] if sin_info else [_fuente_para_ui(d, s) for d, s in recuperados],
         "fragmentos": docs,
         "contextos": [d.page_content for d in docs],
+        "llamadas_llm": uso["llamadas_llm"], "tokens": uso["tokens"],
+        "segundos": round(time.perf_counter() - t_ini, 3),
     }

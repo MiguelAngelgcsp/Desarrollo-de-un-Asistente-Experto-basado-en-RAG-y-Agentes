@@ -1,0 +1,38 @@
+{
+  "tag": "agente",
+  "config": {
+    "chunk_size": 600,
+    "chunk_overlap": 100,
+    "top_k": 5,
+    "min_relevance": 0.2,
+    "embedding_model": "paraphrase-multilingual-MiniLM-L12-v2",
+    "llm": "openai/gpt-oss-120b",
+    "juez_ragas": "gemini:None"
+  },
+  "basicas": {
+    "n_preguntas": 21,
+    "n_dentro_corpus": 16,
+    "n_fuera_corpus": 5,
+    "hit_rate_recuperacion": 0.875,
+    "abstencion_correcta_fuera_corpus": 1.0,
+    "abstencion_incorrecta_dentro_corpus": 0.188
+  },
+  "agente": {
+    "preguntas_con_web": 1,
+    "llamadas_llm_promedio": 3.05,
+    "tokens_promedio": 10471.8,
+    "segundos_promedio": 41.96
+  },
+  "ragas": {
+    "faithfulness": 0.718,
+    "answer_relevancy": 0.618,
+    "context_precision": 0.282,
+    "context_recall": 0.344
+  },
+  "ragas_nan": {
+    "faithfulness": 0,
+    "answer_relevancy": 0,
+    "context_precision": 0,
+    "context_recall": 0
+  }
+}

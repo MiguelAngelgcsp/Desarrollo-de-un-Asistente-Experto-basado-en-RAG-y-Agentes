@@ -3,7 +3,8 @@ Interfaz web del Tutor Académico (Flask).
 
 - El historial lo mantiene el navegador y viaja en cada petición (sin estado en el servidor):
   funciona igual con varias instancias y no se pierde si el servidor se reinicia.
-- La respuesta incluye las fuentes (documento, página, sección y fragmento).
+- Avance 3: responde el AGENTE (src/agent.py). La respuesta incluye las tools usadas (con argumentos) y las
+  fuentes separadas por origen: base (documento, página, sección, fragmento) y web (título, URL, extracto).
 
 Local:   python app.py
 Nube:    gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120
@@ -13,11 +14,11 @@ import os
 
 from flask import Flask, jsonify, render_template, request
 
+from src.agent import Agente
 from src.config import MAX_HISTORY_MESSAGES
 from src.document_loader import load_documents
 from src.embeddings import get_embeddings
 from src.llm import get_llm
-from src.pipeline import rag_pipeline
 from src.splitter import split_documents
 from src.vectorstore import build_vector_store, indice_existe, load_vector_store
 
@@ -27,16 +28,16 @@ app = Flask(__name__)
 
 
 def iniciar_rag():
-    """Carga embeddings, índice y LLM UNA sola vez al arrancar."""
+    """Carga embeddings, índice, LLM y agente UNA sola vez al arrancar."""
     embeddings = get_embeddings()
     if indice_existe():
         vector_store = load_vector_store(embeddings)
     else:  # primer arranque sin índice precalculado
         vector_store = build_vector_store(split_documents(load_documents()), embeddings, force_rebuild=False)
-    return vector_store, get_llm()
+    return Agente(get_llm(), vector_store)
 
 
-vector_store, llm = iniciar_rag()
+agente = iniciar_rag()
 
 
 def _limpiar_historial(raw):
@@ -68,17 +69,19 @@ def chat():
         return jsonify({"error": f"La pregunta supera {MAX_CHARS_PREGUNTA} caracteres"}), 400
 
     try:
-        r = rag_pipeline(pregunta, vector_store, llm, historial=_limpiar_historial(data.get("history")))
+        r = agente.responder(pregunta, _limpiar_historial(data.get("history")))
     except Exception as e:  # p. ej. límite de la API de Groq
-        app.logger.exception("Error en el pipeline RAG")
+        app.logger.exception("Error en el agente")
         return jsonify({"error": f"No se pudo generar la respuesta: {type(e).__name__}. Intenta de nuevo."}), 500
 
     return jsonify(
         {
             "answer": r["respuesta"],
-            "sources": r["fuentes"],
+            "sources": r["fuentes_base"],        # origen: base
+            "web_sources": r["fuentes_web"],     # origen: web
+            "tools": r["tools_usadas"],          # qué tools llamó y con qué argumentos
             "no_info": r["sin_informacion"],
-            "search_query": r["pregunta_reformulada"],
+            "meta": {"llamadas_llm": r["llamadas_llm"], "tokens": r["tokens"], "segundos": r["segundos"]},
         }
     )
 

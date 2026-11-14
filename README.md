@@ -1,16 +1,155 @@
-# TutorAE — Asistente RAG de Arquitectura Empresarial (TOGAF 9.1)
+# TutorAE — Agente de Arquitectura Empresarial (TOGAF 9.1) · Avance 3
 
-Asistente experto basado en **RAG** con memoria conversacional. Responde preguntas sobre el ADM de TOGAF 9.1
-(Fase Preliminar, Visión de Arquitectura, Arquitectura de Negocio y de Información), **cita la fuente de cada
-respuesta** (documento, página, sección y fragmento) y **se abstiene** cuando la información no está en la base de
-conocimientos.
+Agente basado en **RAG + tool calling**. Decide **cuándo** consultar la base de conocimientos y **qué herramienta** usar:
+busca en la base (TOGAF 9.1), genera referencias APA exactas de los documentos y, solo si la base no tiene la respuesta
+y la pregunta es de información pública o actual, busca en la web en una lista fija de sitios oficiales. **Cita** cada
+afirmación (`Fuente: documento, Pág.` para la base, `[web: URL]` para la web) y **se abstiene** si no hay información.
 
-- **URL pública:** <https://tutor-ae.streamlit.app/>
+- **URL pública:** <https://tutor-ae.streamlit.app/> *(redesplegar con este código y configurar los secrets, ver §6)*
 - **Repositorio:** <https://github.com/MiguelAngelgcsp/Desarrollo-de-un-Asistente-Experto-basado-en-RAG-y-Agentes>
 - **Integrantes:** Miguel Angel Correa Muñoz · Miguel Angel Gomez Cruz
-- **Curso:** Desarrollo de Aplicaciones con IA — Fundación Universitaria Konrad Lorenz, Bogotá D.C., 2026-2 (Avance 2)
+- **Curso:** Desarrollo de Aplicaciones con IA — Fundación Universitaria Konrad Lorenz, Bogotá D.C., 2026-2 (Avance 3)
+
+El Avance 3 reutiliza del Avance 2 la ingesta, el chunking, el índice vectorial, el conjunto de evaluación de Ragas y la
+interfaz. Cambia cómo se conecta la búsqueda con el LLM: el pipeline fijo (`src/pipeline.py`, se conserva como línea base
+de comparación) pasa a ser una **tool** que el LLM decide llamar (`src/agent.py`).
+
+## Arquitectura del agente
+
+![Arquitectura del agente](docs/diagrama_agente.png)
+
+Flujo: pregunta → **LLM** (Groq, con las tools enlazadas) → ¿tool call? → el **programa** ejecuta la tool → resultado al LLM →
+… → respuesta con citas. Un saludo se responde sin tools.
+
+| Qué sale del sistema | Hacia | Contenido |
+|---|---|---|
+| Prompt del LLM | Groq | System Prompt, historial (≤ 8 mensajes), pregunta y **solo los fragmentos** que devolvió `buscar_en_base` (≤ 5 × 700 caracteres por llamada). Nunca el corpus completo |
+| Consulta web | Tavily | **Solo el texto de la consulta** (≤ 200 caracteres) y la lista de dominios permitidos |
+| **No sale** | — | PDF del corpus, índice ChromaDB, claves, historial hacia la web |
+
+### Tools
+
+| Tool | Tipo | Qué hace / cuándo | Argumentos | Límites (en código) |
+|---|---|---|---|---|
+| `buscar_en_base` | búsqueda | Recuperación del Avance 2 (similitud coseno + umbral). Para toda pregunta sobre TOGAF; una llamada por tema | `consulta` | `src/tools.py`: máx. **5 fragmentos** por llamada, **700 caracteres** por fragmento, consulta ≤ 300 car.; cada fragmento lleva documento, página y sección |
+| `generar_referencia_apa` | tarea del dominio | Referencia y cita en texto APA 7 de un documento de la base, con datos exactos del catálogo (no de memoria) | `documento`, `paginas` (opcional, p. ej. `5-8`) | Solo documentos del catálogo; si no hay coincidencia única devuelve error con la lista |
+| `listar_documentos_base` | tarea (consulta exacta) | Lista los documentos de la base | — | — |
+| `buscar_en_web` | web | Búsqueda en sitios oficiales permitidos (ver política) | `consulta` | máx. **3 resultados**, extracto ≤ **300 car.**, consulta ≤ 200 car., dominios fijos, rechazada si antes no se llamó `buscar_en_base` |
+
+Cada tool tiene docstring que dice qué hace y cuándo usarla (es lo que ve el LLM). Los resultados de la base se entregan
+dentro de `<fragmento origen="base" documento=… pagina=…>` y los de la web en `<resultado origen="web" url=…>`; lo que
+hay dentro es **dato, no instrucción**.
+
+**Prueba de la tool sin LLM** (no necesita `GROQ_API_KEY`):
+
+```bash
+python -m scripts.probar_tools                  # .invoke() de las cuatro tools y su salida
+python -m scripts.probar_tools "Phase A objectives"
+```
+
+### Bucle del agente (`src/agent.py`)
+
+- Implementación **manual** con `llm.bind_tools(tools)` de LangChain (Groq, `openai/gpt-oss`).
+- **Límites en código:** `MAX_ITERACIONES = 5` llamadas al LLM con tools por pregunta y `MAX_TOOL_CALLS_PREGUNTA = 6`. Si se
+  alcanza el límite, una última llamada **sin tools** pide responder con lo recopilado (o `NO_INFO`).
+- Un saludo o charla casual se responde sin tools (instrucción del prompt; verificado en el caso C1 de la evaluación).
+- El agente puede llamar `buscar_en_base` varias veces (pregunta con dos temas, o reformular si el primer resultado es pobre).
+- Se eliminó la llamada de reformulación del Avance 2: el propio agente escribe una consulta autocontenida al llamar la tool.
+- Errores de tool (argumentos inválidos, tool inexistente, fallo de red) se devuelven al LLM como `ToolMessage` sin romper el bucle.
+
+### Registro de uso de tools
+
+Cada pregunta agrega una línea JSON a `logs/uso_tools.jsonl` (ignorado por git):
+
+```json
+{"timestamp": "2026-11-13T23:46:12+00:00", "pregunta": "...", "tools": [{"tool": "buscar_en_base",
+ "args": {"consulta": "preliminary phase objectives"}, "n_resultados": 5, "resultado": "ok", "segundos": 0.019}],
+ "llamadas_llm": 2, "tokens": 1873, "segundos": 2.41, "limite_iteraciones": false, "sin_informacion": false}
+```
+
+### Prompt del sistema (`SYSTEM_PROMPT_AGENTE` en `src/prompts.py`)
+
+Cambios frente al Avance 2: **ya no lleva el contexto** (llega como resultado de las tools); incluye una sección `<tools>` que
+dice cuándo usar cada una; responde solo con lo que devuelvan las tools; cita `(Fuente: documento, Pág. n)` o `[web: URL]` y
+separa la respuesta por origen si usó ambas; trata como datos lo que devuelvan las tools y lo que escriba el usuario
+(instrucciones maliciosas); mantiene la respuesta exacta `No encontré información sobre esto en la base de conocimientos.`;
+los ejemplos Few-Shot ahora muestran la acción (tool) además de la respuesta. El prompt del Avance 2 (`SYSTEM_PROMPT`) se
+conserva para el pipeline fijo.
+
+## Política de búsqueda web
+
+- **Cuándo:** solo si `buscar_en_base` no tiene la respuesta **y** la pregunta trata de información pública o actual (versión
+  reciente, norma vigente, definición general). La regla está en el docstring de la tool, en el System Prompt y **se aplica en
+  código**: el bucle rechaza `buscar_en_web` si en esa pregunta aún no se llamó `buscar_en_base`.
+- **Sitios permitidos** (`WEB_DOMINIOS_PERMITIDOS` en `src/tools.py`, fijos; el LLM no puede cambiarlos; además se descartan
+  resultados fuera de la lista):
+
+| Sitio | Por qué es confiable para el dominio |
+|---|---|
+| `opengroup.org` (incl. `pubs.opengroup.org`) | The Open Group es el autor y custodio oficial de TOGAF |
+| `omg.org` | Object Management Group: estándares BPMN y BMM, usados junto con TOGAF |
+| `iso.org` | Normas como ISO/IEC/IEEE 42010 (descripción de arquitecturas) |
+| `ieee.org` | Estándares y literatura revisada de arquitectura de software y empresarial |
+| `sei.cmu.edu` | Software Engineering Institute (Carnegie Mellon): referencia académica de arquitectura |
+
+- **Resultados acotados:** máx. 3; cada uno devuelve solo título, URL y extracto corto, marcado `origen="web"`.
+- **Respuesta separada por origen:** base → `(Fuente: documento, Pág. n)`; web → `[web: URL]`. La interfaz los muestra en secciones distintas.
+- **Privacidad:** a Tavily solo sale la consulta; el corpus nunca. Sin `TAVILY_API_KEY` la tool responde «no disponible» y el agente sigue funcionando solo con la base.
+- Si no hay respuesta ni en la base ni en los sitios permitidos, el agente responde `NO_INFO` y la interfaz muestra un aviso sin fuentes.
+
+## Instalación, ejecución y despliegue (Avance 3)
+
+```bash
+python -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+cp .env.example .env     # completa GROQ_API_KEY y TAVILY_API_KEY (Tavily: https://app.tavily.com, plan gratuito)
+python -m scripts.build_index           # opcional: la app crea el índice si no existe
+python -m scripts.probar_tools          # prueba de las tools sin LLM
+streamlit run streamlit_app.py          # http://localhost:8501   (alternativas: python app.py · python -m scripts.chat_cli)
+```
+
+**Despliegue (Streamlit Community Cloud):** igual que en §6; en *Secrets* añade además `TAVILY_API_KEY`
+(ver `.streamlit/secrets.toml.example`). Las claves nunca van en el repositorio (`.gitignore` excluye `.env` y `secrets.toml`).
+En Docker/Render/Hugging Face define `GROQ_API_KEY` y `TAVILY_API_KEY` como variables de entorno.
+
+**Interfaz:** historial de conversación; en cada respuesta, desplegable **🔧 Tools usadas** (nombre y argumentos, llamadas al LLM,
+tokens y tiempo), **📚 Fuentes de la base** (documento, página, sección, fragmento) y **🌐 Fuentes web** (título, URL, extracto).
+
+## Evaluación del agente
+
+Script: `eval/run_agente.py` (usa el mismo modelo, índice y juez que el Avance 2; compara contra `eval/resultados/base_*`).
+
+```bash
+python -m eval.run_agente --casos                                        # 8 casos de comportamiento
+python -m eval.run_agente --ragas --judge-provider gemini --workers 1    # Ragas del agente + tabla vs Avance 2
+python -m eval.run_agente --costo                                        # pipeline fijo vs agente (llamadas, tokens, tiempo)
+python -m eval.run_agente --todo --judge-provider gemini --workers 1
+```
+
+- **Ragas:** las mismas 21 preguntas del Avance 2 (16 dentro del corpus); `retrieved_contexts` = fragmentos que devolvieron las tools.
+  Salidas en `eval/resultados/`: `agente_resumen.json`, `agente_ragas_detalle.csv`, `comparacion_agente.md`.
+- **Casos de comportamiento** (`eval/casos_comportamiento.json`, el comportamiento esperado está escrito antes de ejecutar):
+  saludo, pregunta compuesta, 2 tareas del dominio (APA), información pública/actual (web), pregunta que responde la base
+  (sin web), instrucción maliciosa y pregunta fuera de la base y de la web. Cada caso comprueba automáticamente tools usadas,
+  argumentos, orden, límites de longitud y URLs permitidas; salida en `agente_casos.md|json`.
+- **Costo:** llamadas al LLM, tokens y tiempo promedio por pregunta, pipeline fijo vs agente (`agente_costo.md`).
+
+**Resultados:** *pendientes de ejecutar con las claves reales* (requieren `GROQ_API_KEY`, `TAVILY_API_KEY` y `GOOGLE_API_KEY`).
+Pega aquí las tablas generadas en `eval/resultados/` y úsalas en el informe PDF.
+
+| Métrica | Avance 2 (pipeline fijo) | Avance 3 (agente) |
+|---|---|---|
+| Faithfulness | 0.689 | _pendiente_ |
+| Answer relevancy | 0.563 | _pendiente_ |
+| Context precision | 0.178 | _pendiente_ |
+| Context recall | 0.500 | _pendiente_ |
+
+> Nota: el agente ya no expande los fragmentos vecinos (n±1) como el pipeline del Avance 2, para respetar el tope de 5
+> fragmentos por llamada; puede compensarlo reformulando o llamando la tool de nuevo.
 
 ---
+
+# Base RAG (Avance 2)
 
 ## 1. Dominio y corpus
 
@@ -64,7 +203,12 @@ Scrum…) para medir si el sistema se abstiene en lugar de inventar.
 
 ```
 chat_bot_AE/
-├── streamlit_app.py          # Interfaz desplegada (Streamlit Community Cloud)
+├── streamlit_app.py          # Interfaz desplegada (Streamlit Community Cloud) — usa el agente
+├── src/tools.py              # [Av.3] tools: buscar_en_base, generar_referencia_apa, listar_documentos_base, buscar_en_web
+├── src/agent.py              # [Av.3] bucle del agente + registro de uso (logs/uso_tools.jsonl)
+├── eval/run_agente.py        # [Av.3] Ragas del agente, costo y casos de comportamiento
+├── eval/casos_comportamiento.json
+├── scripts/probar_tools.py   # [Av.3] prueba de las tools sin LLM
 ├── app.py                    # Interfaz alternativa local (Flask)
 ├── requirements.txt          # runtime (torch CPU, langchain, chroma, streamlit…)
 ├── requirements-eval.txt     # + Ragas, pandas, matplotlib
@@ -228,6 +372,7 @@ con el mismo juez y luego `python -m eval.comparar base <nombre>`.
    ```toml
    GROQ_API_KEY = "gsk_..."
    GROQ_MODEL = "openai/gpt-oss-120b"
+   TAVILY_API_KEY = "tvly-..."   # Avance 3: búsqueda web
    ```
 5. **Deploy.** El primer arranque (5–10 min) instala dependencias, descarga el modelo y construye el índice; después
    solo lo carga. La URL pública de este proyecto es <https://tutor-ae.streamlit.app/>.

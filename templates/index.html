@@ -10,20 +10,22 @@
 <div class="app">
   <header>
     <div>
-      <h1>Tutor Académico Konrad Lorenz</h1>
-      <p>Pregunta sobre TOGAF 9.1 y el ADM: Fase Preliminar, Visión de Arquitectura, Arquitectura de Negocio y de Información</p>
+      <h1>TutorAE · Agente de Arquitectura Empresarial</h1>
+      <p>Agente con tools: consulta primero la base de TOGAF 9.1 y solo busca en la web (sitios oficiales) si la base no responde</p>
     </div>
     <button id="reset" title="Borrar la conversación">Nueva conversación</button>
   </header>
 
   <main id="messages" aria-live="polite">
     <div class="msg bot"><div class="bubble">
-      ¡Hola! Respondo solo con base en los documentos cargados y te muestro las fuentes.
+      ¡Hola! Soy un agente: decido qué tools usar y te muestro cuáles usé y las fuentes (base y web).
       Puedes hacer preguntas de seguimiento. Prueba con:
       <div class="chips">
         <button class="chip">¿Cuáles son los objetivos principales de la Fase A (Architecture Vision)?</button>
         <button class="chip">¿Cuáles son las cuatro dimensiones que definen el alcance de una arquitectura?</button>
         <button class="chip">¿Qué es la Fase Preliminar de TOGAF?</button>
+        <button class="chip">Dame la referencia APA de la Fase Preliminar, páginas 5 a 8</button>
+        <button class="chip">¿Cuál es la versión más reciente de TOGAF publicada por The Open Group?</button>
       </div>
     </div></div>
   </main>
@@ -66,7 +68,21 @@ function fuentesHtml(fuentes) {
     return `<div class="src"><div class="src-h"><strong>${esc(f.documento)}</strong><span>${esc(meta)}</span></div>
             <blockquote>${esc(f.fragmento)}</blockquote></div>`;
   }).join("");
-  return `<details class="sources"><summary>Fuentes (${fuentes.length})</summary>${items}</details>`;
+  return `<details class="sources"><summary>📚 Fuentes de la base (${fuentes.length})</summary>${items}</details>`;
+}
+
+function webHtml(web) {
+  if (!web || !web.length) return "";
+  const items = web.map(w => `<div class="src"><div class="src-h"><a href="${esc(w.url)}" target="_blank" rel="noopener noreferrer"><strong>${esc(w.titulo || w.url)}</strong></a><span>web</span></div>
+            <blockquote>${esc(w.extracto)}</blockquote></div>`).join("");
+  return `<details class="sources"><summary>🌐 Fuentes web (${web.length})</summary>${items}</details>`;
+}
+
+function toolsHtml(tools, meta) {
+  if (!tools || !tools.length) return `<p class="meta">🔧 Sin tools: el agente respondió directamente.</p>`;
+  const items = tools.map(t => `<div class="src"><strong>${esc(t.tool)}</strong><pre>${esc(JSON.stringify(t.args, null, 2))}</pre></div>`).join("");
+  const m = meta ? `<p class="meta">${meta.llamadas_llm} llamadas al LLM · ${meta.tokens} tokens · ${meta.segundos} s</p>` : "";
+  return `<details class="sources"><summary>🔧 Tools usadas (${tools.length})</summary>${items}${m}</details>`;
 }
 
 function addMsg(rol, html, extra = "") {
@@ -80,7 +96,7 @@ function addMsg(rol, html, extra = "") {
 
 async function enviar(texto) {
   addMsg("user", "<p>" + esc(texto) + "</p>");
-  const espera = addMsg("bot", '<p class="typing">Buscando en los documentos…</p>');
+  const espera = addMsg("bot", '<p class="typing">El agente está decidiendo qué tools usar…</p>');
   sendBtn.disabled = true; input.disabled = true;
   try {
     const r = await fetch("/api/chat", {
@@ -91,7 +107,8 @@ async function enviar(texto) {
     const data = await r.json();
     espera.remove();
     if (!r.ok) { addMsg("bot error", "<p>" + esc(data.error || "Error del servidor") + "</p>"); return; }
-    addMsg("bot" + (data.no_info ? " noinfo" : ""), fmt(data.answer), fuentesHtml(data.sources));
+    addMsg("bot" + (data.no_info ? " noinfo" : ""), fmt(data.answer),
+           toolsHtml(data.tools, data.meta) + fuentesHtml(data.sources) + webHtml(data.web_sources));
     history.push({ role: "user", content: texto }, { role: "assistant", content: data.answer });
     history = history.slice(-8);
   } catch (e) {

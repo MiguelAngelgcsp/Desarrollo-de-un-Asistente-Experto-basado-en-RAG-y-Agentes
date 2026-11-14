@@ -1,0 +1,115 @@
+{
+  "pipeline_fijo": {
+    "llamadas_llm": 1,
+    "tokens": 3683,
+    "segundos": 17.17
+  },
+  "agente": {
+    "llamadas_llm": 3.62,
+    "tokens": 12910.88,
+    "segundos": 74.35
+  },
+  "n_preguntas": 8,
+  "detalle": {
+    "pipeline_fijo": [
+      {
+        "id": "Q01",
+        "llamadas_llm": 1,
+        "tokens": 3948,
+        "segundos": 2.32
+      },
+      {
+        "id": "Q02",
+        "llamadas_llm": 1,
+        "tokens": 3753,
+        "segundos": 25.553
+      },
+      {
+        "id": "Q03",
+        "llamadas_llm": 1,
+        "tokens": 3444,
+        "segundos": 24.519
+      },
+      {
+        "id": "Q04",
+        "llamadas_llm": 1,
+        "tokens": 4190,
+        "segundos": 23.586
+      },
+      {
+        "id": "Q05",
+        "llamadas_llm": 1,
+        "tokens": 3614,
+        "segundos": 9.467
+      },
+      {
+        "id": "Q06",
+        "llamadas_llm": 1,
+        "tokens": 3558,
+        "segundos": 6.006
+      },
+      {
+        "id": "Q07",
+        "llamadas_llm": 1,
+        "tokens": 3211,
+        "segundos": 22.309
+      },
+      {
+        "id": "Q08",
+        "llamadas_llm": 1,
+        "tokens": 3746,
+        "segundos": 23.58
+      }
+    ],
+    "agente": [
+      {
+        "id": "Q01",
+        "llamadas_llm": 3,
+        "tokens": 9774,
+        "segundos": 42.425
+      },
+      {
+        "id": "Q02",
+        "llamadas_llm": 2,
+        "tokens": 5870,
+        "segundos": 42.606
+      },
+      {
+        "id": "Q03",
+        "llamadas_llm": 5,
+        "tokens": 19136,
+        "segundos": 133.884
+      },
+      {
+        "id": "Q04",
+        "llamadas_llm": 4,
+        "tokens": 14873,
+        "segundos": 71.388
+      },
+      {
+        "id": "Q05",
+        "llamadas_llm": 2,
+        "tokens": 6241,
+        "segundos": 49.049
+      },
+      {
+        "id": "Q06",
+        "llamadas_llm": 3,
+        "tokens": 9820,
+        "segundos": 53.289
+      },
+      {
+        "id": "Q07",
+        "llamadas_llm": 6,
+        "tokens": 23190,
+        "segundos": 123.244
+      },
+      {
+        "id": "Q08",
+        "llamadas_llm": 4,
+        "tokens": 14383,
+        "segundos": 78.939
+      }
+    ]
+  }
+}
