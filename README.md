@@ -5,7 +5,7 @@ busca en la base (TOGAF 9.1), genera referencias APA exactas de los documentos y
 y la pregunta es de información pública o actual, busca en la web en una lista fija de sitios oficiales. **Cita** cada
 afirmación (`Fuente: documento, Pág.` para la base, `[web: URL]` para la web) y **se abstiene** si no hay información.
 
-- **URL pública:** <https://tutor-ae.streamlit.app/> *(redesplegar con este código y configurar los secrets, ver §6)*
+- **URL pública (Avance 3):** <https://tutor-ae-avance3.streamlit.app/> *(desplegada desde la rama `feature/desarrollo-agente-tools`; el Avance 2 sigue en `main`)*
 - **Repositorio:** <https://github.com/MiguelAngelgcsp/Desarrollo-de-un-Asistente-Experto-basado-en-RAG-y-Agentes>
 - **Integrantes:** Miguel Angel Correa Muñoz · Miguel Angel Gomez Cruz
 - **Curso:** Desarrollo de Aplicaciones con IA — Fundación Universitaria Konrad Lorenz, Bogotá D.C., 2026-2 (Avance 3)
@@ -97,23 +97,156 @@ conserva para el pipeline fijo.
 - **Privacidad:** a Tavily solo sale la consulta; el corpus nunca. Sin `TAVILY_API_KEY` la tool responde «no disponible» y el agente sigue funcionando solo con la base.
 - Si no hay respuesta ni en la base ni en los sitios permitidos, el agente responde `NO_INFO` y la interfaz muestra un aviso sin fuentes.
 
-## Instalación, ejecución y despliegue (Avance 3)
+## Instalación, ejecución y despliegue (Avance 3) — guía paso a paso en Windows
 
-```bash
-python -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-cp .env.example .env     # completa GROQ_API_KEY y TAVILY_API_KEY (Tavily: https://app.tavily.com, plan gratuito)
-python -m scripts.build_index           # opcional: la app crea el índice si no existe
-python -m scripts.probar_tools          # prueba de las tools sin LLM
-streamlit run streamlit_app.py          # http://localhost:8501   (alternativas: python app.py · python -m scripts.chat_cli)
+Esta guía recoge, en orden, todo lo que hizo falta para abrir y probar el sistema en Windows 10/11 con PowerShell
+(o la terminal de Visual Studio Code: *Terminal → Nueva terminal*). Los problemas que aparecieron en el camino están
+resumidos en la tabla de [problemas frecuentes](#problemas-frecuentes-y-su-solución).
+
+### 0. Requisitos y claves
+
+| Qué | Para qué | Dónde se obtiene |
+|---|---|---|
+| **Python 3.11 o 3.12** (con «Add python.exe to PATH») | Ejecutar el proyecto. Con 3.13+ varias librerías de IA no tienen instaladores | <https://www.python.org/downloads/> |
+| **Git** | Clonar el repositorio y subir cambios | <https://git-scm.com/download/win> |
+| **`GROQ_API_KEY`** | El LLM del agente (`openai/gpt-oss-120b`) | <https://console.groq.com> |
+| **`TAVILY_API_KEY`** | La búsqueda web (sin ella el agente funciona solo con la base) | <https://app.tavily.com> (plan gratuito) |
+| **`GOOGLE_API_KEY`** | Solo para evaluar: es el juez (Gemini) de Ragas | <https://aistudio.google.com/apikey> |
+
+Tras instalar Git o Python, **cierra y vuelve a abrir** la terminal o VS Code: si no, no reconoce el comando nuevo.
+Comprueba con `python --version` y `git --version`. Configura Git una sola vez:
+
+```powershell
+git config --global user.name "Tu nombre"
+git config --global user.email "correo-de-tu-cuenta-de-github@ejemplo.com"
 ```
 
-**Despliegue (Streamlit Community Cloud):** igual que en §6; en *Secrets* añade además `TAVILY_API_KEY`
-(ver `.streamlit/secrets.toml.example`). Las claves nunca van en el repositorio (`.gitignore` excluye `.env` y `secrets.toml`).
-En Docker/Render/Hugging Face define `GROQ_API_KEY` y `TAVILY_API_KEY` como variables de entorno.
+### 1. Obtener el código
 
-**Interfaz:** historial de conversación; en cada respuesta, desplegable **🔧 Tools usadas** (nombre y argumentos, llamadas al LLM,
-tokens y tiempo), **📚 Fuentes de la base** (documento, página, sección, fragmento) y **🌐 Fuentes web** (título, URL, extracto).
+```powershell
+cd C:\proyectos                       # ruta CORTA y sin espacios (ver problemas frecuentes)
+git clone https://github.com/MiguelAngelgcsp/Desarrollo-de-un-Asistente-Experto-basado-en-RAG-y-Agentes.git repo
+cd repo
+git checkout feature/desarrollo-agente-tools
+```
+
+### 2. Crear el entorno virtual (una sola vez)
+
+Se crea en una ruta corta fuera del proyecto. Al crearlo dentro de una carpeta con ruta larga y espacios
+(`Desktop\APLICACIONES CON IA\...`) falló la instalación inicial de pip (`ensurepip ... non-zero exit status 1`).
+
+```powershell
+python -m venv C:\venvs\rag
+& C:\venvs\rag\Scripts\Activate.ps1          # debe aparecer (rag) al inicio de la línea
+python -m pip --version                       # la ruta debe incluir C:\venvs\rag\Lib\site-packages\pip
+```
+
+Si PowerShell dice que la ejecución de scripts está deshabilitada: `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`.
+En cada terminal nueva solo hay que **activar** el entorno (la segunda línea) desde la carpeta del proyecto.
+
+### 3. Instalar dependencias
+
+Con `(rag)` activo y desde la carpeta del proyecto (donde está `requirements.txt`):
+
+```powershell
+python -m pip install -r requirements.txt
+python -m pip check                           # esperado: No broken requirements found.
+python -c "import torch, langchain, chromadb, streamlit; print('Dependencias principales correctas')"
+```
+
+Si la última línea falla con `No module named 'langchain'`, instala el paquete y añade la línea `langchain` a `requirements.txt`:
+
+```powershell
+python -m pip install langchain
+```
+
+### 4. Configurar las claves
+
+```powershell
+copy .env.example .env
+notepad .env          # pega GROQ_API_KEY y TAVILY_API_KEY (y GOOGLE_API_KEY si vas a evaluar)
+```
+
+El archivo `.env` está en `.gitignore`: nunca se sube al repositorio.
+
+### 5. Probar el sistema
+
+```powershell
+python -m scripts.probar_tools      # las 4 tools con .invoke(), SIN LLM. La primera vez descarga el modelo de embeddings
+python -m scripts.chat_cli          # chat por consola: muestra las tools usadas, llamadas al LLM, tokens y tiempo
+streamlit run streamlit_app.py      # interfaz web en http://localhost:8501
+```
+
+El índice vectorial (`chroma/`) no está en el repositorio: la app lo construye sola desde `corpus/` la primera vez
+(o con `python -m scripts.build_index`).
+
+### 6. Evaluar (opcional, para reproducir los resultados)
+
+```powershell
+python -m pip install -r requirements-eval.txt     # Ragas, pandas, matplotlib, langchain-google-genai
+```
+
+Dos arreglos únicos que pidió Ragas en esta instalación:
+
+1. **Parche de `ChatVertexAI`.** Si falla con `No module named 'langchain_community.chat_models.vertexai'`, abre
+   `C:\venvs\rag\Lib\site-packages\ragas\llms\base.py` y reemplaza (línea ~12)
+   `from langchain_community.chat_models.vertexai import ChatVertexAI` por:
+   ```python
+   try:
+       from langchain_community.chat_models.vertexai import ChatVertexAI
+   except ImportError:
+       ChatVertexAI = None
+   ```
+   Se pierde si se reinstala `ragas`.
+2. **Variable de GitPython.** Si falla con `Bad git executable`, es que `git` no está en el PATH: instala Git (paso 0) o
+   define `$env:GIT_PYTHON_REFRESH = "quiet"` en esa terminal.
+
+Orden recomendado (de lo más barato en tokens a lo más caro):
+
+```powershell
+python -m eval.run_agente --casos                                              # 8 casos de comportamiento
+python -m eval.run_agente --ragas --judge-provider gemini --workers 1          # Ragas (guarda tras cada pregunta)
+python -m eval.run_agente --ragas --judge-provider gemini --workers 1 --reusar-respuestas   # reanudar / repetir solo Ragas
+python -m eval.run_agente --costo --limit 8                                    # costo pipeline fijo vs agente
+```
+
+**Límite de Groq:** el plan gratuito permite 200.000 tokens por día **por organización** (no por clave: crear otra clave
+de la misma cuenta no ayuda). La evaluación completa lo agota. El script guarda las respuestas tras cada pregunta; si se
+corta con `RateLimitError`, espera a que se libere la cuota y repite el mismo comando con `--reusar-respuestas`.
+
+
+### 8. Desplegar en Streamlit Community Cloud
+
+1. En <https://share.streamlit.io> → **Create app** → *Deploy a public app from GitHub*.
+2. **Repository:** `MiguelAngelgcsp/Desarrollo-de-un-Asistente-Experto-basado-en-RAG-y-Agentes` ·
+   **Branch:** `feature/desarrollo-agente-tools` · **Main file path:** `streamlit_app.py` · **App URL:** `tutor-ae-avance3`.
+3. **Advanced settings → Secrets**, en formato TOML (una variable por línea, valor entre comillas rectas `"`, sin marcas de
+   bloque de código ni comillas tipográficas; ver `.streamlit/secrets.toml.example`):
+   ```toml
+   GROQ_API_KEY = "gsk_..."
+   GROQ_MODEL = "openai/gpt-oss-120b"
+   TAVILY_API_KEY = "tvly-..."
+   ```
+4. **Deploy.** El primer arranque tarda varios minutos: instala dependencias, descarga el modelo de embeddings y construye
+   el índice. Cada `push` a la rama redespliega la app. Las claves nunca van en el repositorio.
+
+En Docker/Render/Hugging Face se definen `GROQ_API_KEY` y `TAVILY_API_KEY` como variables de entorno.
+
+### Problemas frecuentes y su solución
+
+| Síntoma | Causa | Solución |
+|---|---|---|
+| `venv ... ensurepip ... non-zero exit status 1` | Ruta larga o con espacios, OneDrive o antivirus | Crear el entorno en una ruta corta: `python -m venv C:\venvs\rag` |
+| `.venv\Scripts\activate : El módulo '.venv' no pudo cargarse` | El entorno no se creó (error anterior) o el comando está mal escrito | Usar `& C:\venvs\rag\Scripts\Activate.ps1` |
+| `git : El término 'git' no se reconoce` | Git no instalado o terminal sin reiniciar | Instalar Git y reabrir VS Code |
+| `No module named 'langchain'` | Falta el paquete principal | `python -m pip install langchain` |
+| `No module named 'ragas'` | Solo se instaló `requirements.txt` | `python -m pip install -r requirements-eval.txt` |
+| `No module named 'langchain_community.chat_models.vertexai'` | Incompatibilidad conocida de Ragas | Parche del paso 6 |
+| `ImportError: Bad git executable` (GitPython) | `git` fuera del PATH | Instalar Git o `$env:GIT_PYTHON_REFRESH = "quiet"` |
+| `429 ... tokens per day (TPD): Limit 200000` | Cuota diaria de Groq agotada (por organización) | Esperar y reanudar con `--reusar-respuestas`; o Dev Tier de Groq |
+| `src refspec ... does not match any` al hacer push | Rama local inexistente o nombre mal escrito | `git switch -c feature/desarrollo-agente-tools` y revisar el nombre |
+| `[rejected] ... non-fast-forward` | La rama remota tiene commits nuevos | `git pull --rebase origin <rama>` y volver a hacer push |
+| `Invalid format: please enter valid TOML` (Secrets) | Comillas tipográficas, marcas de código o `...` pegados | Formato del paso 8, con comillas rectas y claves reales |
 
 ## Evaluación del agente
 
@@ -134,15 +267,23 @@ python -m eval.run_agente --todo --judge-provider gemini --workers 1
   argumentos, orden, límites de longitud y URLs permitidas; salida en `agente_casos.md|json`.
 - **Costo:** llamadas al LLM, tokens y tiempo promedio por pregunta, pipeline fijo vs agente (`agente_costo.md`).
 
-**Resultados:** *pendientes de ejecutar con las claves reales* (requieren `GROQ_API_KEY`, `TAVILY_API_KEY` y `GOOGLE_API_KEY`).
-Pega aquí las tablas generadas en `eval/resultados/` y úsalas en el informe PDF.
+**Resultados** (modelo `openai/gpt-oss-120b`; juez de Ragas: Gemini; 21 preguntas, 16 dentro del corpus; archivos en `eval/resultados/`):
 
-| Métrica | Avance 2 (pipeline fijo) | Avance 3 (agente) |
-|---|---|---|
-| Faithfulness | 0.689 | _pendiente_ |
-| Answer relevancy | 0.563 | _pendiente_ |
-| Context precision | 0.178 | _pendiente_ |
-| Context recall | 0.500 | _pendiente_ |
+| Métrica | Avance 2 (pipeline fijo) | Avance 3 (agente) | Diferencia |
+|---|---|---|---|
+| Faithfulness | 0.689 | 0.718 | +0.029 |
+| Answer relevancy | 0.563 | 0.618 | +0.055 |
+| Context precision | 0.178 | 0.282 | +0.104 |
+| Context recall | 0.500 | 0.344 | −0.156 |
+| Hit-rate de recuperación | 0.75 | 0.875 | +0.125 |
+| Abstención correcta (fuera del corpus) | 1.0 | 1.0 | 0 |
+| Abstención incorrecta (dentro del corpus) | 0.312 | 0.188 | −0.124 |
+
+- **Casos de comportamiento:** 8 de 8 cumplidos (`agente_casos.md`).
+- **Costo** (mismas 8 preguntas, `agente_costo.md`): pipeline fijo 1 llamada al LLM, 3 683 tokens, 17.2 s; agente 3.62 llamadas, 12 911 tokens, 74.4 s
+  (los tiempos incluyen esperas por límites de la API gratuita). En las 21 preguntas el agente promedió 3.05 llamadas, 10 472 tokens y 42 s.
+- **Lectura:** mejoran precisión, relevancia y hit-rate; baja el recall porque el agente ya no expande vecinos. Con 16 preguntas,
+  diferencias de 0.03–0.05 no son concluyentes.
 
 > Nota: el agente ya no expande los fragmentos vecinos (n±1) como el pipeline del Avance 2, para respetar el tope de 5
 > fragmentos por llamada; puede compensarlo reformulando o llamando la tool de nuevo.
